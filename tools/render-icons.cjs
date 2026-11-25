@@ -18,6 +18,11 @@ const path = require('path');
     await page.screenshot({ path: path.join(dir, `icon${size}.png`), omitBackground: true });
     await page.close();
   }
+  // 512 px para la tienda, redes o presentaciones (no va dentro de la extensión).
+  const big = await browser.newPage({ viewport: { width: 512, height: 512 }, deviceScaleFactor: 1 });
+  await big.setContent(`<html><body style="margin:0;background:transparent">${svgBig.replace('<svg ', '<svg style="display:block;width:512px;height:512px" ')}</body></html>`);
+  fs.mkdirSync(path.join(dir, '..', 'store'), { recursive: true });
+  await big.screenshot({ path: path.join(dir, '..', 'store', 'icon512.png'), omitBackground: true });
   await browser.close();
   console.log('PNG listos en icons/');
 })();

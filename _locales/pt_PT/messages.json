@@ -290,7 +290,7 @@
     "message": "Restaurar padrões"
   },
   "dataDesc": {
-    "message": "Guarde as suas opções e a sua lista de sites num ficheiro JSON, ou carregue-as noutro navegador."
+    "message": "Guarde as suas opções e a sua lista de sites bloqueados num ficheiro JSON, ou carregue-as noutro navegador."
   },
   "resetConfirm": {
     "message": "Todas as opções serão restauradas e sua lista de sites bloqueados será esvaziada. O contador não muda. Continuar?"

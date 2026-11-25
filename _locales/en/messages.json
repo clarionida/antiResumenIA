@@ -290,7 +290,7 @@
     "message": "Restore defaults"
   },
   "dataDesc": {
-    "message": "Save your options and site list to a JSON file, or load them in another browser."
+    "message": "Save your options and your blocked-site list to a JSON file, or load them in another browser."
   },
   "resetConfirm": {
     "message": "All options will be restored and your blocked-site list will be emptied. The counter stays as is. Continue?"

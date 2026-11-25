@@ -290,7 +290,7 @@
     "message": "Restablecer valores predeterminados"
   },
   "dataDesc": {
-    "message": "Guarda tus opciones y tu lista de sitios en un archivo JSON, o cárgalas en otro navegador."
+    "message": "Guarda tus opciones y tu lista de sitios bloqueados en un archivo JSON, o cárgalas en otro navegador."
   },
   "resetConfirm": {
     "message": "Se restablecerán todas las opciones y se vaciará tu lista de sitios bloqueados. El contador no cambia. ¿Continuar?"
