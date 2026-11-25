@@ -41,6 +41,9 @@ Hazlas en Google real después de cargar la extensión sin empaquetar. Para cada
 - [ ] Con la opción apagada, los bloques de productos se ven.
 - [ ] Al activarla, desaparecen «Productos populares» o «Productos» y los carruseles de precios.
 - [ ] El panel de información de la derecha (por ejemplo, de una marca) no desaparece entero.
+- [ ] Busca «comida para perros»: las cuadrículas de productos **sin título** (precio, tienda, «PRECIO BAJO») desaparecen.
+- [ ] Los resultados normales de tiendas (Walmart, Mercado Libre…) siguen visibles aunque muestren fotos o precios.
+- [ ] En la pestaña **Shopping** los productos se ven normal aunque la opción esté activa.
 
 ## 5. «Otras preguntas de los usuarios» (desactivado)
 - [ ] Al activarla, desaparece el bloque completo, incluido el encabezado.

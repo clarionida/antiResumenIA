@@ -24,6 +24,10 @@
   // Solo en resultados (/search) y en la portada (por el botón de Modo IA).
   const path = location.pathname;
   const IS_SEARCH = path === '/search';
+  // Pestañas como Shopping (udm=28), Imágenes (udm=2) o Noticias (tbm=nws).
+  const PARAMS = new URLSearchParams(location.search);
+  const UDM = PARAMS.get('udm');
+  const IS_VERTICAL = IS_SEARCH && (PARAMS.has('tbm') || (UDM !== null && UDM !== '' && UDM !== '14'));
   if (!(IS_SEARCH || path === '/' || path === '/webhp')) return;
 
   const CFG = globalThis.ARI_CONFIG;
@@ -289,17 +293,54 @@
     hide(block, type);
   }
 
+  // --------------------------------------------- cuadrículas de productos sin título
+  const PRICE_DEF = D.types.shopping && D.types.shopping.priceGrid;
+  const PRICE_RE = PRICE_DEF ? new RegExp(PRICE_DEF.pattern) : null;
+
+  function isPriceText(text) {
+    return !!PRICE_RE && text.length <= 32 && PRICE_RE.test(text.replace(/\s+/g, ' ').trim());
+  }
+
+  function looksLikeProductGrid(block) {
+    if (block.querySelectorAll('img').length < PRICE_DEF.minImages) return false;
+    if (countOrganic(block) > 0) return false;
+    let prices = 0;
+    const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
+    for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+      if (isPriceText(n.nodeValue || '') && ++prices >= PRICE_DEF.minPrices) return true;
+    }
+    return false;
+  }
+
+  function handlePrices(nodes) {
+    const seen = new Set();
+    for (const node of nodes) {
+      const el = node.parentElement;
+      if (!el || !el.isConnected || el.closest(HIDDEN_SEL) || el.closest(SEL.nav)) continue;
+      if (el.closest('a[href] h3') || !inArea(el, 'all')) continue;
+      if (SEL.ignoreInside && el.closest(SEL.ignoreInside)) continue;
+      const block = findBlockRoot(el, 0);
+      if (!block || seen.has(block)) continue;
+      seen.add(block);
+      if (looksLikeProductGrid(block)) hideBlock(block, 'shopping');
+    }
+  }
+
   const SKIP_TAGS = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'TEMPLATE', 'svg', 'SVG']);
 
   function scanLabels(rootNode) {
+    const wantPrices = !!PRICE_RE && state.types.has('shopping');
+    const prices = [];
     const check = (node) => {
       const text = node.nodeValue;
       if (!text || text.length > maxLabelLength) return;
       const type = LABELS.get(U.normalizeLabel(text));
       if (type && state.types.has(type)) handleLabel(node, type);
+      else if (wantPrices && isPriceText(text)) prices.push(node);
     };
     if (rootNode.nodeType === 3) {
       check(rootNode);
+      if (prices.length) handlePrices(prices);
       return;
     }
     const walker = document.createTreeWalker(rootNode, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, {
@@ -314,6 +355,7 @@
     const found = [];
     for (let n = walker.nextNode(); n; n = walker.nextNode()) found.push(n);
     found.forEach(check);
+    if (prices.length) handlePrices(prices);
   }
 
   function scanSelectors(rootNode) {
@@ -414,6 +456,9 @@
   // ------------------------------------------------------- aplicar configuración
   function apply() {
     state.types = U.enabledTypes(state.settings, state.blockedSites);
+    if (IS_VERTICAL) {
+      for (const t of Array.from(state.types)) if (!D.typesOnVerticals.includes(t)) state.types.delete(t);
+    }
     html.setAttribute('data-ari-hide', Array.from(state.types).join(' '));
     html.setAttribute('data-ari-ready', '');
     unhideAll();

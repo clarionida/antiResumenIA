@@ -143,6 +143,12 @@
      */
     blockBoundaries: ['#foot', '#navcnt', '[role="navigation"]', 'table[role="presentation"] a[href*="start="]'],
 
+    /**
+     * En las pestañas de Google que no son «Todo» o «Web» (Shopping, Imágenes,
+     * Noticias…) solo se aplican estos tipos. Así la pestaña Shopping no queda vacía.
+     */
+    typesOnVerticals: ['aiOverview', 'aiMode', 'ads', 'blockedSites'],
+
     /** Título de un resultado normal con link. */
     organicTitle: 'a[href] h3',
 
@@ -222,7 +228,18 @@
           en: ['Products', 'Popular products', 'Shop products', 'More products', 'Deals', 'Shopping'],
           pt: ['Produtos', 'Produtos populares', 'Comprar produtos', 'Mais produtos', 'Ofertas', 'Compras']
         },
-        maxInnerResults: 0
+        maxInnerResults: 0,
+        /*
+         * Cuadrículas de productos SIN título (precio, tienda, «PRECIO BAJO»…).
+         * Un bloque sin resultados normales (a h3) con al menos minPrices textos
+         * de precio y minImages imágenes se considera de compras.
+         * pattern: texto completo de un precio, con la moneda antes o después.
+         */
+        priceGrid: {
+          pattern: '^(?:(?:MXN|USD|ARS|COP|CLP|PEN|UYU|PYG|BOB|VES|GTQ|HNL|NIO|CRC|PAB|DOP|CUP|BRL|EUR|GBP|CAD|AUD|US\\$|R\\$|RD\\$|C\\$|S\\/\\.?|[$€£])\\s?\\d[\\d.,\\s]*|\\d[\\d.,\\s]*\\s?(?:€|MXN|USD|EUR|ARS|COP|CLP|PEN|BRL))(?:\\s+(?:ahora|now|agora))?$',
+          minPrices: 3,
+          minImages: 3
+        }
       },
 
       peopleAlsoAsk: {

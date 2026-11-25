@@ -122,7 +122,7 @@ const SHOTS = process.env.SHOTS_DIR;
   assert.strictEqual(await en.evaluate(() => document.querySelector('a[href*="udm=50"]').getClientRects().length), 0, 'en: AI Mode tab');
 
   // 7b) Diseño nuevo de 2026: resumen de IA a todo el ancho y «Más preguntas» con respuestas de IA escondidas
-  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hidePeopleAlsoAsk = false; await chrome.storage.sync.set({ settings }); });
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hidePeopleAlsoAsk = false; settings.hideShopping = false; await chrome.storage.sync.set({ settings }); });
   await new Promise((r) => setTimeout(r, 200));
   const ar = await context.newPage();
   await ar.goto('https://www.google.com.ar/search?q=fotosintesis');
@@ -147,6 +147,24 @@ const SHOTS = process.env.SHOTS_DIR;
   await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideAiOverview = true; settings.hideImages = false; await chrome.storage.sync.set({ settings }); });
   await ar.waitForTimeout(300);
   assert.strictEqual(await vis(ar, 'n-ai'), false, 'resumen de IA oculto otra vez');
+
+  // 7b2) Cuadrícula de productos sin título
+  assert.strictEqual(await vis(ar, 'n-shop'), true, 'productos visibles con compras apagado');
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideShopping = true; await chrome.storage.sync.set({ settings }); });
+  await ar.waitForTimeout(300);
+  assert.strictEqual(await vis(ar, 'n-shop'), false, 'cuadrícula de productos sin título oculta');
+  assert.strictEqual(await ar.evaluate(() => document.getElementById('n-shop').getAttribute('data-ari-hidden')), 'shopping');
+  assert.strictEqual(await vis(ar, 'n-org3'), true, 'resultado normal con precios en el texto sigue visible');
+  assert.strictEqual(await vis(ar, 'n-org1'), true, 'resultado normal sigue visible');
+  const shopTab = await context.newPage();
+  await shopTab.goto('https://www.google.com.ar/search?q=fotosintesis&udm=28');
+  await shopTab.waitForTimeout(400);
+  assert.strictEqual(await vis(shopTab, 'n-shop'), true, 'en la pestaña Shopping no se ocultan productos');
+  assert.strictEqual(await vis(shopTab, 'n-ai'), false, 'en la pestaña Shopping sí se oculta la IA');
+  await shopTab.close();
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideShopping = false; await chrome.storage.sync.set({ settings }); });
+  await ar.waitForTimeout(300);
+  assert.strictEqual(await vis(ar, 'n-shop'), true, 'productos vuelven a verse');
 
   // 7c) «También se buscó»
   await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideRelatedSearches = true; await chrome.storage.sync.set({ settings }); });
