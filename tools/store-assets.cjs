@@ -15,7 +15,8 @@ const b64 = (file) => 'data:image/png;base64,' + fs.readFileSync(file).toString(
 
 const T = {
   es: { name: 'Buscar sin IA', tag: 'Google como antes: solo resultados con links.', free: 'Gratis · Sin rastreo · Sin cuentas', ui: 'Tú eliges qué ocultar. Los cambios se aplican al instante.' },
-  en: { name: 'Search Without AI', tag: 'Google like it used to be: just results with links.', free: 'Free · No tracking · No accounts', ui: 'You choose what to hide. Changes apply instantly.' }
+  en: { name: 'Search Without AI', tag: 'Google like it used to be: just results with links.', free: 'Free · No tracking · No accounts', ui: 'You choose what to hide. Changes apply instantly.' },
+  pt: { name: 'Busca sem IA', tag: 'O Google como antes: só resultados com links.', free: 'Grátis · Sem rastreio · Sem contas', ui: 'Você escolhe o que ocultar. As mudanças valem na hora.' }
 };
 
 async function shoot(browser, html, w, h, file, transparent) {
@@ -31,8 +32,8 @@ async function uiShots(lang) {
   const ctx = await chromium.launchPersistentContext(dir, {
     channel: 'chromium',
     headless: true,
-    env: Object.assign({}, process.env, { LANGUAGE: lang, LANG: lang === 'es' ? 'es_MX.UTF-8' : 'en_US.UTF-8' }),
-    args: [`--lang=${lang}`, `--disable-extensions-except=${ROOT}`, `--load-extension=${ROOT}`]
+    env: Object.assign({}, process.env, { LANGUAGE: lang === 'pt' ? 'pt_BR' : lang, LANG: { es: 'es_MX.UTF-8', en: 'en_US.UTF-8', pt: 'pt_BR.UTF-8' }[lang] }),
+    args: [`--lang=${lang === 'pt' ? 'pt-BR' : lang}`, `--disable-extensions-except=${ROOT}`, `--load-extension=${ROOT}`]
   });
   let [sw] = ctx.serviceWorkers();
   if (!sw) sw = await ctx.waitForEvent('serviceworker');
@@ -68,7 +69,7 @@ async function uiShots(lang) {
     <div style="width:128px;height:128px;display:grid;place-items:center">${svg.replace('<svg ', '<svg style="display:block;width:96px;height:96px" ')}</div></body></html>`,
   128, 128, path.join(OUT, 'icono-tienda-128.png'), true);
 
-  for (const lang of ['es', 'en']) {
+  for (const lang of ['es', 'en', 'pt']) {
     const t = T[lang];
     // Mosaico promocional pequeño 440×280.
     await shoot(browser, `<html><body style="margin:0;width:440px;height:280px;background:#fbf6f0;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;color:#2b1f17;display:flex;align-items:center;gap:22px;padding:0 30px;box-sizing:border-box;overflow:hidden">
