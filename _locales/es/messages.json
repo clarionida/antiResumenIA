@@ -1,0 +1,354 @@
+{
+  "extName": {
+    "message": "AntiResumen IA: resultados limpios",
+    "description": "Nombre en la Chrome Web Store y en chrome://extensions (máx. 75)"
+  },
+  "extShortName": {
+    "message": "AntiResumen IA",
+    "description": "Nombre corto"
+  },
+  "extDescription": {
+    "message": "Oculta resúmenes de IA, anuncios y bloques de relleno en Google. Ve solo resultados con links. Gratis y sin rastreo.",
+    "description": "Descripción corta (máx. 132)"
+  },
+  "langCode": {
+    "message": "es",
+    "description": "Código de idioma para <html lang>"
+  },
+  "actionTitle": {
+    "message": "AntiResumen IA",
+    "description": "Tooltip del ícono"
+  },
+  "masterName": {
+    "message": "Extensión activa",
+    "description": "Interruptor general"
+  },
+  "masterOnDesc": {
+    "message": "Limpiando tus búsquedas.",
+    "description": "Estado activo"
+  },
+  "masterOffDesc": {
+    "message": "En pausa: Google se ve como siempre.",
+    "description": "Estado en pausa"
+  },
+  "masterOptionsDesc": {
+    "message": "Apágala para pausar todo sin perder tu configuración.",
+    "description": "Descripción en opciones"
+  },
+  "groupGeneral": {
+    "message": "General"
+  },
+  "groupAi": {
+    "message": "Inteligencia artificial"
+  },
+  "groupAdsShopping": {
+    "message": "Publicidad y compras"
+  },
+  "groupBlocks": {
+    "message": "Bloques que empujan los resultados"
+  },
+  "groupSites": {
+    "message": "Mis sitios bloqueados"
+  },
+  "groupAdvanced": {
+    "message": "Avanzado"
+  },
+  "groupStats": {
+    "message": "Contador"
+  },
+  "groupData": {
+    "message": "Tu configuración"
+  },
+  "optAiOverviewName": {
+    "message": "Ocultar resúmenes de IA"
+  },
+  "optAiOverviewDesc": {
+    "message": "Quita el bloque «Resumen de IA» que aparece arriba de los resultados."
+  },
+  "optAiModeName": {
+    "message": "Ocultar el Modo IA"
+  },
+  "optAiModeDesc": {
+    "message": "Quita la pestaña y el botón de «Modo IA»."
+  },
+  "optAdsName": {
+    "message": "Ocultar anuncios"
+  },
+  "optAdsDesc": {
+    "message": "Quita los resultados patrocinados y los anuncios."
+  },
+  "optShoppingName": {
+    "message": "Ocultar bloques de compras"
+  },
+  "optShoppingDesc": {
+    "message": "Quita los carruseles de productos, precios y tiendas."
+  },
+  "optPaaName": {
+    "message": "Ocultar «Otras preguntas de los usuarios»"
+  },
+  "optPaaDesc": {
+    "message": "Quita la lista de preguntas que se despliegan."
+  },
+  "optVideosName": {
+    "message": "Ocultar carruseles de videos"
+  },
+  "optVideosDesc": {
+    "message": "Quita los carruseles de videos y de videos cortos."
+  },
+  "optForumsName": {
+    "message": "Ocultar «Debates y foros»"
+  },
+  "optForumsDesc": {
+    "message": "Quita el bloque de conversaciones de foros y redes sociales."
+  },
+  "optNoticeName": {
+    "message": "Mostrar aviso en la página"
+  },
+  "optNoticeDesc": {
+    "message": "Un aviso pequeño te dice cuántos elementos se ocultaron y te deja verlos."
+  },
+  "sitesIntro": {
+    "message": "Los resultados de estos sitios, y de sus subdominios, no aparecerán."
+  },
+  "sitesInputLabel": {
+    "message": "Sitio para bloquear"
+  },
+  "sitesPlaceholder": {
+    "message": "por ejemplo, pinterest.com"
+  },
+  "sitesAdd": {
+    "message": "Agregar"
+  },
+  "sitesRemove": {
+    "message": "Quitar"
+  },
+  "sitesRemoveAria": {
+    "message": "Quitar $SITE$",
+    "description": "Etiqueta accesible del botón quitar",
+    "placeholders": {
+      "site": {
+        "content": "$1"
+      }
+    }
+  },
+  "sitesEmpty": {
+    "message": "No hay sitios bloqueados todavía."
+  },
+  "sitesInvalid": {
+    "message": "Eso no parece un dominio. Prueba con algo como pinterest.com."
+  },
+  "sitesGoogle": {
+    "message": "No se pueden bloquear los dominios de Google."
+  },
+  "sitesDuplicate": {
+    "message": "$SITE$ ya está en tu lista.",
+    "placeholders": {
+      "site": {
+        "content": "$1"
+      }
+    }
+  },
+  "sitesAdded": {
+    "message": "Se agregó $SITE$.",
+    "placeholders": {
+      "site": {
+        "content": "$1"
+      }
+    }
+  },
+  "sitesRemoved": {
+    "message": "Se quitó $SITE$.",
+    "placeholders": {
+      "site": {
+        "content": "$1"
+      }
+    }
+  },
+  "sitesLimit": {
+    "message": "La lista ya tiene el máximo de $MAX$ sitios.",
+    "placeholders": {
+      "max": {
+        "content": "$1"
+      }
+    }
+  },
+  "sitesCount": {
+    "message": "Sitios bloqueados: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "advancedIntro": {
+    "message": "Estas opciones cambian la dirección de tus búsquedas. Están apagadas de inicio; actívalas solo si sabes lo que hacen."
+  },
+  "optWebOnlyName": {
+    "message": "Modo «Solo Web»"
+  },
+  "optWebOnlyDesc": {
+    "message": "Abre tus búsquedas directamente en la vista «Web» de Google: solo resultados con links."
+  },
+  "webOnlyWarning": {
+    "message": "Este modo también quita otros paneles, como la ficha de información, mapas, noticias destacadas o el clima. Imágenes, Noticias, Videos, Maps y Shopping siguen igual. Mientras esté activo, la pestaña «Todo» te regresa a «Web»."
+  },
+  "optBeforeDateName": {
+    "message": "Solo contenido anterior a la IA"
+  },
+  "optBeforeDateDesc": {
+    "message": "Agrega un filtro de fecha para ver páginas publicadas antes del día que elijas."
+  },
+  "beforeDateLabel": {
+    "message": "Mostrar resultados anteriores al"
+  },
+  "beforeDateWarning": {
+    "message": "Google estima la fecha de cada página a su manera: algunas páginas sin fecha clara pueden desaparecer y otras más nuevas pueden colarse. Si eliges otro rango en «Herramientas», se respeta el tuyo."
+  },
+  "beforeDateInvalid": {
+    "message": "Elige una fecha entre el 4 de septiembre de 1998 y hoy."
+  },
+  "statsTitle": {
+    "message": "Elementos ocultados"
+  },
+  "statsTotal": {
+    "message": "Total"
+  },
+  "statsLocalNote": {
+    "message": "Este contador se guarda solo en tu navegador y nunca se envía a ningún lado."
+  },
+  "statsReset": {
+    "message": "Reiniciar contador"
+  },
+  "statsResetConfirm": {
+    "message": "¿Reiniciar el contador a cero?"
+  },
+  "typeAiOverview": {
+    "message": "Resúmenes de IA"
+  },
+  "typeAiMode": {
+    "message": "Modo IA"
+  },
+  "typeAds": {
+    "message": "Anuncios"
+  },
+  "typeShopping": {
+    "message": "Compras"
+  },
+  "typePeopleAlsoAsk": {
+    "message": "Otras preguntas"
+  },
+  "typeVideos": {
+    "message": "Videos"
+  },
+  "typeForums": {
+    "message": "Debates y foros"
+  },
+  "typeBlockedSites": {
+    "message": "Sitios bloqueados"
+  },
+  "exportBtn": {
+    "message": "Exportar configuración"
+  },
+  "importBtn": {
+    "message": "Importar configuración"
+  },
+  "resetBtn": {
+    "message": "Restablecer valores predeterminados"
+  },
+  "dataDesc": {
+    "message": "Guarda tus opciones y tu lista de sitios en un archivo JSON, o cárgalas en otro navegador."
+  },
+  "resetConfirm": {
+    "message": "Se restablecerán todas las opciones y se vaciará tu lista de sitios bloqueados. El contador no cambia. ¿Continuar?"
+  },
+  "resetDone": {
+    "message": "Listo: se restablecieron los valores predeterminados."
+  },
+  "importDone": {
+    "message": "Configuración importada."
+  },
+  "importError": {
+    "message": "No se pudo leer el archivo. Usa un JSON exportado desde esta extensión."
+  },
+  "saved": {
+    "message": "Guardado"
+  },
+  "optionsTitle": {
+    "message": "Opciones"
+  },
+  "optionsSubtitle": {
+    "message": "Elige qué quieres ocultar de tus búsquedas en Google. Los cambios se aplican al instante, también en las pestañas abiertas."
+  },
+  "popupMoreOptions": {
+    "message": "Más opciones"
+  },
+  "popupMainOptions": {
+    "message": "Qué ocultar",
+    "description": "Título de la sección del popup"
+  },
+  "freeNote": {
+    "message": "Todo es gratis. Donar es opcional."
+  },
+  "donateLink": {
+    "message": "¿Te sirve? Puedes invitarme un café ☕"
+  },
+  "donatePromptTitle": {
+    "message": "¡Ya van más de $COUNT$ elementos ocultados!",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "donatePromptBody": {
+    "message": "Esta extensión es gratis y lo seguirá siendo. Si te ha servido, puedes apoyarla con un café. Es totalmente opcional."
+  },
+  "donateSupport": {
+    "message": "Apoyar"
+  },
+  "donateDismiss": {
+    "message": "No volver a mostrar"
+  },
+  "newTabHint": {
+    "message": "(se abre en una pestaña nueva)",
+    "description": "Texto para lectores de pantalla"
+  },
+  "privacyNote": {
+    "message": "Sin rastreo: no recopila ni envía ningún dato. Tus opciones se guardan con la sincronización de Chrome."
+  },
+  "noticeRegion": {
+    "message": "AntiResumen IA",
+    "description": "Etiqueta accesible del aviso en Google"
+  },
+  "noticeHiddenOne": {
+    "message": "Se ocultó 1 elemento"
+  },
+  "noticeHiddenMany": {
+    "message": "Se ocultaron $COUNT$ elementos",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "noticeShowingOne": {
+    "message": "Mostrando 1 elemento oculto"
+  },
+  "noticeShowingMany": {
+    "message": "Mostrando $COUNT$ elementos ocultos",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "noticeShow": {
+    "message": "Mostrar"
+  },
+  "noticeHide": {
+    "message": "Ocultar"
+  },
+  "noticeClose": {
+    "message": "Cerrar aviso"
+  }
+}

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AntiResumen IA</title>
+  <link rel="stylesheet" href="../ui/theme.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="popup">
+    <header class="top">
+      <img src="../icons/icon32.png" width="28" height="28" alt="">
+      <div class="title">
+        <h1 data-i18n="extShortName">AntiResumen IA</h1>
+        <p id="masterState" class="note" aria-live="polite"></p>
+      </div>
+      <label class="switch">
+        <input type="checkbox" role="switch" id="enabled" data-setting="enabled">
+        <span class="visually-hidden" data-i18n="masterName">Extensión activa</span>
+      </label>
+    </header>
+
+    <section class="card" aria-labelledby="mainOptionsTitle" id="mainOptions">
+      <h2 id="mainOptionsTitle" class="section-title" data-i18n="popupMainOptions">Qué ocultar</h2>
+      <label class="option">
+        <input type="checkbox" data-setting="hideAiOverview" aria-describedby="d-ai">
+        <span class="name" data-i18n="optAiOverviewName"></span>
+        <span class="desc" id="d-ai" data-i18n="optAiOverviewDesc"></span>
+      </label>
+      <label class="option">
+        <input type="checkbox" data-setting="hideAiMode" aria-describedby="d-aimode">
+        <span class="name" data-i18n="optAiModeName"></span>
+        <span class="desc" id="d-aimode" data-i18n="optAiModeDesc"></span>
+      </label>
+      <label class="option">
+        <input type="checkbox" data-setting="hideAds" aria-describedby="d-ads">
+        <span class="name" data-i18n="optAdsName"></span>
+        <span class="desc" id="d-ads" data-i18n="optAdsDesc"></span>
+      </label>
+    </section>
+
+    <section class="counter card" aria-live="polite">
+      <span class="count" id="total">0</span>
+      <span class="note" data-i18n="statsTitle">Elementos ocultados</span>
+    </section>
+
+    <section class="card donate-card" id="donatePrompt" hidden aria-labelledby="donateTitle">
+      <h2 id="donateTitle" class="donate-title"></h2>
+      <p data-i18n="donatePromptBody"></p>
+      <div class="row">
+        <a class="btn primary" id="donateSupport" data-donate>
+          <span data-i18n="donateSupport">Apoyar</span>
+          <span class="visually-hidden" data-i18n="newTabHint"></span>
+        </a>
+        <button type="button" class="btn subtle" id="donateDismiss" data-i18n="donateDismiss">No volver a mostrar</button>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <button type="button" class="btn" id="moreOptions" data-i18n="popupMoreOptions">Más opciones</button>
+      <div class="footer-links">
+        <a class="donate" data-donate>
+          <span data-i18n="donateLink"></span>
+          <span class="visually-hidden" data-i18n="newTabHint"></span>
+        </a>
+        <span class="note" data-i18n="freeNote"></span>
+      </div>
+    </footer>
+  </main>
+  <script src="../src/config.js"></script>
+  <script src="../src/common.js"></script>
+  <script src="../ui/i18n-dom.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

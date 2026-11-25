@@ -1,0 +1,16 @@
+{
+  "name": "antiresumen-ia",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Herramientas de desarrollo de la extensión. La extensión no usa dependencias.",
+  "scripts": {
+    "test": "node tests/common.test.cjs && node tests/dnr.test.cjs && node tests/e2e.test.cjs",
+    "locales": "node tools/locales-src.mjs",
+    "manifest": "node tools/sync-manifest.mjs",
+    "icons": "node tools/render-icons.cjs",
+    "zip": "bash tools/build-zip.sh"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
+  }
+}
