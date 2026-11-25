@@ -122,3 +122,4 @@ footer .tm { font-size: 13px; }
 .faq h3 { font-size: 19px; margin: 28px 0 10px; color: var(--accent-strong); }
 @media (prefers-color-scheme: dark) { .faq h3 { color: var(--accent); } }
 .faq h3:first-of-type { margin-top: 8px; }
+.faq details strong { color: var(--text); }
