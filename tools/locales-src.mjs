@@ -77,7 +77,7 @@ const M = [
   ['beforeDateInvalid', '', 'Elige una fecha entre el 4 de septiembre de 1998 y hoy.', 'Pick a date between September 4, 1998 and today.', 'Escolha uma data entre 4 de setembro de 1998 e hoje.'],
 
   ['statsTitle', '', 'Elementos ocultados', 'Items hidden', 'Itens ocultados'],
-  ['popupCounterLabel', 'Contador del popup: total acumulado', 'Elementos ocultados en total', 'Items hidden in total', 'Itens ocultados no total'],
+  ['popupCounterLabel', 'Contador total acumulado (popup y opciones)', 'Elementos ocultados en total', 'Items hidden in total', 'Itens ocultados no total'],
   ['statsTotal', '', 'Total', 'Total', 'Total'],
   ['statsLocalNote', '', 'Este contador se guarda solo en tu navegador y nunca se envía a ningún lado.', 'This counter is stored only in your browser and is never sent anywhere.', 'Este contador fica salvo só no seu navegador e nunca é enviado para lugar nenhum.'],
   ['statsReset', '', 'Reiniciar contador', 'Reset counter', 'Zerar contador'],

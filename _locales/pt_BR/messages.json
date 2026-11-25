@@ -224,7 +224,7 @@
   },
   "popupCounterLabel": {
     "message": "Itens ocultados no total",
-    "description": "Contador del popup: total acumulado"
+    "description": "Contador total acumulado (popup y opciones)"
   },
   "statsTotal": {
     "message": "Total"
