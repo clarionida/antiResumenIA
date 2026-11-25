@@ -210,6 +210,10 @@
   "statsTitle": {
     "message": "Itens ocultados"
   },
+  "popupCounterLabel": {
+    "message": "Itens ocultados no total",
+    "description": "Contador del popup: total acumulado"
+  },
   "statsTotal": {
     "message": "Total"
   },
