@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Buscar sin IA: quita el resumen de IA y los anuncios de Google (extensión gratis para Chrome)</title>
+  <meta name="description" content="Extensión gratuita para Chrome que oculta el resumen de IA («Vista creada con IA»), el Modo IA, los anuncios y otros recuadros de Google. Solo resultados con links, como antes. Sin rastreo.">
+  <link rel="canonical" href="https://clarionida.github.io/antiResumenIA/">
+  <link rel="alternate" hreflang="es" href="https://clarionida.github.io/antiResumenIA/">
+  <link rel="alternate" hreflang="en" href="https://clarionida.github.io/antiResumenIA/en/">
+  <link rel="alternate" hreflang="x-default" href="https://clarionida.github.io/antiResumenIA/">
+  <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="img/icon32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="img/icon512.png">
+  <meta name="theme-color" content="#c4622d">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="Buscar sin IA">
+  <meta property="og:title" content="Buscar sin IA: Google como antes, solo resultados con links">
+  <meta property="og:description" content="Extensión gratis para Chrome que oculta el resumen de IA, el Modo IA, los anuncios y otros recuadros de Google. Sin rastreo.">
+  <meta property="og:url" content="https://clarionida.github.io/antiResumenIA/">
+  <meta property="og:image" content="https://clarionida.github.io/antiResumenIA/img/compartir.jpg">
+  <meta property="og:image:width" content="1400">
+  <meta property="og:image:height" content="560">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Buscar sin IA",
+    "alternateName": ["Search Without AI", "Busca sem IA"],
+    "description": "Extensión gratuita para Chrome que oculta el resumen de IA, el Modo IA, los anuncios y otros recuadros de la página de resultados de Google, para ver solo los resultados con links. No recopila datos.",
+    "applicationCategory": "BrowserApplication",
+    "operatingSystem": "Google Chrome (escritorio)",
+    "inLanguage": ["es", "en", "pt"],
+    "isAccessibleForFree": true,
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "url": "https://clarionida.github.io/antiResumenIA/",
+    "image": "https://clarionida.github.io/antiResumenIA/img/icon512.png",
+    "screenshot": "https://clarionida.github.io/antiResumenIA/img/antes-despues-es.jpg",
+    "softwareVersion": "1.3.3",
+    "author": { "@type": "Person", "name": "Clariónida" },
+    "sameAs": ["https://github.com/clarionida/antiResumenIA"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "¿Cómo quito el resumen de IA de Google?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Instala la extensión gratuita Buscar sin IA en Chrome. Desde ese momento, el bloque «Resumen de IA», «Vista creada con IA» o «Visión general creada por IA» deja de aparecer en tus búsquedas de Google, y el resto de los resultados se queda igual." } },
+      { "@type": "Question", "name": "¿Se puede desactivar la IA de Google sin instalar nada?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Google no tiene un botón para apagarla. Puedes elegir la pestaña «Web» en cada búsqueda o crear un buscador personalizado con el parámetro udm=14. Buscar sin IA lo hace automático y te deja elegir qué ocultar." } },
+      { "@type": "Question", "name": "¿Buscar sin IA es gratis?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, es 100 % gratis: sin versión premium, sin funciones bloqueadas y sin anuncios. Las donaciones son opcionales." } },
+      { "@type": "Question", "name": "¿Recopila mis datos o mis búsquedas?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. No recopila, no envía y no vende ningún dato, no hace peticiones a internet y no tiene analítica. Solo lee la página de resultados de Google en tu navegador para ocultar lo que elegiste." } },
+      { "@type": "Question", "name": "¿Funciona con Google de mi país?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Funciona en más de 40 dominios de Google, como google.com, google.com.mx, google.es, google.com.ar, google.com.co, google.cl, google.com.pe y google.com.br, con Google en español, inglés o portugués." } },
+      { "@type": "Question", "name": "¿Puedo ver lo que se ocultó?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí. En la página de Google aparece un aviso pequeño, «Se ocultaron N elementos · Mostrar». Al pulsar «Mostrar» se ve todo lo oculto, marcado con un borde punteado." } },
+      { "@type": "Question", "name": "¿Funciona en Edge, Brave u Opera?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Esos navegadores están basados en Chrome y aceptan sus extensiones, así que debería funcionar, aunque está probada en Chrome. Solo actúa cuando buscas en Google." } },
+      { "@type": "Question", "name": "¿Funciona en el celular?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Chrome para Android y para iPhone no admite extensiones. Funciona en Chrome de computadora." } },
+      { "@type": "Question", "name": "¿Qué pasa si Google cambia su página?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Google cambia su página seguido. La extensión se revisa cada mes y se actualiza cuando hace falta. Si algo deja de ocultarse, puedes reportarlo desde el link «Reportar un problema» de las opciones." } },
+      { "@type": "Question", "name": "¿En qué se diferencia de otras extensiones?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Está pensada primero en español, te deja elegir qué ocultar una por una, incluye una lista de sitios bloqueados, no rastrea nada y su código es público en GitHub." } }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="./"><img src="img/icon.svg" width="36" height="36" alt="">Buscar sin IA</a>
+      <nav class="nav" aria-label="Secciones">
+        <a href="#que-oculta">Qué oculta</a>
+        <a href="#privacidad">Privacidad</a>
+        <a href="#preguntas">Preguntas</a>
+        <a href="#instalar">Instalar</a>
+        <a href="https://github.com/clarionida/antiResumenIA">GitHub</a>
+        <a class="lang" href="en/" hreflang="en" lang="en">English</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <div class="hero wrap">
+      <h1>Quita la IA de Google y vuelve a ver solo links</h1>
+      <p class="lead">Buscar sin IA es una extensión <strong>gratuita</strong> para Chrome que oculta el resumen de IA, el Modo IA, los anuncios y otros recuadros de Google. Tú eliges qué ocultar.</p>
+      <div class="cta">
+        <!-- Cuando la Chrome Web Store apruebe la extensión, cambiar href por el link de la tienda y el texto por «Agregar a Chrome: es gratis». -->
+        <a class="btn primary" href="#instalar">Instalar gratis</a>
+        <a class="btn" href="#que-oculta">Ver qué oculta</a>
+      </div>
+      <ul class="badges">
+        <li>100 % gratis</li>
+        <li>Sin rastreo</li>
+        <li>Sin cuentas</li>
+        <li>Código público</li>
+      </ul>
+      <figure class="shot">
+        <img src="img/antes-despues-es.jpg" width="1280" height="800" alt="Comparación de la misma búsqueda en Google. Antes: un anuncio, el bloque «Visión general creada por IA» y la pestaña «Modo IA». Después, con Buscar sin IA: solo los resultados con links.">
+        <figcaption>La misma búsqueda, antes y después. Capturas reales.</figcaption>
+      </figure>
+    </div>
+
+    <section id="que-oculta">
+      <div class="wrap">
+        <h2>Qué puedes ocultar</h2>
+        <p class="intro">Cada opción se activa o se desactiva con una casilla. Los cambios se aplican al instante, sin recargar.</p>
+        <div class="grid">
+          <div class="card">
+            <h3>Inteligencia artificial</h3>
+            <ul>
+              <li>Resumen de IA <span class="tag">activado</span></li>
+              <li>Pestaña y botón de «Modo IA» <span class="tag">activado</span></li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Publicidad y compras</h3>
+            <ul>
+              <li>Anuncios y resultados patrocinados <span class="tag">activado</span></li>
+              <li>Cuadrículas y carruseles de productos</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Otras secciones de Google</h3>
+            <ul>
+              <li>«Otras preguntas» / «Más preguntas»</li>
+              <li>Videos y videos cortos</li>
+              <li>Imágenes entre los resultados</li>
+              <li>Mapas y negocios cercanos</li>
+              <li>«Debates y foros»</li>
+              <li>«También se buscó»</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Y además</h3>
+            <ul>
+              <li>Tu lista de <strong>sitios bloqueados</strong> (por ejemplo, pinterest.com)</li>
+              <li>Modo «Solo Web»</li>
+              <li>Filtro «solo contenido anterior a la IA»</li>
+              <li>Un interruptor para pausar todo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="como-funciona">
+      <div class="wrap split">
+        <div>
+          <h2>Así de fácil</h2>
+          <ol class="steps">
+            <li><strong>Instálala</strong> en Chrome. Ya viene lista: oculta el resumen de IA, el Modo IA y los anuncios.</li>
+            <li><strong>Busca</strong> en Google como siempre. Abajo a la izquierda verás cuántos elementos se ocultaron.</li>
+            <li><strong>Ajusta</strong> lo que quieras desde el ícono de la barra o en «Más opciones».</li>
+          </ol>
+        </div>
+        <img src="img/interfaz-es.jpg" width="1280" height="800" loading="lazy" alt="Panel de la extensión y página de opciones de Buscar sin IA, con casillas para elegir qué ocultar y el contador de elementos ocultados.">
+      </div>
+    </section>
+
+    <section id="privacidad">
+      <div class="wrap">
+        <div class="privacy">
+          <h2>Tu privacidad, primero</h2>
+          <ul>
+            <li><strong>No recopila, no envía y no vende ningún dato.</strong></li>
+            <li>No hace peticiones a internet, no tiene analítica y no carga código externo.</li>
+            <li>Solo lee la página de resultados de Google en tu navegador, lo necesario para ocultar lo que elegiste.</li>
+            <li>Tus opciones se guardan con la sincronización de Chrome. El contador queda solo en tu navegador.</li>
+            <li>El código es público: cualquiera puede revisarlo en <a href="https://github.com/clarionida/antiResumenIA">GitHub</a>.</li>
+          </ul>
+          <p><a href="https://github.com/clarionida/antiResumenIA/blob/main/PRIVACY.md">Leer la política de privacidad completa</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="preguntas" class="faq">
+      <div class="wrap">
+        <h2>Preguntas frecuentes</h2>
+        <details>
+          <summary>¿Cómo quito el resumen de IA de Google?</summary>
+          <p>Instala la extensión gratuita Buscar sin IA en Chrome. Desde ese momento, el bloque «Resumen de IA», «Vista creada con IA» o «Visión general creada por IA» deja de aparecer en tus búsquedas de Google, y el resto de los resultados se queda igual.</p>
+        </details>
+        <details>
+          <summary>¿Se puede desactivar la IA de Google sin instalar nada?</summary>
+          <p>Google no tiene un botón para apagarla. Puedes elegir la pestaña «Web» en cada búsqueda o crear un buscador personalizado con el parámetro <code>udm=14</code>. Buscar sin IA lo hace automático y te deja elegir qué ocultar.</p>
+        </details>
+        <details>
+          <summary>¿Buscar sin IA es gratis?</summary>
+          <p>Sí, es 100 % gratis: sin versión premium, sin funciones bloqueadas y sin anuncios. Las donaciones son opcionales.</p>
+        </details>
+        <details>
+          <summary>¿Recopila mis datos o mis búsquedas?</summary>
+          <p>No. No recopila, no envía y no vende ningún dato, no hace peticiones a internet y no tiene analítica. Solo lee la página de resultados de Google en tu navegador para ocultar lo que elegiste.</p>
+        </details>
+        <details>
+          <summary>¿Funciona con Google de mi país?</summary>
+          <p>Sí. Funciona en más de 40 dominios de Google, como google.com, google.com.mx, google.es, google.com.ar, google.com.co, google.cl, google.com.pe y google.com.br, con Google en español, inglés o portugués.</p>
+        </details>
+        <details>
+          <summary>¿Puedo ver lo que se ocultó?</summary>
+          <p>Sí. En la página de Google aparece un aviso pequeño, «Se ocultaron N elementos · Mostrar». Al pulsar «Mostrar» se ve todo lo oculto, marcado con un borde punteado.</p>
+        </details>
+        <details>
+          <summary>¿Funciona en Edge, Brave u Opera?</summary>
+          <p>Esos navegadores están basados en Chrome y aceptan sus extensiones, así que debería funcionar, aunque está probada en Chrome. Solo actúa cuando buscas en Google.</p>
+        </details>
+        <details>
+          <summary>¿Funciona en el celular?</summary>
+          <p>No. Chrome para Android y para iPhone no admite extensiones. Funciona en Chrome de computadora.</p>
+        </details>
+        <details>
+          <summary>¿Qué pasa si Google cambia su página?</summary>
+          <p>Google cambia su página seguido. La extensión se revisa cada mes y se actualiza cuando hace falta. Si algo deja de ocultarse, puedes <a href="https://github.com/clarionida/antiResumenIA/issues/new?template=problema.yml">reportarlo</a> desde el link «Reportar un problema» de las opciones.</p>
+        </details>
+        <details>
+          <summary>¿En qué se diferencia de otras extensiones?</summary>
+          <p>Está pensada primero en español, te deja elegir qué ocultar una por una, incluye una lista de sitios bloqueados, no rastrea nada y su código es público en GitHub.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="instalar" class="install">
+      <div class="wrap">
+        <h2>Instalar</h2>
+        <p><strong>Chrome Web Store:</strong> muy pronto. La extensión está en revisión.</p>
+        <p>Mientras tanto, puedes instalarla a mano:</p>
+        <ol>
+          <li>Descarga el proyecto: <a href="https://github.com/clarionida/antiResumenIA/archive/refs/heads/main.zip">descargar .zip</a>.</li>
+          <li>Descomprímelo y guarda la carpeta en un lugar fijo, por ejemplo en Documentos.</li>
+          <li>En Chrome, abre <code>chrome://extensions</code> y activa <strong>Modo de desarrollador</strong> (arriba a la derecha).</li>
+          <li>Pulsa <strong>Cargar extensión sin empaquetar</strong> y elige la carpeta que tiene el archivo <code>manifest.json</code>.</li>
+          <li>Fija el ícono con la chincheta, en el menú de la pieza de rompecabezas.</li>
+        </ol>
+        <p class="note">No borres ni muevas la carpeta después: Chrome la usa desde ahí.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <nav aria-label="Enlaces">
+        <a href="https://donate.stripe.com/bJeeVfgHU7Npa1A59ocAo00">¿Te sirve? Invítame un café ☕</a>
+        <a href="https://github.com/clarionida/antiResumenIA/issues/new?template=problema.yml">Reportar un problema</a>
+        <a href="https://github.com/clarionida/antiResumenIA/blob/main/PRIVACY.md">Privacidad</a>
+        <a href="https://github.com/clarionida/antiResumenIA">Código en GitHub</a>
+      </nav>
+      <p>Todo es gratis. Donar es opcional.</p>
+      <p class="made">Hecho con cariño por Clariónida</p>
+      <p class="tm">Extensión independiente, sin relación con Google LLC. Google y Chrome son marcas comerciales de Google LLC.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Buscar sin IA: lupa con una chispa tachada («sin IA»). Diseño original.
+       La chispa es plana y de un solo color, sin degradado, para no parecerse a ningún logo de marca. -->
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="#c4622d"/>
+  <rect x="4" y="4" width="120" height="60" rx="28" fill="#d4743c" opacity="0.55"/>
+  <!-- Mango -->
+  <line x1="81" y1="81" x2="103" y2="103" stroke="#ffffff" stroke-width="15" stroke-linecap="round"/>
+  <!-- Lente -->
+  <circle cx="54" cy="54" r="34" fill="#fff8f1" stroke="#ffffff" stroke-width="9"/>
+  <!-- Chispa de cuatro puntas -->
+  <path d="M54 25 C57 44 64 51 83 54 C64 57 57 64 54 83 C51 64 44 57 25 54 C44 51 51 44 54 25 Z" fill="#c4622d"/>
+  <!-- Tachado: corte fino del color de la lente y raya encima -->
+  <line x1="33" y1="75" x2="75" y2="33" stroke="#fff8f1" stroke-width="9" stroke-linecap="round"/>
+  <line x1="33" y1="75" x2="75" y2="33" stroke="#7a2f0e" stroke-width="4.5" stroke-linecap="round"/>
+</svg>
