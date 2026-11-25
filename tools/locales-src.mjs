@@ -43,7 +43,9 @@ const M = [
   ['optVideosName', '', 'Ocultar carruseles de videos', 'Hide video carousels', 'Ocultar carrosséis de vídeos'],
   ['optVideosDesc', '', 'Quita los carruseles de videos y de videos cortos.', 'Removes video and short-video carousels.', 'Remove os carrosséis de vídeos e de vídeos curtos.'],
   ['optForumsName', '', 'Ocultar «Debates y foros»', 'Hide “Discussions and forums”', 'Ocultar “Discussões e fóruns”'],
-  ['optForumsDesc', '', 'Quita el bloque de conversaciones de foros y redes sociales.', 'Removes the block of forum and social media threads.', 'Remove o bloco de conversas de fóruns e redes sociais.'],
+  ['optForumsDesc', '', 'Quita el bloque de conversaciones de Reddit, Quora y otros foros. Los resultados normales de esos sitios se quedan.', 'Removes the block of threads from Reddit, Quora and other forums. Regular results from those sites stay.', 'Remove o bloco de conversas do Reddit, Quora e outros fóruns. Os resultados normais desses sites continuam.'],
+  ['optRelatedName', '', 'Ocultar «También se buscó»', 'Hide “People also search for”', 'Ocultar “Pesquisas relacionadas”'],
+  ['optRelatedDesc', '', 'Quita las sugerencias de búsquedas relacionadas, al final de la página y dentro de los resultados.', 'Removes related-search suggestions, at the bottom of the page and inside results.', 'Remove as sugestões de pesquisas relacionadas, no fim da página e dentro dos resultados.'],
   ['optNoticeName', '', 'Mostrar aviso en la página', 'Show on-page notice', 'Mostrar aviso na página'],
   ['optNoticeDesc', '', 'Un aviso pequeño te dice cuántos elementos se ocultaron y te deja verlos.', 'A small notice tells you how many items were hidden and lets you see them.', 'Um aviso pequeno mostra quantos itens foram ocultados e permite vê-los.'],
 
@@ -85,6 +87,7 @@ const M = [
   ['typePeopleAlsoAsk', '', 'Otras preguntas', 'People also ask', 'Outras perguntas'],
   ['typeVideos', '', 'Videos', 'Videos', 'Vídeos'],
   ['typeForums', '', 'Debates y foros', 'Discussions and forums', 'Discussões e fóruns'],
+  ['typeRelatedSearches', '', 'Búsquedas relacionadas', 'Related searches', 'Pesquisas relacionadas'],
   ['typeBlockedSites', '', 'Sitios bloqueados', 'Blocked sites', 'Sites bloqueados'],
 
   ['exportBtn', '', 'Exportar configuración', 'Export settings', 'Exportar configuração'],

@@ -41,7 +41,8 @@
     ignoreInside: D.ignoreLabelsInside.join(','),
     organicExclude: D.organicTitleExclude.concat(HIDDEN_SEL).join(','),
     control: D.controlElements.join(','),
-    tabWrappers: D.tabWrappers.join(',')
+    tabWrappers: D.tabWrappers.join(','),
+    boundaries: D.blockBoundaries.join(',')
   };
 
   // ------------------------------------------------- índice de etiquetas por texto
@@ -182,8 +183,17 @@
       if (parent.matches(SEL.roots)) return node;
       if (parent.querySelector(SEL.roots)) return node;
       if (countOrganic(parent) > limit) return node;
+      if (addsBoundary(parent, node)) return node;
       node = parent;
     }
+  }
+
+  /** true si el padre trae paginación o navegación que no está dentro del nodo actual. */
+  function addsBoundary(parent, node) {
+    for (const el of parent.querySelectorAll(SEL.boundaries)) {
+      if (!node.contains(el)) return true;
+    }
+    return false;
   }
 
   /** Contenedor de un resultado normal (para sitios bloqueados). */

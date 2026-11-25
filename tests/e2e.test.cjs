@@ -126,6 +126,20 @@ const SHOTS = process.env.SHOTS_DIR;
   await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hidePeopleAlsoAsk = false; await chrome.storage.sync.set({ settings }); });
   await ar.waitForTimeout(300);
   assert.strictEqual(await vis(ar, 'n-paa'), true, '2026: «Más preguntas» vuelve a verse');
+  assert.strictEqual(await vis(ar, 'n-related'), true, '2026: «También se buscó» visible con la opción apagada');
+
+  // 7c) «También se buscó»
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideRelatedSearches = true; await chrome.storage.sync.set({ settings }); });
+  await ar.waitForTimeout(300);
+  assert.strictEqual(await vis(ar, 'n-related'), false, '«También se buscó» oculto');
+  assert.strictEqual(await vis(ar, 'n-next'), true, 'la paginación «Siguiente» sigue visible');
+  assert.strictEqual(await vis(ar, 'n-inline'), false, '«La gente también busca» dentro del resultado oculto');
+  assert.strictEqual(await vis(ar, 'n-org2-title'), true, 'el resultado con sugerencias sigue visible');
+  assert.strictEqual(await visible('b-related'), false, '«También se buscó» oculto en la otra página');
+  assert.strictEqual(await ar.evaluate(() => document.getElementById('n-related').getAttribute('data-ari-hidden')), 'relatedSearches');
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideRelatedSearches = false; await chrome.storage.sync.set({ settings }); });
+  await ar.waitForTimeout(300);
+  assert.strictEqual(await vis(ar, 'n-related'), true, '«También se buscó» vuelve a verse');
 
   // 8) Contador local
   await page.evaluate(() => window.dispatchEvent(new Event('pagehide')));

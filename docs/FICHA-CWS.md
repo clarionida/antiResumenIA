@@ -31,6 +31,7 @@ BLOQUES QUE EMPUJAN LOS RESULTADOS
 • «Otras preguntas de los usuarios»
 • Carruseles de videos y videos cortos
 • «Debates y foros»
+• «También se buscó» (búsquedas relacionadas)
 
 MIS SITIOS BLOQUEADOS
 • Escribe un dominio (por ejemplo, pinterest.com) y sus resultados desaparecen, también los de sus subdominios.
@@ -86,6 +87,7 @@ BLOCKS THAT PUSH RESULTS DOWN
 • “People also ask”
 • Video and short-video carousels
 • “Discussions and forums”
+• “People also search for” (related searches)
 
 MY BLOCKED SITES
 • Type a domain (for example, pinterest.com) and its results disappear, subdomains included.

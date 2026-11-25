@@ -37,6 +37,8 @@ En la consola de la pestaña de Google puedes revisar qué se ocultó y de qué 
 - `areas`: `'main'` solo en la columna central; `'all'` también en la lateral.
 - `maxInnerResults`: cuántos títulos de resultado puede tener el bloque. Los anuncios traen uno.
 - `navigationArea`: aquí los textos no cuentan como bloque. Por eso la pestaña «Videos» no activa la opción de videos.
+- `blockBoundaries`: paginación y navegación. Un bloque nunca se extiende hasta incluirlas; por eso ocultar «También se buscó» no se lleva el botón «Siguiente».
+- `yieldsTo`: si un bloque empieza con el título de otro tipo, pertenece a ese tipo. Así, «Más preguntas» (que trae respuestas con el título «Visión general creada por IA») cuenta como preguntas y no como resumen de IA.
 - `ignoreLabelsInside`: fichas de información. Un «Videos» dentro de una ficha no oculta la ficha entera.
 
 ## 4. Verifica y publica

@@ -57,6 +57,13 @@ Hazlas en Google real después de cargar la extensión sin empaquetar. Para cada
 - [ ] Al activarla, desaparece el bloque.
 - [ ] La pestaña «Foros» de la barra superior sigue visible.
 
+## 7b. «También se buscó» (desactivado)
+- [ ] Al activarla, desaparece el recuadro «También se buscó» («Búsquedas relacionadas») del final de la página.
+- [ ] La paginación («Siguiente», números de página) sigue visible.
+- [ ] Entra a un resultado y vuelve atrás: si Google muestra «La gente también busca» debajo de ese resultado, el recuadro desaparece pero el resultado se queda.
+- [ ] Con `&hl=en`, «People also search for» también desaparece.
+- [ ] Al desactivarla, reaparece sin recargar.
+
 ## 8. Mis sitios bloqueados
 - [ ] Agrega `pinterest.com`: desaparecen los resultados de `www.pinterest.com`, `es.pinterest.com` y `ar.pinterest.com`.
 - [ ] `pinterest.com.mx` **no** se bloquea si no está en la lista.

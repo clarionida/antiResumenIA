@@ -99,7 +99,13 @@
     "message": "Hide “Discussions and forums”"
   },
   "optForumsDesc": {
-    "message": "Removes the block of forum and social media threads."
+    "message": "Removes the block of threads from Reddit, Quora and other forums. Regular results from those sites stay."
+  },
+  "optRelatedName": {
+    "message": "Hide “People also search for”"
+  },
+  "optRelatedDesc": {
+    "message": "Removes related-search suggestions, at the bottom of the page and inside results."
   },
   "optNoticeName": {
     "message": "Show on-page notice"
@@ -246,6 +252,9 @@
   },
   "typeForums": {
     "message": "Discussions and forums"
+  },
+  "typeRelatedSearches": {
+    "message": "Related searches"
   },
   "typeBlockedSites": {
     "message": "Blocked sites"

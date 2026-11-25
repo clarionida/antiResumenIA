@@ -99,7 +99,13 @@
     "message": "Ocultar “Discussões e fóruns”"
   },
   "optForumsDesc": {
-    "message": "Remove o bloco de conversas de fóruns e redes sociais."
+    "message": "Remove o bloco de conversas do Reddit, Quora e outros fóruns. Os resultados normais desses sites continuam."
+  },
+  "optRelatedName": {
+    "message": "Ocultar “Pesquisas relacionadas”"
+  },
+  "optRelatedDesc": {
+    "message": "Remove as sugestões de pesquisas relacionadas, no fim da página e dentro dos resultados."
   },
   "optNoticeName": {
     "message": "Mostrar aviso na página"
@@ -246,6 +252,9 @@
   },
   "typeForums": {
     "message": "Discussões e fóruns"
+  },
+  "typeRelatedSearches": {
+    "message": "Pesquisas relacionadas"
   },
   "typeBlockedSites": {
     "message": "Sites bloqueados"

@@ -58,6 +58,7 @@
     hidePeopleAlsoAsk: false,   // 5. "Otras preguntas de los usuarios".
     hideVideos: false,          // 6. Carruseles de videos y videos cortos.
     hideForums: false,          // 7. "Debates y foros".
+    hideRelatedSearches: false, // 7b. "También se buscó" / búsquedas relacionadas.
     showPageNotice: true,       // Aviso pequeño "Se ocultaron N elementos · Mostrar".
     webOnly: false,             // 9. Modo "Solo Web" (udm=14) con declarativeNetRequest.
     beforeDateEnabled: false,   // 10. Filtro "Solo contenido anterior a la IA".
@@ -67,7 +68,7 @@
   /** Tipos de bloque que se cuentan y se pueden ocultar. */
   const BLOCK_TYPES = Object.freeze([
     'aiOverview', 'aiMode', 'ads', 'shopping',
-    'peopleAlsoAsk', 'videos', 'forums', 'blockedSites'
+    'peopleAlsoAsk', 'videos', 'forums', 'relatedSearches', 'blockedSites'
   ]);
 
   /** Qué opción activa cada tipo. "blockedSites" se activa si la lista no está vacía. */
@@ -79,6 +80,7 @@
     peopleAlsoAsk: 'hidePeopleAlsoAsk',
     videos: 'hideVideos',
     forums: 'hideForums',
+    relatedSearches: 'hideRelatedSearches',
     blockedSites: null
   });
 
@@ -133,6 +135,12 @@
      */
     ignoreLabelsInside: ['.kp-wholepage', '.kp-blk', '[data-attrid^="kc:"]'],
 
+    /**
+     * Límites que un bloque nunca absorbe al subir por el árbol: paginación y
+     * navegación. Así, ocultar «También se buscó» no se lleva el «Siguiente».
+     */
+    blockBoundaries: ['#foot', '#navcnt', '[role="navigation"]', 'table[role="presentation"] a[href*="start="]'],
+
     /** Título de un resultado normal con link. */
     organicTitle: 'a[href] h3',
 
@@ -155,7 +163,7 @@
       aiOverview: {
         strategy: 'block',
         areas: 'page',
-        yieldsTo: ['peopleAlsoAsk', 'forums', 'videos', 'shopping'],
+        yieldsTo: ['peopleAlsoAsk', 'forums', 'videos', 'shopping', 'relatedSearches'],
         containers: [],
         markers: [],
         labels: {
@@ -251,6 +259,22 @@
           es: ['Debates y foros', 'Foros y debates'],
           en: ['Discussions and forums', 'Forums'],
           pt: ['Discussões e fóruns', 'Fóruns e discussões']
+        },
+        maxInnerResults: 0
+      },
+
+      relatedSearches: {
+        strategy: 'block',
+        areas: 'main',
+        containers: [],
+        markers: [],
+        // Aparece al final de la página y, a veces, dentro de un resultado al volver
+        // de visitarlo («La gente también busca»). En ese caso solo se oculta el
+        // recuadro de sugerencias, no el resultado.
+        labels: {
+          es: ['También se buscó', 'Búsquedas relacionadas', 'Otras búsquedas', 'La gente también busca', 'Las personas también buscan'],
+          en: ['People also search for', 'People also searched for', 'Related searches'],
+          pt: ['Pesquisas relacionadas', 'As pessoas também pesquisam', 'As pessoas também pesquisam por', 'Também pesquisaram']
         },
         maxInnerResults: 0
       }
