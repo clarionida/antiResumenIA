@@ -111,6 +111,7 @@ const M = [
   ['reportLink', '', 'Reportar un problema', 'Report a problem', 'Relatar um problema'],
   ['reportHint', '', 'Se abre en GitHub, en una pestaña nueva. Necesitas una cuenta gratuita. Solo se envía lo que escribas tú.', 'Opens GitHub in a new tab. You need a free account. Only what you write is sent.', 'Abre o GitHub em uma nova aba. Você precisa de uma conta gratuita. Só é enviado o que você escrever.'],
   ['trademarkNote', 'Atribución de marca exigida por la Chrome Web Store', 'Extensión independiente, sin relación con Google LLC. Google es una marca comercial de Google LLC.', 'Independent extension, not affiliated with Google LLC. Google is a trademark of Google LLC.', 'Extensão independente, sem relação com a Google LLC. Google é uma marca comercial da Google LLC.'],
+  ['madeBy', 'Crédito al pie del popup y de opciones', 'Hecho con cariño por Clariónida', 'Made with care by Clariónida', 'Feito com carinho por Clariónida'],
   ['privacyNote', '', 'Sin rastreo: no recopila ni envía ningún dato. Tus opciones se guardan con la sincronización de Chrome.', 'No tracking: no data is collected or sent. Your options are saved with Chrome sync.', 'Sem rastreio: nenhum dado é coletado ou enviado. Suas opções ficam salvas com a sincronização do Chrome.'],
 
   ['noticeRegion', 'Etiqueta accesible del aviso en Google', 'Buscar sin IA', 'Search Without AI', 'Busca sem IA'],

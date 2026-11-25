@@ -323,6 +323,10 @@
     "message": "Extensión independiente, sin relación con Google LLC. Google es una marca comercial de Google LLC.",
     "description": "Atribución de marca exigida por la Chrome Web Store"
   },
+  "madeBy": {
+    "message": "Hecho con cariño por Clariónida",
+    "description": "Crédito al pie del popup y de opciones"
+  },
   "privacyNote": {
     "message": "Sin rastreo: no recopila ni envía ningún dato. Tus opciones se guardan con la sincronización de Chrome."
   },

@@ -323,6 +323,10 @@
     "message": "Independent extension, not affiliated with Google LLC. Google is a trademark of Google LLC.",
     "description": "Atribución de marca exigida por la Chrome Web Store"
   },
+  "madeBy": {
+    "message": "Made with care by Clariónida",
+    "description": "Crédito al pie del popup y de opciones"
+  },
   "privacyNote": {
     "message": "No tracking: no data is collected or sent. Your options are saved with Chrome sync."
   },
