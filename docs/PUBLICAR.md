@@ -12,7 +12,7 @@
 bash tools/build-zip.sh
 ```
 
-Genera `dist/antiresumen-ia-<versión>.zip` con `manifest.json` en la raíz y solo los archivos de la extensión (`_locales`, `src`, `popup`, `options`, `ui` y los PNG de `icons`). No incluye tests, docs ni herramientas.
+Genera `dist/buscar-sin-ia-<versión>.zip` con `manifest.json` en la raíz y solo los archivos de la extensión (`_locales`, `src`, `popup`, `options`, `ui` y los PNG de `icons`). No incluye tests, docs ni herramientas.
 
 Sin bash (Windows), comprime a mano esas carpetas y archivos. `manifest.json` tiene que quedar en la **raíz** del zip, no dentro de otra carpeta.
 
@@ -43,7 +43,7 @@ Comprueba el zip: descomprímelo en una carpeta nueva y cárgalo con «Cargar ex
 4. Si agregaste dominios de país en `host_permissions`, Chrome vuelve a pedir permiso a quienes ya la tienen instalada. Agrupa esos cambios en una sola versión.
 
 ## Causas frecuentes de rechazo
-- Usar «Google» o sus logos como nombre principal → el nombre es «AntiResumen IA». «Para Google» solo va en las descripciones.
+- Usar «Google» o sus logos como nombre principal → el nombre es «Buscar sin IA». «Para Google» solo va en las descripciones.
 - Permisos sin justificar → usa los textos de `docs/FICHA-CWS.md`.
 - Descripción con palabras clave repetidas o testimonios → la ficha propuesta no los tiene.
 - Código remoto u ofuscado → no hay. Todo el código es local y legible.

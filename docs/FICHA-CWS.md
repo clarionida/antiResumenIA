@@ -6,8 +6,8 @@ El nombre y la descripción corta salen de `_locales/*/messages.json` (`extName`
 
 ## Español (idioma predeterminado)
 
-**Nombre** (34/75)
-AntiResumen IA: resultados limpios
+**Nombre** (61/75)
+Buscar sin IA: oculta resúmenes de IA y anuncios para Google™
 
 **Descripción corta** (116/132)
 Oculta resúmenes de IA, anuncios y bloques de relleno en Google. Ve solo resultados con links. Gratis y sin rastreo.
@@ -15,7 +15,7 @@ Oculta resúmenes de IA, anuncios y bloques de relleno en Google. Ve solo result
 **Descripción larga**
 
 ```
-¿Extrañas cuando buscar en Google era ver una lista de links? AntiResumen IA limpia la página de resultados para que tú decidas qué ver.
+¿Extrañas cuando buscar en Google era ver una lista de links? Buscar sin IA limpia la página de resultados para que tú decidas qué ver.
 
 Marca lo que quieres ocultar:
 
@@ -50,7 +50,9 @@ DETALLES QUE IMPORTAN
 PRIVACIDAD
 No recopila, no envía y no vende ningún dato. No hace peticiones de red ni tiene analítica. Tus opciones se guardan con la sincronización de Chrome y el contador queda solo en tu navegador.
 
-Es 100 % gratis: sin versión premium y sin funciones bloqueadas. Extensión independiente, sin relación con Google LLC.
+¿Algo no se oculta? Repórtalo con el link «Reportar un problema» de las opciones.
+
+Es 100 % gratis: sin versión premium y sin funciones bloqueadas. Extensión independiente, sin relación con Google LLC. Google es una marca comercial de Google LLC.
 
 ¿Te sirve? Si quieres, puedes invitarme un café ☕ https://donate.stripe.com/bJeeVfgHU7Npa1A59ocAo00 (totalmente opcional).
 ```
@@ -59,8 +61,8 @@ Es 100 % gratis: sin versión premium y sin funciones bloqueadas. Extensión ind
 
 ## English
 
-**Name** (36/75)
-AntiResumen IA: Clean Search Results
+**Name** (56/75)
+Search Without AI: hide AI Overviews and ads for Google™
 
 **Short description** (103/132)
 Hide AI Overviews, ads and filler blocks on Google. See just the results with links. Free, no tracking.
@@ -68,7 +70,7 @@ Hide AI Overviews, ads and filler blocks on Google. See just the results with li
 **Long description**
 
 ```
-Miss when a Google search was just a list of links? AntiResumen IA cleans up the results page so you decide what you see.
+Miss when a Google search was just a list of links? Search Without AI cleans up the results page so you decide what you see.
 
 Tick what you want to hide:
 
@@ -103,7 +105,9 @@ THE DETAILS
 PRIVACY
 No data is collected, sent or sold. No network requests, no analytics. Your options are saved with Chrome sync and the counter stays in your browser.
 
-100% free: no premium version, no locked features. Independent extension, not affiliated with Google LLC.
+Something not hidden? Report it with the “Report a problem” link in the options.
+
+100% free: no premium version, no locked features. Independent extension, not affiliated with Google LLC. Google is a trademark of Google LLC.
 
 Find it useful? You can buy me a coffee ☕ https://donate.stripe.com/bJeeVfgHU7Npa1A59ocAo00 (totally optional).
 ```
@@ -157,6 +161,6 @@ Find it useful? You can buy me a coffee ☕ https://donate.stripe.com/bJeeVfgHU7
 
 ## Política de privacidad breve (para pegar donde haga falta)
 
-ES: AntiResumen IA no recopila, no envía, no vende y no comparte ningún dato. Solo lee la página de resultados de Google en tu navegador, lo necesario para ocultar los bloques que eliges. Tus opciones se guardan con chrome.storage.sync y el contador, solo en tu navegador. No hace peticiones de red, no tiene analítica y no carga código remoto.
+ES: Buscar sin IA no recopila, no envía, no vende y no comparte ningún dato. Solo lee la página de resultados de Google en tu navegador, lo necesario para ocultar los bloques que eliges. Tus opciones se guardan con chrome.storage.sync y el contador, solo en tu navegador. No hace peticiones de red, no tiene analítica y no carga código remoto.
 
-EN: AntiResumen IA does not collect, send, sell or share any data. It only reads the Google results page in your browser, just enough to hide the blocks you choose. Your options are saved with chrome.storage.sync and the counter stays in your browser. No network requests, no analytics, no remote code.
+EN: Search Without AI does not collect, send, sell or share any data. It only reads the Google results page in your browser, just enough to hide the blocks you choose. Your options are saved with chrome.storage.sync and the counter stays in your browser. No network requests, no analytics, no remote code.

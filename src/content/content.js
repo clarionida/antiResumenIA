@@ -1,5 +1,5 @@
 /*
- * AntiResumen IA · Content script (document_start)
+ * Buscar sin IA · Content script (document_start)
  *
  * Flujo:
  *   1. Arranca un MutationObserver de inmediato (Google carga contenido por partes

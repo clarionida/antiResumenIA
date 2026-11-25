@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # Empaqueta la extensión para subirla a la Chrome Web Store.
-#   bash tools/build-zip.sh      → dist/antiresumen-ia-<versión>.zip
+#   bash tools/build-zip.sh      → dist/buscar-sin-ia-<versión>.zip
 # Solo incluye los archivos que usa la extensión (nada de tests, docs ni tools).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 VERSION=$(node -p "require('./manifest.json').version")
-OUT="dist/antiresumen-ia-${VERSION}.zip"
+OUT="dist/buscar-sin-ia-${VERSION}.zip"
 mkdir -p dist
 rm -f "$OUT"
 node -e "JSON.parse(require('fs').readFileSync('manifest.json','utf8'))"   # manifest válido

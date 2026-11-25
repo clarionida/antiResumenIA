@@ -1,4 +1,6 @@
-# AntiResumen IA
+# Buscar sin IA
+
+*Search Without AI · Busca sem IA*
 
 Extensión gratuita para Chrome (Manifest V3) que limpia la página de resultados de Google: eliges qué bloques ocultar (resúmenes de IA, Modo IA, anuncios, compras, «Otras preguntas», videos, foros, sitios que no quieres ver) y te quedan los resultados con links, como antes.
 
@@ -16,7 +18,7 @@ Todo es gratis, sin versión premium. No recopila ni envía datos y no hace peti
 
 1. **`declarativeNetRequestWithHostAccess` en lugar de `declarativeNetRequest`.** Hace lo mismo para este caso, pero solo actúa en los dominios de `host_permissions` y no agrega la advertencia «Bloquear contenido en cualquier página». Es el permiso más acotado.
 2. **Sin comentarios en `manifest.json`.** JSON no admite comentarios y la Chrome Web Store puede rechazar el paquete. La justificación de cada permiso está en [`docs/PERMISOS.md`](docs/PERMISOS.md) y en la cabecera de `src/background.js`.
-3. **«Google» fuera del nombre.** El nombre es «AntiResumen IA: resultados limpios». «Para Google» aparece solo en las descripciones, de forma descriptiva, para reducir el riesgo de rechazo por marca.
+3. **«Google» solo como «para Google™».** Las reglas de marca de la Chrome Web Store prohíben usar una marca de Google como nombre, pero permiten «para Google™» con atribución. El nombre es «Buscar sin IA: oculta resúmenes de IA y anuncios para Google™» (en inglés, «Search Without AI: hide AI Overviews and ads for Google™»). La línea de atribución está en la página de opciones y en la descripción de la ficha.
 4. **Colombia es `google.com.co`.** Se incluyó también `google.co` porque venía en la lista, aunque no es un dominio de búsqueda habitual.
 5. **Partes frágiles (avisadas en la interfaz):**
    - *Detección por texto.* Depende del idioma de la interfaz de Google (es, en o pt). Si Google cambia un encabezado, se agrega el texto nuevo en `config.js`. Ver [`docs/SELECTORES.md`](docs/SELECTORES.md).
@@ -50,7 +52,7 @@ docs/                         Pruebas manuales, selectores, publicación, ficha,
 2. En Chrome, abre `chrome://extensions`.
 3. Activa **Modo de desarrollador** (arriba a la derecha).
 4. Pulsa **Cargar extensión sin empaquetar** y elige la carpeta que contiene `manifest.json`.
-5. Fija el ícono: menú de extensiones (pieza de rompecabezas) → chincheta junto a «AntiResumen IA».
+5. Fija el ícono: menú de extensiones (pieza de rompecabezas) → chincheta junto a «Buscar sin IA».
 6. Busca algo en Google, por ejemplo «qué es la fotosíntesis». El resumen de IA y los anuncios desaparecen, y abajo a la izquierda aparece «Se ocultaron N elementos · Mostrar».
 7. Si cambias código, pulsa el botón ↻ de la extensión en `chrome://extensions` y recarga la pestaña de Google.
 
@@ -94,6 +96,10 @@ En Figma o Illustrator, exporta el SVG como PNG a 16, 32, 48 y 128 px con fondo 
 - [docs/FICHA-CWS.md](docs/FICHA-CWS.md): textos de la ficha (es/en), justificación de permisos y prácticas de privacidad.
 - [docs/PERMISOS.md](docs/PERMISOS.md): por qué se pide cada permiso.
 - [PRIVACY.md](PRIVACY.md): política de privacidad (es/en).
+
+## Reportar problemas
+
+En la página de opciones hay un link «Reportar un problema». Abre un formulario de GitHub Issues ([`.github/ISSUE_TEMPLATE/problema.yml`](.github/ISSUE_TEMPLATE/problema.yml)) con la versión de la extensión, la de Chrome y el idioma ya rellenados. La URL está en `ISSUES_URL`, dentro de `src/config.js`. Un agente programado revisa estos reportes cada mes.
 
 ## Donaciones
 

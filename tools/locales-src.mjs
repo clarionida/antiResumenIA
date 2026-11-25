@@ -10,11 +10,11 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 // [clave, descripción, es, en, pt]
 const M = [
-  ['extName', 'Nombre en la Chrome Web Store y en chrome://extensions (máx. 75)', 'AntiResumen IA: resultados limpios', 'AntiResumen IA: Clean Search Results', 'AntiResumen IA: resultados limpos'],
-  ['extShortName', 'Nombre corto', 'AntiResumen IA', 'AntiResumen IA', 'AntiResumen IA'],
+  ['extName', 'Nombre en la Chrome Web Store y en chrome://extensions (máx. 75)', 'Buscar sin IA: oculta resúmenes de IA y anuncios para Google™', 'Search Without AI: hide AI Overviews and ads for Google™', 'Busca sem IA: oculte resumos de IA e anúncios para Google™'],
+  ['extShortName', 'Nombre corto', 'Buscar sin IA', 'Search Without AI', 'Busca sem IA'],
   ['extDescription', 'Descripción corta (máx. 132)', 'Oculta resúmenes de IA, anuncios y bloques de relleno en Google. Ve solo resultados con links. Gratis y sin rastreo.', 'Hide AI Overviews, ads and filler blocks on Google. See just the results with links. Free, no tracking.', 'Oculte resumos de IA, anúncios e blocos extras no Google. Veja só os resultados com links. Grátis e sem rastreio.'],
   ['langCode', 'Código de idioma para <html lang>', 'es', 'en', 'pt'],
-  ['actionTitle', 'Tooltip del ícono', 'AntiResumen IA', 'AntiResumen IA', 'AntiResumen IA'],
+  ['actionTitle', 'Tooltip del ícono', 'Buscar sin IA', 'Search Without AI', 'Busca sem IA'],
 
   ['masterName', 'Interruptor general', 'Extensión activa', 'Extension on', 'Extensão ativada'],
   ['masterOnDesc', 'Estado activo', 'Limpiando tus búsquedas.', 'Cleaning up your searches.', 'Limpando suas buscas.'],
@@ -108,9 +108,12 @@ const M = [
   ['donateSupport', '', 'Apoyar', 'Support', 'Apoiar'],
   ['donateDismiss', '', 'No volver a mostrar', 'Don’t show again', 'Não mostrar de novo'],
   ['newTabHint', 'Texto para lectores de pantalla', '(se abre en una pestaña nueva)', '(opens in a new tab)', '(abre em uma nova aba)'],
+  ['reportLink', '', 'Reportar un problema', 'Report a problem', 'Relatar um problema'],
+  ['reportHint', '', 'Se abre en GitHub, en una pestaña nueva. Necesitas una cuenta gratuita. Solo se envía lo que escribas tú.', 'Opens GitHub in a new tab. You need a free account. Only what you write is sent.', 'Abre o GitHub em uma nova aba. Você precisa de uma conta gratuita. Só é enviado o que você escrever.'],
+  ['trademarkNote', 'Atribución de marca exigida por la Chrome Web Store', 'Extensión independiente, sin relación con Google LLC. Google es una marca comercial de Google LLC.', 'Independent extension, not affiliated with Google LLC. Google is a trademark of Google LLC.', 'Extensão independente, sem relação com a Google LLC. Google é uma marca comercial da Google LLC.'],
   ['privacyNote', '', 'Sin rastreo: no recopila ni envía ningún dato. Tus opciones se guardan con la sincronización de Chrome.', 'No tracking: no data is collected or sent. Your options are saved with Chrome sync.', 'Sem rastreio: nenhum dado é coletado ou enviado. Suas opções ficam salvas com a sincronização do Chrome.'],
 
-  ['noticeRegion', 'Etiqueta accesible del aviso en Google', 'AntiResumen IA', 'AntiResumen IA', 'AntiResumen IA'],
+  ['noticeRegion', 'Etiqueta accesible del aviso en Google', 'Buscar sin IA', 'Search Without AI', 'Busca sem IA'],
   ['noticeHiddenOne', '', 'Se ocultó 1 elemento', '1 item hidden', '1 item ocultado'],
   ['noticeHiddenMany', '', 'Se ocultaron $COUNT$ elementos', '$COUNT$ items hidden', '$COUNT$ itens ocultados', { count: '$1' }],
   ['noticeShowingOne', '', 'Mostrando 1 elemento oculto', 'Showing 1 hidden item', 'Mostrando 1 item oculto'],
@@ -138,7 +141,12 @@ const PT_PT = {
   masterOffDesc: 'Em pausa: o Google aparece como sempre.',
   masterOnDesc: 'A limpar as suas pesquisas.',
   masterOptionsDesc: 'Desative para pausar tudo sem perder a sua configuração.',
-  langCode: 'pt-PT'
+  langCode: 'pt-PT',
+  extName: 'Pesquisa sem IA: oculte resumos de IA e anúncios para Google™',
+  extShortName: 'Pesquisa sem IA',
+  actionTitle: 'Pesquisa sem IA',
+  noticeRegion: 'Pesquisa sem IA',
+  reportHint: 'Abre o GitHub num novo separador. Precisa de uma conta gratuita. Só é enviado o que escrever.'
 };
 
 function build(col, overrides = {}) {

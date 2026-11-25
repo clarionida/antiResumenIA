@@ -136,6 +136,10 @@ const SHOTS = process.env.SHOTS_DIR;
     ui.on('pageerror', (e) => errors.push(p + ': ' + e.message));
     await ui.goto(`chrome-extension://${extId}/${p}`);
     await ui.waitForTimeout(300);
+    if (p.startsWith('options')) {
+      const href = await ui.getAttribute('#reportLink', 'href');
+      assert.ok(href.startsWith('https://github.com/clarionida/antiResumenIA/issues/new?template=problema.yml') && href.includes('version=1.0.0'), 'link de reportes: ' + href);
+    }
     if (SHOTS) {
       await ui.setViewportSize(p.startsWith('popup') ? { width: 340, height: 520 } : { width: 900, height: 1400 });
       await ui.screenshot({ path: path.join(SHOTS, p.split('/')[0] + '.png'), fullPage: true });

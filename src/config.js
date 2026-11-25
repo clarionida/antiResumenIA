@@ -1,5 +1,5 @@
 /*
- * AntiResumen IA · Archivo de configuración central
+ * Buscar sin IA · Archivo de configuración central
  * ==================================================
  *
  * ESTE es el archivo que hay que tocar cuando Google cambie su página.
@@ -26,6 +26,12 @@
 
   /** Enlace de donación. Cámbialo aquí y se actualiza en el popup y en opciones. */
   const DONATION_URL = 'https://donate.stripe.com/bJeeVfgHU7Npa1A59ocAo00';
+
+  /**
+   * Formulario para reportar problemas (GitHub Issues). Se abre solo cuando el usuario
+   * hace clic. Usa la plantilla .github/ISSUE_TEMPLATE/problema.yml.
+   */
+  const ISSUES_URL = 'https://github.com/clarionida/antiResumenIA/issues/new?template=problema.yml';
 
   /** El mensaje amable de donación aparece UNA sola vez al llegar a este total. */
   const DONATION_PROMPT_THRESHOLD = 200;
@@ -246,6 +252,7 @@
 
   root.ARI_CONFIG = Object.freeze({
     DONATION_URL,
+    ISSUES_URL,
     DONATION_PROMPT_THRESHOLD,
     MAX_BLOCKED_SITES,
     DEFAULT_BEFORE_DATE,

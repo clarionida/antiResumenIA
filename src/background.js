@@ -1,5 +1,5 @@
 /*
- * AntiResumen IA · Service worker
+ * Buscar sin IA · Service worker
  *
  * Tareas:
  *   1. Inicializar la configuración la primera vez (sin abrir pestañas ni mostrar nada).
@@ -29,7 +29,7 @@ const DNR = self.ARI_DNR;
 // Cola simple: serializa escrituras para no perder conteos entre pestañas.
 let queue = Promise.resolve();
 function enqueue(task) {
-  queue = queue.then(task).catch((err) => console.warn('[AntiResumen IA]', err));
+  queue = queue.then(task).catch((err) => console.warn('[Buscar sin IA]', err));
   return queue;
 }
 

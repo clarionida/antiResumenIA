@@ -1,5 +1,5 @@
 /*
- * AntiResumen IA · Utilidades compartidas
+ * Buscar sin IA · Utilidades compartidas
  * Lo usan el content script, el service worker, el popup y la página de opciones.
  * Depende de src/config.js (globalThis.ARI_CONFIG).
  *

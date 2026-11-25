@@ -1,0 +1,73 @@
+name: Reportar un problema / Report a problem
+description: Algo no se oculta, se ocultó algo de más o algo no funciona. / Something isn't hidden, too much was hidden, or something is broken.
+title: "[Problema] "
+labels: ["problema"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ¡Gracias por avisar! Con estos datos se arregla mucho más rápido.
+        Thanks for reporting! You can write in Spanish, English or Portuguese.
+        **No pegues datos personales** (correo, nombre, búsquedas privadas). / **Don't paste personal data.**
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: ¿Qué pasó? / What happened?
+      options:
+        - Algo no se oculta / Something isn't hidden
+        - Se ocultó algo que no debía / Something was hidden by mistake
+        - El modo «Solo Web» o el filtro de fecha no funciona / “Web only” or date filter isn't working
+        - La página de Google se ve rota / The Google page looks broken
+        - Otro / Other
+    validations:
+      required: true
+  - type: dropdown
+    id: bloque
+    attributes:
+      label: ¿Qué bloque? / Which block?
+      multiple: true
+      options:
+        - Resumen de IA / AI Overview
+        - Modo IA / AI Mode
+        - Anuncios / Ads
+        - Compras / Shopping
+        - Otras preguntas de los usuarios / People also ask
+        - Videos
+        - Debates y foros / Discussions and forums
+        - Sitios bloqueados / Blocked sites
+        - Otro / Other
+  - type: input
+    id: busqueda
+    attributes:
+      label: Búsqueda de ejemplo / Example search
+      description: Una búsqueda donde pase el problema. / A search where it happens.
+      placeholder: qué es la fotosíntesis
+    validations:
+      required: true
+  - type: input
+    id: dominio
+    attributes:
+      label: Dominio de Google / Google domain
+      placeholder: google.com.mx
+  - type: input
+    id: texto
+    attributes:
+      label: Texto exacto del encabezado del bloque / Exact block heading text
+      description: Copia el título tal como lo ves (por ejemplo «Vista creada con IA»). Ayuda muchísimo. / Copy the heading as you see it.
+  - type: textarea
+    id: detalle
+    attributes:
+      label: Detalles / Details
+      description: Qué esperabas y qué pasó. Puedes adjuntar una captura de pantalla. / What you expected and what happened. Screenshots welcome.
+  - type: input
+    id: version
+    attributes:
+      label: Versión de la extensión / Extension version
+  - type: input
+    id: chrome
+    attributes:
+      label: Versión de Chrome / Chrome version
+  - type: input
+    id: idioma
+    attributes:
+      label: Idioma de Chrome / Chrome language

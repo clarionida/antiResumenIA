@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
-  <!-- AntiResumen IA: lupa con tres renglones (resultados con links). Diseño original. -->
+  <!-- Buscar sin IA: lupa con tres renglones (resultados con links). Diseño original. -->
   <rect x="4" y="4" width="120" height="120" rx="28" fill="#c4622d"/>
   <rect x="4" y="4" width="120" height="60" rx="28" fill="#d4743c" opacity="0.55"/>
   <circle cx="56" cy="54" r="31" fill="#fff8f1"/>

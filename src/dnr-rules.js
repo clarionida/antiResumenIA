@@ -1,5 +1,5 @@
 /*
- * AntiResumen IA · Reglas de declarativeNetRequest (modos avanzados)
+ * Buscar sin IA · Reglas de declarativeNetRequest (modos avanzados)
  * ==================================================================
  *
  * Se usan reglas DINÁMICAS (no un ruleset estático en JSON) porque la fecha del

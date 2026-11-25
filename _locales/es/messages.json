@@ -1,10 +1,10 @@
 {
   "extName": {
-    "message": "AntiResumen IA: resultados limpios",
+    "message": "Buscar sin IA: oculta resúmenes de IA y anuncios para Google™",
     "description": "Nombre en la Chrome Web Store y en chrome://extensions (máx. 75)"
   },
   "extShortName": {
-    "message": "AntiResumen IA",
+    "message": "Buscar sin IA",
     "description": "Nombre corto"
   },
   "extDescription": {
@@ -16,7 +16,7 @@
     "description": "Código de idioma para <html lang>"
   },
   "actionTitle": {
-    "message": "AntiResumen IA",
+    "message": "Buscar sin IA",
     "description": "Tooltip del ícono"
   },
   "masterName": {
@@ -313,11 +313,21 @@
     "message": "(se abre en una pestaña nueva)",
     "description": "Texto para lectores de pantalla"
   },
+  "reportLink": {
+    "message": "Reportar un problema"
+  },
+  "reportHint": {
+    "message": "Se abre en GitHub, en una pestaña nueva. Necesitas una cuenta gratuita. Solo se envía lo que escribas tú."
+  },
+  "trademarkNote": {
+    "message": "Extensión independiente, sin relación con Google LLC. Google es una marca comercial de Google LLC.",
+    "description": "Atribución de marca exigida por la Chrome Web Store"
+  },
   "privacyNote": {
     "message": "Sin rastreo: no recopila ni envía ningún dato. Tus opciones se guardan con la sincronización de Chrome."
   },
   "noticeRegion": {
-    "message": "AntiResumen IA",
+    "message": "Buscar sin IA",
     "description": "Etiqueta accesible del aviso en Google"
   },
   "noticeHiddenOne": {

@@ -1,10 +1,10 @@
 {
   "extName": {
-    "message": "AntiResumen IA: Clean Search Results",
+    "message": "Search Without AI: hide AI Overviews and ads for Google™",
     "description": "Nombre en la Chrome Web Store y en chrome://extensions (máx. 75)"
   },
   "extShortName": {
-    "message": "AntiResumen IA",
+    "message": "Search Without AI",
     "description": "Nombre corto"
   },
   "extDescription": {
@@ -16,7 +16,7 @@
     "description": "Código de idioma para <html lang>"
   },
   "actionTitle": {
-    "message": "AntiResumen IA",
+    "message": "Search Without AI",
     "description": "Tooltip del ícono"
   },
   "masterName": {
@@ -313,11 +313,21 @@
     "message": "(opens in a new tab)",
     "description": "Texto para lectores de pantalla"
   },
+  "reportLink": {
+    "message": "Report a problem"
+  },
+  "reportHint": {
+    "message": "Opens GitHub in a new tab. You need a free account. Only what you write is sent."
+  },
+  "trademarkNote": {
+    "message": "Independent extension, not affiliated with Google LLC. Google is a trademark of Google LLC.",
+    "description": "Atribución de marca exigida por la Chrome Web Store"
+  },
   "privacyNote": {
     "message": "No tracking: no data is collected or sent. Your options are saved with Chrome sync."
   },
   "noticeRegion": {
-    "message": "AntiResumen IA",
+    "message": "Search Without AI",
     "description": "Etiqueta accesible del aviso en Google"
   },
   "noticeHiddenOne": {
