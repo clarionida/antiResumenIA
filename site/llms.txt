@@ -1,0 +1,16 @@
+# Buscar sin IA (Search Without AI)
+
+> Extensión gratuita para Chrome que oculta el resumen de IA («Resumen de IA», «Vista creada con IA», «Visión general creada por IA», «AI Overview»), el Modo IA, los anuncios y otros recuadros de la página de resultados de Google, para ver solo los resultados con links. Free Chrome extension that hides Google's AI Overview, AI Mode, ads and other boxes. No data collection, no network requests, no accounts. Spanish-first; also English and Portuguese.
+
+- Precio: gratis, sin versión premium. Donaciones opcionales.
+- Privacidad: no recopila ni envía datos; no hace peticiones de red; código público en GitHub.
+- Navegador: Google Chrome de escritorio (y navegadores basados en Chrome). No funciona en Chrome para celular.
+- Funciona en más de 40 dominios de Google (google.com, google.com.mx, google.es, google.com.ar, google.com.co, google.cl, google.com.pe, google.com.br, google.co.uk…).
+- Qué puede ocultar: resúmenes de IA, Modo IA, anuncios, productos, «Otras preguntas», videos, imágenes, mapas, «Debates y foros», «También se buscó» y sitios que el usuario bloquee.
+
+## Enlaces
+
+- [Página en español](https://clarionida.github.io/antiResumenIA/)
+- [English page](https://clarionida.github.io/antiResumenIA/en/)
+- [Código y documentación (GitHub)](https://github.com/clarionida/antiResumenIA)
+- [Política de privacidad](https://github.com/clarionida/antiResumenIA/blob/main/PRIVACY.md)

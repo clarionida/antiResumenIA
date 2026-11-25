@@ -11,6 +11,8 @@
 
 <p align="center"><em>Search Without AI · Busca sem IA</em></p>
 
+<p align="center"><a href="https://clarionida.github.io/antiResumenIA/"><strong>Página web</strong></a> · <a href="https://clarionida.github.io/antiResumenIA/en/">Website (English)</a></p>
+
 ---
 
 ## Qué hace
@@ -126,7 +128,8 @@ src/content/content.js        Detección, MutationObserver y aviso en la página
 src/content/content.css       Ocultamiento en document_start
 popup/  options/  ui/         Interfaz (popup, opciones, estilos compartidos)
 icons/                        icon.svg, icon-small.svg y PNG de 16/32/48/128
-store/                        Ícono de 512 px y plantilla de capturas para la tienda
+store/                        Ícono de 512 px, capturas y mosaicos para la tienda
+site/                         Página web (GitHub Pages), publicada por .github/workflows/pages.yml
 tools/                        Generadores y empaquetado (no van en el .zip)
 tests/                        Pruebas automáticas y páginas de prueba
 docs/                         Guías (ver abajo)
