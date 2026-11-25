@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Search Without AI: hide Google AI Overviews and ads (free Chrome extension)</title>
-  <meta name="description" content="Free Chrome extension that hides Google's AI Overview, AI Mode, ads and other boxes. Just results with links, like before. No tracking.">
+  <meta name="description" content="Free Chrome extension that hides Google's AI Overview, AI Mode, ads, shopping and other sections, and blocks the sites you don't want to see. Just results with links. No tracking.">
   <link rel="canonical" href="https://clarionida.github.io/antiResumenIA/en/">
   <link rel="alternate" hreflang="es" href="https://clarionida.github.io/antiResumenIA/">
   <link rel="alternate" hreflang="en" href="https://clarionida.github.io/antiResumenIA/en/">
@@ -45,29 +45,187 @@
     "sameAs": ["https://github.com/clarionida/antiResumenIA"]
   }
   </script>
-  <script type="application/ld+json">
+  <script type="application/ld+json" id="faq-jsonld">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "How do I remove the AI Overview from Google?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Install the free Search Without AI extension in Chrome. From then on, the “AI Overview” box no longer appears in your Google searches, and the rest of the results stay the same." } },
-      { "@type": "Question", "name": "Can I turn off Google's AI without installing anything?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Google has no switch to turn it off. You can pick the “Web” tab on every search or set up a custom search engine with the udm=14 parameter. Search Without AI does it automatically and lets you choose what to hide." } },
-      { "@type": "Question", "name": "Is Search Without AI free?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes, 100% free: no premium version, no locked features and no ads. Donations are optional." } },
-      { "@type": "Question", "name": "Does it collect my data or my searches?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No. It doesn't collect, send or sell any data, makes no network requests and has no analytics. It only reads the Google results page in your browser to hide what you chose." } },
-      { "@type": "Question", "name": "Does it work with my country's Google?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. It works on more than 40 Google domains, such as google.com, google.co.uk, google.ca, google.com.au, google.es and google.com.mx, with Google in English, Spanish or Portuguese." } },
-      { "@type": "Question", "name": "Can I see what was hidden?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. A small notice on the Google page says “N items hidden · Show”. Click “Show” to see everything that was hidden, outlined with a dashed border." } },
-      { "@type": "Question", "name": "Does it work in Edge, Brave or Opera?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Those browsers are based on Chrome and accept its extensions, so it should work, although it's tested in Chrome. It only acts when you search on Google." } },
-      { "@type": "Question", "name": "Does it work on my phone?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No. Chrome for Android and iPhone doesn't support extensions. It works in desktop Chrome." } },
-      { "@type": "Question", "name": "What happens if Google changes its page?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Google changes its page often. The extension is reviewed every month and updated when needed. If something stops being hidden, you can report it with the “Report a problem” link in the options." } }
+      {
+        "@type": "Question",
+        "name": "How do I remove the AI Overview from Google?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Install the free Search Without AI extension in Chrome. From then on, the “AI Overview” box no longer appears in your Google searches, and the rest of the results stay the same."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I remove Google’s “AI Mode”?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Search Without AI hides the “AI Mode” tab and its button next to the search box. It’s on by default."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I turn off Google’s AI without installing anything?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Google has no switch to turn it off. You can pick the “Web” tab on every search or set up a custom search engine with the udm=14 parameter. Search Without AI does it automatically and lets you choose what to hide."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I remove ads from Google search results?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Search Without AI hides ads and sponsored results (“Sponsored”) at the top and bottom of the results page. It’s on by default, so you only see regular results."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it an ad blocker like AdBlock or uBlock?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not exactly. Search Without AI only cleans up the Google results page: it doesn’t block ads on other websites or YouTube, and it doesn’t block connections, it just hides what you don’t want to see. If you already use an ad blocker, you can use both at the same time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I hide products, prices and stores from the results?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Turn on “Hide shopping blocks” and product grids and carousels with prices disappear, even when they have no heading. Google’s “Shopping” tab still works normally if you want to buy something."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I remove “People also ask”?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Turn on “Hide “People also ask”” in the options. The list of expandable questions disappears and the results move up."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I hide Google’s videos, images and maps?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, each one separately: video and short-video carousels, image boxes between results, and the places block with the map and nearby businesses. The “Videos” and “Images” tabs and Google Maps keep working."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I remove “People also search for” or related searches?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Turn on “Hide “People also search for””. The suggestions at the bottom of the page disappear, and so does the box that shows up under a result when you go back. Pagination stays."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I remove “Discussions and forums” or Reddit results?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The “Hide “Discussions and forums”” option removes the block of threads from Reddit, Quora and other forums. If you also don’t want regular Reddit results, add reddit.com to your blocked sites."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I block sites like Pinterest from Google results?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. In “My blocked sites” type the domain, for example pinterest.com, and its results disappear from your searches, subdomains included. You can add up to 300 sites and remove them anytime."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is “Web only” mode (udm=14)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It opens your searches straight in Google’s “Web” view, which shows just results with links, by adding udm=14 to the search address. It also removes other panels, like info cards or weather. Images, News, Videos, Maps and Shopping stay the same. It’s off by default."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I see only pre-AI pages, for example from before 2023?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The “Only pre-AI content” option adds Google’s date filter to your searches to show pages published before the day you choose (January 1, 2023 by default). Google estimates each page’s date, so it may not be exact. It’s off by default."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Search Without AI free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, 100% free: no premium version, no locked features and no ads. Donations are optional."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it collect my data or my searches?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. It doesn’t collect, send or sell any data, makes no network requests and has no analytics. It only reads the Google results page in your browser to hide what you chose."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I see what was hidden or pause the extension?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. A small notice on the Google page says “N items hidden · Show” and lets you see what was hidden, outlined with a dashed border. The switch in the toolbar icon pauses everything instantly without losing your settings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are my settings saved across my computers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If you use Chrome sync, your options and blocked sites are saved to your account and show up on your other computers. You can also export them to a file and import them in another browser."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work with my country’s Google?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. It works on more than 40 Google domains, such as google.com, google.co.uk, google.ca, google.com.au, google.es and google.com.mx, with Google in English, Spanish or Portuguese."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work in Edge, Brave or Opera?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Those browsers are based on Chrome and accept its extensions, so it should work, although it’s tested in Chrome. It only acts when you search on Google."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work on my phone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Chrome for Android and iPhone doesn’t support extensions. It works in desktop Chrome."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if Google changes its page?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Google changes its page often. The extension is reviewed every month and updated when needed. If something stops being hidden, you can report it with the “Report a problem” link in the options."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is it different from other extensions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It’s Spanish-first, it doesn’t just remove AI (ads, shopping and other sections too), it lets you choose what to hide one by one, it includes a blocked-sites list, it tracks nothing and its code is public on GitHub."
+        }
+      }
     ]
   }
   </script>
@@ -186,42 +344,102 @@
     <section id="faq" class="faq">
       <div class="wrap">
         <h2>Frequently asked questions</h2>
+        <!-- FAQ:INICIO -->
+        <h3>Artificial intelligence</h3>
         <details>
           <summary>How do I remove the AI Overview from Google?</summary>
           <p>Install the free Search Without AI extension in Chrome. From then on, the “AI Overview” box no longer appears in your Google searches, and the rest of the results stay the same.</p>
         </details>
         <details>
-          <summary>Can I turn off Google's AI without installing anything?</summary>
+          <summary>How do I remove Google’s “AI Mode”?</summary>
+          <p>Search Without AI hides the “AI Mode” tab and its button next to the search box. It’s on by default.</p>
+        </details>
+        <details>
+          <summary>Can I turn off Google’s AI without installing anything?</summary>
           <p>Google has no switch to turn it off. You can pick the “Web” tab on every search or set up a custom search engine with the <code>udm=14</code> parameter. Search Without AI does it automatically and lets you choose what to hide.</p>
         </details>
+        <h3>Ads and shopping</h3>
+        <details>
+          <summary>How do I remove ads from Google search results?</summary>
+          <p>Search Without AI hides ads and sponsored results (“Sponsored”) at the top and bottom of the results page. It’s on by default, so you only see regular results.</p>
+        </details>
+        <details>
+          <summary>Is it an ad blocker like AdBlock or uBlock?</summary>
+          <p>Not exactly. Search Without AI only cleans up the Google results page: it doesn’t block ads on other websites or YouTube, and it doesn’t block connections, it just hides what you don’t want to see. If you already use an ad blocker, you can use both at the same time.</p>
+        </details>
+        <details>
+          <summary>Can I hide products, prices and stores from the results?</summary>
+          <p>Yes. Turn on “Hide shopping blocks” and product grids and carousels with prices disappear, even when they have no heading. Google’s “Shopping” tab still works normally if you want to buy something.</p>
+        </details>
+        <h3>Other Google sections</h3>
+        <details>
+          <summary>How do I remove “People also ask”?</summary>
+          <p>Turn on “Hide “People also ask”” in the options. The list of expandable questions disappears and the results move up.</p>
+        </details>
+        <details>
+          <summary>Can I hide Google’s videos, images and maps?</summary>
+          <p>Yes, each one separately: video and short-video carousels, image boxes between results, and the places block with the map and nearby businesses. The “Videos” and “Images” tabs and Google Maps keep working.</p>
+        </details>
+        <details>
+          <summary>How do I remove “People also search for” or related searches?</summary>
+          <p>Turn on “Hide “People also search for””. The suggestions at the bottom of the page disappear, and so does the box that shows up under a result when you go back. Pagination stays.</p>
+        </details>
+        <details>
+          <summary>How do I remove “Discussions and forums” or Reddit results?</summary>
+          <p>The “Hide “Discussions and forums”” option removes the block of threads from Reddit, Quora and other forums. If you also don’t want regular Reddit results, add <code>reddit.com</code> to your blocked sites.</p>
+        </details>
+        <h3>Blocked sites</h3>
+        <details>
+          <summary>Can I block sites like Pinterest from Google results?</summary>
+          <p>Yes. In “My blocked sites” type the domain, for example <code>pinterest.com</code>, and its results disappear from your searches, subdomains included. You can add up to 300 sites and remove them anytime.</p>
+        </details>
+        <h3>Advanced options</h3>
+        <details>
+          <summary>What is “Web only” mode (udm=14)?</summary>
+          <p>It opens your searches straight in Google’s “Web” view, which shows just results with links, by adding <code>udm=14</code> to the search address. It also removes other panels, like info cards or weather. Images, News, Videos, Maps and Shopping stay the same. It’s off by default.</p>
+        </details>
+        <details>
+          <summary>Can I see only pre-AI pages, for example from before 2023?</summary>
+          <p>Yes. The “Only pre-AI content” option adds Google’s date filter to your searches to show pages published before the day you choose (January 1, 2023 by default). Google estimates each page’s date, so it may not be exact. It’s off by default.</p>
+        </details>
+        <h3>Usage, privacy and compatibility</h3>
         <details>
           <summary>Is Search Without AI free?</summary>
           <p>Yes, 100% free: no premium version, no locked features and no ads. Donations are optional.</p>
         </details>
         <details>
           <summary>Does it collect my data or my searches?</summary>
-          <p>No. It doesn't collect, send or sell any data, makes no network requests and has no analytics. It only reads the Google results page in your browser to hide what you chose.</p>
+          <p>No. It doesn’t collect, send or sell any data, makes no network requests and has no analytics. It only reads the Google results page in your browser to hide what you chose.</p>
         </details>
         <details>
-          <summary>Does it work with my country's Google?</summary>
+          <summary>Can I see what was hidden or pause the extension?</summary>
+          <p>Yes. A small notice on the Google page says “N items hidden · Show” and lets you see what was hidden, outlined with a dashed border. The switch in the toolbar icon pauses everything instantly without losing your settings.</p>
+        </details>
+        <details>
+          <summary>Are my settings saved across my computers?</summary>
+          <p>If you use Chrome sync, your options and blocked sites are saved to your account and show up on your other computers. You can also export them to a file and import them in another browser.</p>
+        </details>
+        <details>
+          <summary>Does it work with my country’s Google?</summary>
           <p>Yes. It works on more than 40 Google domains, such as google.com, google.co.uk, google.ca, google.com.au, google.es and google.com.mx, with Google in English, Spanish or Portuguese.</p>
         </details>
         <details>
-          <summary>Can I see what was hidden?</summary>
-          <p>Yes. A small notice on the Google page says “N items hidden · Show”. Click “Show” to see everything that was hidden, outlined with a dashed border.</p>
-        </details>
-        <details>
           <summary>Does it work in Edge, Brave or Opera?</summary>
-          <p>Those browsers are based on Chrome and accept its extensions, so it should work, although it's tested in Chrome. It only acts when you search on Google.</p>
+          <p>Those browsers are based on Chrome and accept its extensions, so it should work, although it’s tested in Chrome. It only acts when you search on Google.</p>
         </details>
         <details>
           <summary>Does it work on my phone?</summary>
-          <p>No. Chrome for Android and iPhone doesn't support extensions. It works in desktop Chrome.</p>
+          <p>No. Chrome for Android and iPhone doesn’t support extensions. It works in desktop Chrome.</p>
         </details>
         <details>
           <summary>What happens if Google changes its page?</summary>
           <p>Google changes its page often. The extension is reviewed every month and updated when needed. If something stops being hidden, you can <a href="https://github.com/clarionida/antiResumenIA/issues/new?template=problema.yml">report it</a> with the “Report a problem” link in the options.</p>
         </details>
+        <details>
+          <summary>How is it different from other extensions?</summary>
+          <p>It’s Spanish-first, it doesn’t just remove AI (ads, shopping and other sections too), it lets you choose what to hide one by one, it includes a blocked-sites list, it tracks nothing and its code is public on GitHub.</p>
+        </details>
+        <!-- FAQ:FIN -->
       </div>
     </section>
 
