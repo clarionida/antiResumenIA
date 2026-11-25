@@ -1,4 +1,4 @@
-/* AntiResumen IA · Popup */
+/* Buscar sin IA · Popup */
 (async function () {
   'use strict';
   const CFG = globalThis.ARI_CONFIG;

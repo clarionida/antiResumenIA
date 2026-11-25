@@ -1,4 +1,4 @@
-/* AntiResumen IA · Traduce el HTML del popup y de opciones con chrome.i18n.
+/* Buscar sin IA · Traduce el HTML del popup y de opciones con chrome.i18n.
    data-i18n="clave"            → textContent
    data-i18n-aria-label="clave" → aria-label
    data-i18n-title="clave"      → title

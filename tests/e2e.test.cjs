@@ -22,7 +22,7 @@ const SHOTS = process.env.SHOTS_DIR;
   await context.route(/^https:\/\/www\.google\.[a-z.]+\/.*/, (route) => {
     const url = route.request().url();
     requested.push(url);
-    const file = url.includes('google.co.uk') ? 'serp-en.html' : 'serp-es.html';
+    const file = url.includes('google.co.uk') ? 'serp-en.html' : url.includes('google.com.ar') ? 'serp-es-2026.html' : 'serp-es.html';
     route.fulfill({ status: 200, contentType: 'text/html; charset=utf-8', body: FIX(file) });
   });
 
@@ -77,6 +77,19 @@ const SHOTS = process.env.SHOTS_DIR;
   assert.strictEqual(await hiddenType('b-pin2'), 'blockedSites');
   if (SHOTS) await page.screenshot({ path: path.join(SHOTS, '2-all.png'), fullPage: true });
 
+  // 3b) Bloques de imágenes
+  assert.strictEqual(await visible('b-img'), true, 'imágenes visibles con la opción apagada');
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideImages = true; await chrome.storage.sync.set({ settings }); });
+  await page.waitForTimeout(300);
+  assert.strictEqual(await visible('b-img'), false, 'bloque de imágenes oculto');
+  assert.strictEqual(await hiddenType('b-img'), 'images');
+  assert.strictEqual(await visible('kp'), true, 'la ficha de la derecha no se oculta por su sección «Imágenes»');
+  assert.strictEqual(await page.evaluate(() => [...document.querySelectorAll('#hdtb a')].find((a) => a.textContent === 'Imágenes').getClientRects().length > 0), true, 'la pestaña «Imágenes» sigue visible');
+  assert.strictEqual(await visible('b-org1'), true, 'resultado normal visible');
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideImages = false; await chrome.storage.sync.set({ settings }); });
+  await page.waitForTimeout(300);
+  assert.strictEqual(await visible('b-img'), true, 'imágenes vuelven a verse');
+
   // 4) "Mostrar" temporalmente
   await page.evaluate(() => document.documentElement.setAttribute('data-ari-reveal', ''));
   await expect({ 'b-ai': true, 'b-paa': true, ad1: true }, 'mostrar');
@@ -108,6 +121,83 @@ const SHOTS = process.env.SHOTS_DIR;
   assert.strictEqual(await vis(en, 'e-org'), true, 'en: organic');
   assert.strictEqual(await en.evaluate(() => document.querySelector('a[href*="udm=50"]').getClientRects().length), 0, 'en: AI Mode tab');
 
+  // 7b) Diseño nuevo de 2026: resumen de IA a todo el ancho y «Más preguntas» con respuestas de IA escondidas
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hidePeopleAlsoAsk = false; settings.hideShopping = false; await chrome.storage.sync.set({ settings }); });
+  await new Promise((r) => setTimeout(r, 200));
+  const ar = await context.newPage();
+  await ar.goto('https://www.google.com.ar/search?q=fotosintesis');
+  await ar.waitForTimeout(400);
+  assert.strictEqual(await vis(ar, 'n-ai'), false, '2026: resumen de IA a todo el ancho');
+  assert.strictEqual(await vis(ar, 'n-paa'), true, '2026: «Más preguntas» visible con la opción apagada');
+  assert.strictEqual(await vis(ar, 'n-org1'), true, '2026: resultado normal visible');
+  assert.strictEqual(await vis(ar, 'n-org2'), true, '2026: resultado normal 2 visible');
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hidePeopleAlsoAsk = true; await chrome.storage.sync.set({ settings }); });
+  await ar.waitForTimeout(300);
+  assert.strictEqual(await vis(ar, 'n-paa'), false, '2026: «Más preguntas» oculto con la opción activa');
+  assert.strictEqual(await ar.evaluate(() => document.getElementById('n-paa').getAttribute('data-ari-hidden')), 'peopleAlsoAsk');
+  assert.strictEqual(await vis(ar, 'n-org1'), true, '2026: resultado normal sigue visible');
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hidePeopleAlsoAsk = false; await chrome.storage.sync.set({ settings }); });
+  await ar.waitForTimeout(300);
+  assert.strictEqual(await vis(ar, 'n-paa'), true, '2026: «Más preguntas» vuelve a verse');
+  assert.strictEqual(await vis(ar, 'n-related'), true, '2026: «También se buscó» visible con la opción apagada');
+  // Resumen de IA visible + imágenes ocultas: la sección «Imágenes» dentro del resumen no se lo lleva.
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideAiOverview = false; settings.hideImages = true; await chrome.storage.sync.set({ settings }); });
+  await ar.waitForTimeout(300);
+  assert.strictEqual(await vis(ar, 'n-ai'), true, 'resumen de IA visible aunque tenga una sección «Imágenes»');
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideAiOverview = true; settings.hideImages = false; await chrome.storage.sync.set({ settings }); });
+  await ar.waitForTimeout(300);
+  assert.strictEqual(await vis(ar, 'n-ai'), false, 'resumen de IA oculto otra vez');
+
+  // 7b2) Cuadrícula de productos sin título
+  assert.strictEqual(await vis(ar, 'n-shop'), true, 'productos visibles con compras apagado');
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideShopping = true; await chrome.storage.sync.set({ settings }); });
+  await ar.waitForTimeout(300);
+  assert.strictEqual(await vis(ar, 'n-shop'), false, 'cuadrícula de productos sin título oculta');
+  assert.strictEqual(await ar.evaluate(() => document.getElementById('n-shop').getAttribute('data-ari-hidden')), 'shopping');
+  assert.strictEqual(await vis(ar, 'n-org3'), true, 'resultado normal con precios en el texto sigue visible');
+  assert.strictEqual(await vis(ar, 'n-org1'), true, 'resultado normal sigue visible');
+  const shopTab = await context.newPage();
+  await shopTab.goto('https://www.google.com.ar/search?q=fotosintesis&udm=28');
+  await shopTab.waitForTimeout(400);
+  assert.strictEqual(await vis(shopTab, 'n-shop'), true, 'en la pestaña Shopping no se ocultan productos');
+  assert.strictEqual(await vis(shopTab, 'n-ai'), false, 'en la pestaña Shopping sí se oculta la IA');
+  await shopTab.close();
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideShopping = false; await chrome.storage.sync.set({ settings }); });
+  await ar.waitForTimeout(300);
+  assert.strictEqual(await vis(ar, 'n-shop'), true, 'productos vuelven a verse');
+
+  // 7b3) Mapas y lugares + fila de filtros
+  assert.strictEqual(await vis(ar, 'n-places'), true, 'lugares visibles con la opción apagada');
+  assert.strictEqual(await vis(ar, 'n-chip1'), true, 'filtros visibles con las opciones apagadas');
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hidePlaces = true; await chrome.storage.sync.set({ settings }); });
+  await ar.waitForTimeout(300);
+  assert.strictEqual(await vis(ar, 'n-places'), false, 'bloque «Sitios» oculto');
+  assert.strictEqual(await ar.evaluate(() => document.getElementById('n-places').getAttribute('data-ari-hidden')), 'places');
+  assert.strictEqual(await vis(ar, 'n-chip1'), true, 'filtros visibles si compras sigue visible');
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideShopping = true; await chrome.storage.sync.set({ settings }); });
+  await ar.waitForTimeout(300);
+  assert.strictEqual(await vis(ar, 'n-chips'), false, 'fila de filtros oculta completa con compras + lugares');
+  assert.strictEqual(await ar.evaluate(() => [...document.querySelectorAll('#hdtb a')].some((a) => a.textContent === 'Todo' && a.getClientRects().length > 0)), true, 'las pestañas siguen visibles');
+  assert.strictEqual(await vis(ar, 'n-org1'), true, 'resultado normal visible');
+  assert.strictEqual(await vis(ar, 'n-org2'), true, 'resultado normal 2 visible');
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideShopping = false; settings.hidePlaces = false; await chrome.storage.sync.set({ settings }); });
+  await ar.waitForTimeout(300);
+  assert.strictEqual(await vis(ar, 'n-places'), true, 'lugares vuelven a verse');
+  assert.strictEqual(await vis(ar, 'n-chip1'), true, 'filtros vuelven a verse');
+
+  // 7c) «También se buscó»
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideRelatedSearches = true; await chrome.storage.sync.set({ settings }); });
+  await ar.waitForTimeout(300);
+  assert.strictEqual(await vis(ar, 'n-related'), false, '«También se buscó» oculto');
+  assert.strictEqual(await vis(ar, 'n-next'), true, 'la paginación «Siguiente» sigue visible');
+  assert.strictEqual(await vis(ar, 'n-inline'), false, '«La gente también busca» dentro del resultado oculto');
+  assert.strictEqual(await vis(ar, 'n-org2-title'), true, 'el resultado con sugerencias sigue visible');
+  assert.strictEqual(await visible('b-related'), false, '«También se buscó» oculto en la otra página');
+  assert.strictEqual(await ar.evaluate(() => document.getElementById('n-related').getAttribute('data-ari-hidden')), 'relatedSearches');
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideRelatedSearches = false; await chrome.storage.sync.set({ settings }); });
+  await ar.waitForTimeout(300);
+  assert.strictEqual(await vis(ar, 'n-related'), true, '«También se buscó» vuelve a verse');
+
   // 8) Contador local
   await page.evaluate(() => window.dispatchEvent(new Event('pagehide')));
   await page.waitForTimeout(2500);
@@ -136,6 +226,10 @@ const SHOTS = process.env.SHOTS_DIR;
     ui.on('pageerror', (e) => errors.push(p + ': ' + e.message));
     await ui.goto(`chrome-extension://${extId}/${p}`);
     await ui.waitForTimeout(300);
+    if (p.startsWith('options')) {
+      const href = await ui.getAttribute('#reportLink', 'href');
+      assert.ok(href.startsWith('https://github.com/clarionida/antiResumenIA/issues/new?template=problema.yml') && href.includes('version=' + require('../manifest.json').version), 'link de reportes: ' + href);
+    }
     if (SHOTS) {
       await ui.setViewportSize(p.startsWith('popup') ? { width: 340, height: 520 } : { width: 900, height: 1400 });
       await ui.screenshot({ path: path.join(SHOTS, p.split('/')[0] + '.png'), fullPage: true });

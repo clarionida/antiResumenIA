@@ -1,10 +1,10 @@
 {
   "extName": {
-    "message": "AntiResumen IA: Clean Search Results",
+    "message": "Search Without AI: hide AI Overviews and ads for Google™",
     "description": "Nombre en la Chrome Web Store y en chrome://extensions (máx. 75)"
   },
   "extShortName": {
-    "message": "AntiResumen IA",
+    "message": "Search Without AI",
     "description": "Nombre corto"
   },
   "extDescription": {
@@ -16,7 +16,7 @@
     "description": "Código de idioma para <html lang>"
   },
   "actionTitle": {
-    "message": "AntiResumen IA",
+    "message": "Search Without AI",
     "description": "Tooltip del ícono"
   },
   "masterName": {
@@ -45,7 +45,10 @@
     "message": "Ads and shopping"
   },
   "groupBlocks": {
-    "message": "Blocks that push results down"
+    "message": "Other Google sections"
+  },
+  "groupBlocksDesc": {
+    "message": "Boxes Google adds between results: questions, videos, images, maps, forums and related searches."
   },
   "groupSites": {
     "message": "My blocked sites"
@@ -57,7 +60,7 @@
     "message": "Counter"
   },
   "groupData": {
-    "message": "Your settings"
+    "message": "Backup and reset"
   },
   "optAiOverviewName": {
     "message": "Hide AI Overviews"
@@ -81,7 +84,7 @@
     "message": "Hide shopping blocks"
   },
   "optShoppingDesc": {
-    "message": "Removes product, price and store carousels."
+    "message": "Removes product, price and store carousels. If you also hide maps and places, filters like “In stock” or “Open now” go too."
   },
   "optPaaName": {
     "message": "Hide “People also ask”"
@@ -95,11 +98,29 @@
   "optVideosDesc": {
     "message": "Removes video and short-video carousels."
   },
+  "optImagesName": {
+    "message": "Hide image blocks"
+  },
+  "optImagesDesc": {
+    "message": "Removes image boxes between results. The “Images” tab still works."
+  },
+  "optPlacesName": {
+    "message": "Hide maps and places"
+  },
+  "optPlacesDesc": {
+    "message": "Removes the “Places” block with the map and nearby businesses. Google Maps still works."
+  },
   "optForumsName": {
     "message": "Hide “Discussions and forums”"
   },
   "optForumsDesc": {
-    "message": "Removes the block of forum and social media threads."
+    "message": "Removes the block of threads from Reddit, Quora and other forums. Regular results from those sites stay."
+  },
+  "optRelatedName": {
+    "message": "Hide “People also search for”"
+  },
+  "optRelatedDesc": {
+    "message": "Removes related-search suggestions, at the bottom of the page and inside results."
   },
   "optNoticeName": {
     "message": "Show on-page notice"
@@ -210,6 +231,10 @@
   "statsTitle": {
     "message": "Items hidden"
   },
+  "popupCounterLabel": {
+    "message": "Items hidden in total",
+    "description": "Contador total acumulado (popup y opciones)"
+  },
   "statsTotal": {
     "message": "Total"
   },
@@ -240,8 +265,17 @@
   "typeVideos": {
     "message": "Videos"
   },
+  "typeImages": {
+    "message": "Images"
+  },
+  "typePlaces": {
+    "message": "Maps and places"
+  },
   "typeForums": {
     "message": "Discussions and forums"
+  },
+  "typeRelatedSearches": {
+    "message": "Related searches"
   },
   "typeBlockedSites": {
     "message": "Blocked sites"
@@ -256,7 +290,7 @@
     "message": "Restore defaults"
   },
   "dataDesc": {
-    "message": "Save your options and site list to a JSON file, or load them in another browser."
+    "message": "Save your options and your blocked-site list to a JSON file, or load them in another browser."
   },
   "resetConfirm": {
     "message": "All options will be restored and your blocked-site list will be emptied. The counter stays as is. Continue?"
@@ -313,11 +347,25 @@
     "message": "(opens in a new tab)",
     "description": "Texto para lectores de pantalla"
   },
+  "reportLink": {
+    "message": "Report a problem"
+  },
+  "reportHint": {
+    "message": "Opens GitHub in a new tab. You need a free account. Only what you write is sent."
+  },
+  "trademarkNote": {
+    "message": "Independent extension, not affiliated with Google LLC. Google is a trademark of Google LLC.",
+    "description": "Atribución de marca exigida por la Chrome Web Store"
+  },
+  "madeBy": {
+    "message": "Made with care by Clariónida",
+    "description": "Crédito al pie del popup y de opciones"
+  },
   "privacyNote": {
     "message": "No tracking: no data is collected or sent. Your options are saved with Chrome sync."
   },
   "noticeRegion": {
-    "message": "AntiResumen IA",
+    "message": "Search Without AI",
     "description": "Etiqueta accesible del aviso en Google"
   },
   "noticeHiddenOne": {

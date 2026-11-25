@@ -1,4 +1,4 @@
-/* AntiResumen IA · Estilos compartidos del popup y de la página de opciones.
+/* Buscar sin IA · Estilos compartidos del popup y de la página de opciones.
    Paleta cálida; contraste AA comprobado en claro y oscuro. Sigue el tema del sistema. */
 :root {
   color-scheme: light dark;
@@ -110,3 +110,6 @@ a:hover { color: var(--accent-strong); }
 
 .footer-links { display: flex; flex-direction: column; gap: 2px; align-items: center; text-align: center; }
 .footer-links .donate { font-size: 13px; }
+
+/* Crédito al pie */
+.made-by { margin-top: 6px; font-style: italic; }

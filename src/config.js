@@ -1,5 +1,5 @@
 /*
- * AntiResumen IA · Archivo de configuración central
+ * Buscar sin IA · Archivo de configuración central
  * ==================================================
  *
  * ESTE es el archivo que hay que tocar cuando Google cambie su página.
@@ -27,6 +27,12 @@
   /** Enlace de donación. Cámbialo aquí y se actualiza en el popup y en opciones. */
   const DONATION_URL = 'https://donate.stripe.com/bJeeVfgHU7Npa1A59ocAo00';
 
+  /**
+   * Formulario para reportar problemas (GitHub Issues). Se abre solo cuando el usuario
+   * hace clic. Usa la plantilla .github/ISSUE_TEMPLATE/problema.yml.
+   */
+  const ISSUES_URL = 'https://github.com/clarionida/antiResumenIA/issues/new?template=problema.yml';
+
   /** El mensaje amable de donación aparece UNA sola vez al llegar a este total. */
   const DONATION_PROMPT_THRESHOLD = 200;
 
@@ -52,6 +58,9 @@
     hidePeopleAlsoAsk: false,   // 5. "Otras preguntas de los usuarios".
     hideVideos: false,          // 6. Carruseles de videos y videos cortos.
     hideForums: false,          // 7. "Debates y foros".
+    hideRelatedSearches: false, // 7b. "También se buscó" / búsquedas relacionadas.
+    hideImages: false,          // 7c. Bloques de imágenes entre los resultados.
+    hidePlaces: false,          // 7d. Mapa y negocios cercanos («Sitios»).
     showPageNotice: true,       // Aviso pequeño "Se ocultaron N elementos · Mostrar".
     webOnly: false,             // 9. Modo "Solo Web" (udm=14) con declarativeNetRequest.
     beforeDateEnabled: false,   // 10. Filtro "Solo contenido anterior a la IA".
@@ -61,7 +70,7 @@
   /** Tipos de bloque que se cuentan y se pueden ocultar. */
   const BLOCK_TYPES = Object.freeze([
     'aiOverview', 'aiMode', 'ads', 'shopping',
-    'peopleAlsoAsk', 'videos', 'forums', 'blockedSites'
+    'peopleAlsoAsk', 'videos', 'images', 'places', 'forums', 'relatedSearches', 'blockedSites'
   ]);
 
   /** Qué opción activa cada tipo. "blockedSites" se activa si la lista no está vacía. */
@@ -73,6 +82,9 @@
     peopleAlsoAsk: 'hidePeopleAlsoAsk',
     videos: 'hideVideos',
     forums: 'hideForums',
+    relatedSearches: 'hideRelatedSearches',
+    images: 'hideImages',
+    places: 'hidePlaces',
     blockedSites: null
   });
 
@@ -91,7 +103,13 @@
    *                              resultados normales vecinos.
    *                  "control" → oculta el botón/link/pestaña más cercano
    *                              (se usa para "Modo IA").
-   *  - "areas":      "main" = solo columna central; "all" = central + lateral.
+   *  - "areas":      "main" = solo columna central; "all" = central + lateral;
+   *                  "page" = cualquier parte fuera de la navegación (el resumen
+   *                  de IA nuevo ocupa todo el ancho, fuera de #center_col).
+   *  - "yieldsTo":   si el bloque encontrado EMPIEZA con la etiqueta de otro tipo,
+   *                  pertenece a ese otro tipo. Ej.: «Más preguntas» trae respuestas
+   *                  escondidas que dicen «Visión general creada por IA», pero el
+   *                  bloque es de preguntas, no el resumen de IA.
    *  - "maxInnerResults": cuántos títulos de resultado normal (a h3) puede
    *                  contener el bloque. Los anuncios de texto traen uno.
    */
@@ -103,7 +121,7 @@
      */
     columnRoots: [
       '#rcnt', '#center_col', '#res', '#search', '#rso', '#botstuff',
-      '#taw', '#tvcap', '#atvcap', '#bres', '#rhs', '#appbar', '#extabar', '#cnt'
+      '#taw', '#tvcap', '#atvcap', '#bres', '#rhs', '#appbar', '#extabar', '#cnt', '#main'
     ],
 
     /** Zona de la columna central donde pueden estar los bloques. */
@@ -120,6 +138,37 @@
      * una ficha no debe ocultar la ficha entera.
      */
     ignoreLabelsInside: ['.kp-wholepage', '.kp-blk', '[data-attrid^="kc:"]'],
+
+    /**
+     * Límites que un bloque nunca absorbe al subir por el árbol: paginación y
+     * navegación. Así, ocultar «También se buscó» no se lleva el «Siguiente».
+     */
+    blockBoundaries: ['#foot', '#navcnt', '[role="navigation"]', 'table[role="presentation"] a[href*="start="]'],
+
+    /**
+     * En las pestañas de Google que no son «Todo» o «Web» (Shopping, Imágenes,
+     * Noticias…) solo se aplican estos tipos. Así la pestaña Shopping no queda vacía.
+     */
+    typesOnVerticals: ['aiOverview', 'aiMode', 'ads', 'blockedSites'],
+
+    /**
+     * Fila de filtros de Google bajo las pestañas («En stock», «Abierto ahora»,
+     * «Mejor valorados»). Solo filtran productos y negocios, así que se oculta
+     * cuando están activos TODOS los tipos de "requires". Se oculta la fila
+     * completa: se sube desde el botón mientras el contenedor sea bajo (maxRowHeight),
+     * con poco texto (maxRowText) y sin pestañas, columnas ni campos de búsqueda.
+     */
+    filterChips: {
+      type: 'shopping',
+      requires: ['shopping', 'places'],
+      maxRowHeight: 72,
+      maxRowText: 200,
+      labels: {
+        es: ['En stock', 'Abierto ahora', 'Mejor valorados', 'Mejor valorado', 'Envío gratis', 'Cerca de ti', 'Con descuento', 'En oferta'],
+        en: ['In stock', 'Open now', 'Top rated', 'Free shipping', 'Nearby', 'On sale'],
+        pt: ['Em estoque', 'Aberto agora', 'Mais bem avaliados', 'Frete grátis', 'Perto de você', 'Em promoção']
+      }
+    },
 
     /** Título de un resultado normal con link. */
     organicTitle: 'a[href] h3',
@@ -142,7 +191,8 @@
     types: {
       aiOverview: {
         strategy: 'block',
-        areas: 'main',
+        areas: 'page',
+        yieldsTo: ['peopleAlsoAsk', 'forums', 'videos', 'images', 'places', 'shopping', 'relatedSearches'],
         containers: [],
         markers: [],
         labels: {
@@ -199,7 +249,18 @@
           en: ['Products', 'Popular products', 'Shop products', 'More products', 'Deals', 'Shopping'],
           pt: ['Produtos', 'Produtos populares', 'Comprar produtos', 'Mais produtos', 'Ofertas', 'Compras']
         },
-        maxInnerResults: 0
+        maxInnerResults: 0,
+        /*
+         * Cuadrículas de productos SIN título (precio, tienda, «PRECIO BAJO»…).
+         * Un bloque sin resultados normales (a h3) con al menos minPrices textos
+         * de precio y minImages imágenes se considera de compras.
+         * pattern: texto completo de un precio, con la moneda antes o después.
+         */
+        priceGrid: {
+          pattern: '^(?:(?:MXN|USD|ARS|COP|CLP|PEN|UYU|PYG|BOB|VES|GTQ|HNL|NIO|CRC|PAB|DOP|CUP|BRL|EUR|GBP|CAD|AUD|US\\$|R\\$|RD\\$|C\\$|S\\/\\.?|[$€£])\\s?\\d[\\d.,\\s]*|\\d[\\d.,\\s]*\\s?(?:€|MXN|USD|EUR|ARS|COP|CLP|PEN|BRL))(?:\\s+(?:ahora|now|agora))?$',
+          minPrices: 3,
+          minImages: 3
+        }
       },
 
       peopleAlsoAsk: {
@@ -209,9 +270,9 @@
         // Piezas internas de "Otras preguntas" (nombres sin ofuscar).
         markers: ['.related-question-pair', '[data-initq]'],
         labels: {
-          es: ['Otras preguntas de los usuarios', 'Preguntas relacionadas', 'Otras preguntas'],
-          en: ['People also ask', 'Related questions'],
-          pt: ['As pessoas também perguntam', 'Perguntas relacionadas']
+          es: ['Otras preguntas de los usuarios', 'Más preguntas', 'Preguntas relacionadas', 'Otras preguntas'],
+          en: ['People also ask', 'More questions', 'Related questions'],
+          pt: ['As pessoas também perguntam', 'Mais perguntas', 'Perguntas relacionadas']
         },
         maxInnerResults: 0
       },
@@ -229,6 +290,22 @@
         maxInnerResults: 0
       },
 
+      images: {
+        strategy: 'block',
+        // Solo columna central: la pestaña «Imágenes» está en la navegación y las
+        // fotos de las fichas de información se ignoran (ignoreLabelsInside).
+        areas: 'main',
+        containers: [],
+        // IDs históricos del bloque de imágenes entre resultados.
+        markers: ['#iur', '#imagebox_bigimages'],
+        labels: {
+          es: ['Imágenes'],
+          en: ['Images'],
+          pt: ['Imagens']
+        },
+        maxInnerResults: 0
+      },
+
       forums: {
         strategy: 'block',
         areas: 'main',
@@ -240,12 +317,43 @@
           pt: ['Discussões e fóruns', 'Fóruns e discussões']
         },
         maxInnerResults: 0
+      },
+
+      places: {
+        strategy: 'block',
+        areas: 'main',
+        containers: [],
+        // #lu_map: ID histórico del mapa de negocios locales.
+        markers: ['#lu_map'],
+        labels: {
+          es: ['Sitios', 'Lugares', 'Negocios', 'Más lugares', 'Más negocios'],
+          en: ['Places', 'Businesses', 'More places', 'More businesses'],
+          pt: ['Lugares', 'Locais', 'Empresas', 'Mais lugares', 'Mais empresas']
+        },
+        maxInnerResults: 0
+      },
+
+      relatedSearches: {
+        strategy: 'block',
+        areas: 'main',
+        containers: [],
+        markers: [],
+        // Aparece al final de la página y, a veces, dentro de un resultado al volver
+        // de visitarlo («La gente también busca»). En ese caso solo se oculta el
+        // recuadro de sugerencias, no el resultado.
+        labels: {
+          es: ['También se buscó', 'Búsquedas relacionadas', 'Otras búsquedas', 'La gente también busca', 'Las personas también buscan'],
+          en: ['People also search for', 'People also searched for', 'Related searches'],
+          pt: ['Pesquisas relacionadas', 'As pessoas também pesquisam', 'As pessoas também pesquisam por', 'Também pesquisaram']
+        },
+        maxInnerResults: 0
       }
     }
   });
 
   root.ARI_CONFIG = Object.freeze({
     DONATION_URL,
+    ISSUES_URL,
     DONATION_PROMPT_THRESHOLD,
     MAX_BLOCKED_SITES,
     DEFAULT_BEFORE_DATE,

@@ -41,6 +41,9 @@ Hazlas en Google real después de cargar la extensión sin empaquetar. Para cada
 - [ ] Con la opción apagada, los bloques de productos se ven.
 - [ ] Al activarla, desaparecen «Productos populares» o «Productos» y los carruseles de precios.
 - [ ] El panel de información de la derecha (por ejemplo, de una marca) no desaparece entero.
+- [ ] Busca «comida para perros»: las cuadrículas de productos **sin título** (precio, tienda, «PRECIO BAJO») desaparecen.
+- [ ] Los resultados normales de tiendas (Walmart, Mercado Libre…) siguen visibles aunque muestren fotos o precios.
+- [ ] En la pestaña **Shopping** los productos se ven normal aunque la opción esté activa.
 
 ## 5. «Otras preguntas de los usuarios» (desactivado)
 - [ ] Al activarla, desaparece el bloque completo, incluido el encabezado.
@@ -56,6 +59,25 @@ Hazlas en Google real después de cargar la extensión sin empaquetar. Para cada
 ## 7. «Debates y foros» (desactivado)
 - [ ] Al activarla, desaparece el bloque.
 - [ ] La pestaña «Foros» de la barra superior sigue visible.
+
+## 7a. Bloques de imágenes (desactivado)
+- [ ] Busca «atún en lata para gatos»: con la opción activa desaparece el recuadro «Imágenes» con «Mostrar más imágenes».
+- [ ] La pestaña «Imágenes» de arriba sigue visible y funciona.
+- [ ] Las fotos del panel de información de la derecha siguen visibles.
+- [ ] Al desactivarla, el recuadro reaparece sin recargar.
+
+## 7a2. Mapas y lugares (desactivado)
+- [ ] Busca «comida para perros» o «farmacia cerca»: con la opción activa desaparece el bloque «Sitios» con el mapa, los negocios y «Más lugares».
+- [ ] Busca un lugar concreto (por ejemplo «Museo Frida Kahlo»): el panel de información de la derecha, con su mapa, sigue visible.
+- [ ] Con «compras» y «mapas y lugares» activos, la fila de filtros «En stock · Abierto ahora · Mejor valorados» desaparece completa y las pestañas de arriba siguen visibles.
+- [ ] Con solo una de las dos activa, la fila de filtros sigue visible.
+
+## 7b. «También se buscó» (desactivado)
+- [ ] Al activarla, desaparece el recuadro «También se buscó» («Búsquedas relacionadas») del final de la página.
+- [ ] La paginación («Siguiente», números de página) sigue visible.
+- [ ] Entra a un resultado y vuelve atrás: si Google muestra «La gente también busca» debajo de ese resultado, el recuadro desaparece pero el resultado se queda.
+- [ ] Con `&hl=en`, «People also search for» también desaparece.
+- [ ] Al desactivarla, reaparece sin recargar.
 
 ## 8. Mis sitios bloqueados
 - [ ] Agrega `pinterest.com`: desaparecen los resultados de `www.pinterest.com`, `es.pinterest.com` y `ar.pinterest.com`.

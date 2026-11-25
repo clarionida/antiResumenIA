@@ -1,4 +1,4 @@
-/* AntiResumen IA · Página de opciones */
+/* Buscar sin IA · Página de opciones */
 (async function () {
   'use strict';
   const CFG = globalThis.ARI_CONFIG;
@@ -6,7 +6,7 @@
   const t = U.t;
   const $ = (id) => document.getElementById(id);
   const fmt = new Intl.NumberFormat(t('langCode'));
-  const EXPORT_FORMAT = 'antiresumen-ia-settings';
+  const EXPORT_FORMAT = 'buscar-sin-ia-settings';
 
   let state = await U.loadState();
   let stats = await U.loadStats();
@@ -118,7 +118,7 @@
   // ------------------------------------------------------------------ contador
   const TYPE_LABELS = {
     aiOverview: 'typeAiOverview', aiMode: 'typeAiMode', ads: 'typeAds', shopping: 'typeShopping',
-    peopleAlsoAsk: 'typePeopleAlsoAsk', videos: 'typeVideos', forums: 'typeForums', blockedSites: 'typeBlockedSites'
+    peopleAlsoAsk: 'typePeopleAlsoAsk', videos: 'typeVideos', images: 'typeImages', places: 'typePlaces', forums: 'typeForums', relatedSearches: 'typeRelatedSearches', blockedSites: 'typeBlockedSites'
   };
 
   function renderStats() {
@@ -156,7 +156,7 @@
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `antiresumen-ia-${U.todayIso()}.json`;
+    a.download = `buscar-sin-ia-${U.todayIso()}.json`;
     document.body.append(a);
     a.click();
     a.remove();
@@ -191,6 +191,18 @@
     renderAll();
     setStatus($('dataStatus'), t('resetDone'), 'ok');
   });
+
+  // ------------------------------------------------------- reportar un problema
+  // Rellena de antemano la versión de la extensión, la de Chrome y el idioma para que
+  // el reporte sea útil. No se envía nada: GitHub solo recibe lo que el usuario envíe.
+  (function setupReportLink() {
+    const url = new URL(CFG.ISSUES_URL);
+    const chromeVersion = (navigator.userAgent.match(/Chrome\/([\d.]+)/) || [])[1] || '';
+    url.searchParams.set('version', chrome.runtime.getManifest().version);
+    if (chromeVersion) url.searchParams.set('chrome', chromeVersion);
+    url.searchParams.set('idioma', chrome.i18n.getUILanguage());
+    $('reportLink').href = url.toString();
+  })();
 
   // ------------------------------------------- cambios hechos desde el popup
   chrome.storage.onChanged.addListener(async (changes, area) => {

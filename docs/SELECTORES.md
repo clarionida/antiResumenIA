@@ -37,6 +37,11 @@ En la consola de la pestaña de Google puedes revisar qué se ocultó y de qué 
 - `areas`: `'main'` solo en la columna central; `'all'` también en la lateral.
 - `maxInnerResults`: cuántos títulos de resultado puede tener el bloque. Los anuncios traen uno.
 - `navigationArea`: aquí los textos no cuentan como bloque. Por eso la pestaña «Videos» no activa la opción de videos.
+- `blockBoundaries`: paginación y navegación. Un bloque nunca se extiende hasta incluirlas; por eso ocultar «También se buscó» no se lleva el botón «Siguiente».
+- `yieldsTo`: si un bloque empieza con el título de otro tipo, pertenece a ese tipo. Así, «Más preguntas» (que trae respuestas con el título «Visión general creada por IA») cuenta como preguntas y no como resumen de IA.
+- `priceGrid` (en `shopping`): detecta cuadrículas de productos sin título contando precios e imágenes. Si Google usa una moneda nueva o cambia el formato del precio, ajusta `pattern`.
+- `typesOnVerticals`: tipos que se aplican en pestañas como Shopping, Imágenes o Noticias. Los demás se apagan ahí para no vaciar esas pestañas.
+- `filterChips`: la fila de filtros bajo las pestañas («En stock», «Abierto ahora»…). Se oculta completa solo si están activos todos los tipos de `requires`. Si Google agrega un filtro nuevo, agrega su texto en `labels`.
 - `ignoreLabelsInside`: fichas de información. Un «Videos» dentro de una ficha no oculta la ficha entera.
 
 ## 4. Verifica y publica

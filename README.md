@@ -1,100 +1,154 @@
-# AntiResumen IA
+<p align="center">
+  <img src="store/icon512.png" width="112" height="112" alt="">
+</p>
 
-Extensión gratuita para Chrome (Manifest V3) que limpia la página de resultados de Google: eliges qué bloques ocultar (resúmenes de IA, Modo IA, anuncios, compras, «Otras preguntas», videos, foros, sitios que no quieres ver) y te quedan los resultados con links, como antes.
+<h1 align="center">Buscar sin IA</h1>
 
-Todo es gratis, sin versión premium. No recopila ni envía datos y no hace peticiones de red.
+<p align="center">
+  <strong>Google como antes: solo resultados con links.</strong><br>
+  Extensión gratuita para Chrome que oculta los resúmenes de IA, los anuncios y otros recuadros de la página de resultados de Google.
+</p>
 
-## Enfoque y decisiones clave
+<p align="center"><em>Search Without AI · Busca sem IA</em></p>
 
-- **Detección sin clases ofuscadas.** Cada bloque se reconoce combinando IDs históricos de Google (`#rso`, `#tads`, `#bottomads`…), atributos con significado (`data-text-ad`, `href*="udm=50"`) y el **texto exacto** de su encabezado en español, inglés y portugués. Desde esa pista se sube por el DOM hasta el contenedor del bloque, sin pasar de la columna de resultados y sin tragarse resultados normales vecinos. Si no encuentra una columna conocida, no oculta nada: prefiere quedarse corto antes que ocultar de más.
-- **Todo en un archivo.** Selectores, textos por idioma, valores predeterminados y `DONATION_URL` están en [`src/config.js`](src/config.js).
-- **Sin parpadeo.** El CSS entra en `document_start` y oculta de inmediato lo que tiene selector estable. Lo que se detecta por texto se procesa en un `requestAnimationFrame`, que corre antes de pintar.
-- **Ocultar, no borrar.** Se marca el contenedor con `data-ari-hidden` y el CSS aplica `display:none`, que no deja huecos. Por eso «Mostrar» y los cambios de opciones son instantáneos.
-- **Modos avanzados con reglas dinámicas de declarativeNetRequest** ([`src/dnr-rules.js`](src/dnr-rules.js)). Las reglas son dinámicas porque la fecha es editable y los dos modos se combinan. Los bucles se evitan con reglas `allow` de mayor prioridad, y las verticales (Imágenes, Noticias, Shopping, Modo IA, Empleos…) no se tocan.
+---
 
-### Cambios frente al pedido original (políticas y fragilidad)
+## Qué hace
 
-1. **`declarativeNetRequestWithHostAccess` en lugar de `declarativeNetRequest`.** Hace lo mismo para este caso, pero solo actúa en los dominios de `host_permissions` y no agrega la advertencia «Bloquear contenido en cualquier página». Es el permiso más acotado.
-2. **Sin comentarios en `manifest.json`.** JSON no admite comentarios y la Chrome Web Store puede rechazar el paquete. La justificación de cada permiso está en [`docs/PERMISOS.md`](docs/PERMISOS.md) y en la cabecera de `src/background.js`.
-3. **«Google» fuera del nombre.** El nombre es «AntiResumen IA: resultados limpios». «Para Google» aparece solo en las descripciones, de forma descriptiva, para reducir el riesgo de rechazo por marca.
-4. **Colombia es `google.com.co`.** Se incluyó también `google.co` porque venía en la lista, aunque no es un dominio de búsqueda habitual.
-5. **Partes frágiles (avisadas en la interfaz):**
-   - *Detección por texto.* Depende del idioma de la interfaz de Google (es, en o pt). Si Google cambia un encabezado, se agrega el texto nuevo en `config.js`. Ver [`docs/SELECTORES.md`](docs/SELECTORES.md).
-   - *«Solo contenido anterior a la IA».* Usa el rango de fechas de Google (`tbs=cdr:1,cd_max:…`). Google estima las fechas, así que algunas páginas sin fecha pueden desaparecer. Si el usuario ya eligió otro rango, se respeta el suyo.
-   - *«Solo Web».* Mientras está activo, la pestaña «Todo» regresa a «Web».
-6. **No hay actualización remota de selectores.** Sería una petición de red y rompería la promesa de privacidad. Cuando Google cambie su HTML, se publica una versión nueva.
+Tú eliges qué quieres ocultar. Cada opción se activa o se desactiva con una casilla, y los cambios se aplican al instante, sin recargar.
 
-## Estructura
+**Inteligencia artificial** *(activadas desde el inicio)*
+- Resúmenes de IA («Resumen de IA», «Visión general creada por IA», «AI Overview»)
+- La pestaña y el botón de «Modo IA»
+
+**Publicidad y compras**
+- Anuncios y resultados patrocinados *(activada desde el inicio)*
+- Cuadrículas y carruseles de productos con precios
+
+**Otras secciones de Google**
+- «Otras preguntas de los usuarios» / «Más preguntas»
+- Carruseles de videos y videos cortos
+- Bloques de imágenes entre los resultados
+- Mapas y negocios cercanos («Sitios»)
+- «Debates y foros»
+- «También se buscó» (búsquedas relacionadas)
+
+**Mis sitios bloqueados**
+- Escribe un sitio (por ejemplo, `pinterest.com`) y sus resultados desaparecen, también los de sus subdominios.
+
+**Avanzado** *(apagado desde el inicio)*
+- **Solo Web:** abre tus búsquedas directamente en la vista «Web» de Google.
+- **Solo contenido anterior a la IA:** agrega un filtro de fecha que tú eliges.
+
+**Además**
+- Un aviso pequeño te dice cuántos elementos se ocultaron y te deja verlos con un clic.
+- Un interruptor para pausar todo sin perder tu configuración.
+- Funciona con Google en español, inglés y portugués, y en los dominios de cada país (google.com.mx, google.es, google.com.ar, google.com.co, google.cl, google.com.br y más).
+- Modo claro y oscuro, y se puede usar con el teclado.
+- Puedes guardar tu configuración en un archivo y cargarla en otro navegador.
+
+## Privacidad
+
+- **No recopila, no envía y no vende ningún dato.**
+- No hace peticiones a internet, no tiene analítica y no carga código externo.
+- Solo lee la página de resultados de Google en tu navegador, lo necesario para ocultar lo que elegiste.
+- Tus opciones se guardan con la sincronización de Chrome. El contador de elementos ocultados queda solo en tu navegador.
+
+Política completa: [PRIVACY.md](PRIVACY.md).
+
+## Instalación
+
+**Chrome Web Store:** próximamente.
+
+**Mientras tanto, de forma manual:**
+
+1. Descarga el proyecto: [**Descargar .zip**](https://github.com/clarionida/antiResumenIA/archive/refs/heads/main.zip).
+2. Descomprímelo y guarda la carpeta en un lugar fijo, por ejemplo en Documentos. Chrome la usa desde ahí: no la borres ni la muevas después.
+3. En Chrome, abre `chrome://extensions`.
+4. Activa **Modo de desarrollador** (arriba a la derecha).
+5. Pulsa **Cargar extensión sin empaquetar** y elige la carpeta que tiene el archivo `manifest.json` adentro.
+6. Pulsa el ícono de pieza de rompecabezas, junto a la barra de direcciones, y fija **Buscar sin IA** con la chincheta.
+
+## Cómo se usa
+
+- **El ícono de la barra** abre un panel con el interruptor general, las opciones principales y el contador.
+- **«Más opciones»** abre la página con todas las opciones, tu lista de sitios bloqueados y el respaldo de tu configuración.
+- **En Google**, abajo a la izquierda, verás «Se ocultaron N elementos · Mostrar». Pulsa «Mostrar» para ver lo oculto, marcado con un borde punteado. Este aviso se puede apagar en las opciones.
+
+## ¿En qué navegadores funciona?
+
+- **Google Chrome** en computadora.
+- También debería funcionar en navegadores basados en Chrome, como Edge, Brave, Opera o Vivaldi, aunque no se ha probado en ellos.
+- Solo limpia **Google**. Si tu navegador busca con otro buscador (Bing, Brave Search…), ahí no hace nada.
+- Chrome para celular no admite extensiones.
+
+## ¿Algo no funciona?
+
+Google cambia su página seguido, y a veces un bloque deja de ocultarse.
+
+- Repórtalo en [**Reportar un problema**](https://github.com/clarionida/antiResumenIA/issues/new?template=problema.yml). También está el link al pie de la página de opciones.
+- Ayuda mucho que incluyas la búsqueda que usaste y el **texto exacto** del título del bloque que no se ocultó.
+
+## Apoyar
+
+Buscar sin IA es y seguirá siendo **gratis**, sin versión premium ni funciones bloqueadas. Si te sirve, puedes [invitarme un café ☕](https://donate.stripe.com/bJeeVfgHU7Npa1A59ocAo00). Es totalmente opcional.
+
+<p align="center"><em>Hecho con cariño por Clariónida</em></p>
+
+<sub>Extensión independiente, sin relación con Google LLC. Google es una marca comercial de Google LLC.</sub>
+
+---
+
+## Para desarrolladores
+
+Todo es JavaScript, HTML y CSS locales, sin dependencias ni pasos de compilación.
+
+### Cómo funciona
+
+- **Detección sin clases ofuscadas.** Cada bloque se reconoce combinando IDs que Google mantiene desde hace años (`#rso`, `#tads`, `#bottomads`…), atributos con significado (`data-text-ad`, `href*="udm=50"`) y el **texto exacto** de su encabezado en español, inglés y portugués. Desde esa pista se sube hasta el contenedor del bloque, sin salir de la columna de resultados y sin tragarse resultados normales vecinos. Si no reconoce la página, no oculta nada.
+- **Cuadrículas de productos sin título.** Se detectan por estructura: un bloque sin resultados normales, con varios precios y varias imágenes.
+- **Cada bloque pertenece al tipo de su primer encabezado.** Así, «Más preguntas» no se oculta como resumen de IA aunque sus respuestas digan «Visión general creada por IA».
+- **Sin parpadeo.** El CSS entra en `document_start` y oculta de inmediato lo que tiene selector estable. Lo demás se procesa con un `MutationObserver` agrupado en `requestAnimationFrame`, que corre antes de pintar.
+- **Ocultar, no borrar.** Se marca el contenedor con `data-ari-hidden` y el CSS aplica `display:none`, que no deja huecos.
+- **Modos avanzados** con reglas dinámicas de `declarativeNetRequest`. Los bucles de redirección se evitan con reglas `allow` de mayor prioridad. Las pestañas Imágenes, Noticias, Shopping, Modo IA, etc. no se tocan.
+- **Pestañas de Google:** en Shopping, Imágenes o Noticias solo se aplican IA, anuncios y sitios bloqueados, para no vaciarlas.
+
+### Estructura
 
 ```
-manifest.json                 Manifest V3 (generado en parte por tools/sync-manifest.mjs)
+manifest.json                 Manifest V3
 _locales/{es,en,pt_BR,pt_PT}  Textos (generados por tools/locales-src.mjs)
-src/config.js                 ★ Selectores, textos por idioma, predeterminados, DONATION_URL
-src/common.js                 Utilidades: almacenamiento, normalización de dominios
+src/config.js                 ★ Selectores, textos por idioma, valores predeterminados, DONATION_URL, ISSUES_URL
+src/common.js                 Almacenamiento y normalización de dominios
 src/dnr-rules.js              Reglas de declarativeNetRequest (Solo Web / filtro de fecha)
 src/background.js             Service worker: reglas DNR y contador local
 src/content/content.js        Detección, MutationObserver y aviso en la página
 src/content/content.css       Ocultamiento en document_start
-popup/                        Popup (interruptor, opciones 1–3, contador, donación)
-options/                      Página de opciones completa
-ui/                           Estilos compartidos (claro/oscuro) y traducción del HTML
-icons/                        icon.svg + PNG 16/32/48/128
+popup/  options/  ui/         Interfaz (popup, opciones, estilos compartidos)
+icons/                        icon.svg, icon-small.svg y PNG de 16/32/48/128
+store/                        Ícono de 512 px y plantilla de capturas para la tienda
 tools/                        Generadores y empaquetado (no van en el .zip)
-tests/                        Pruebas automáticas (no van en el .zip)
-docs/                         Pruebas manuales, selectores, publicación, ficha, privacidad
+tests/                        Pruebas automáticas y páginas de prueba
+docs/                         Guías (ver abajo)
 ```
 
-## Probarla con «Cargar extensión sin empaquetar»
-
-1. Descarga o clona esta carpeta.
-2. En Chrome, abre `chrome://extensions`.
-3. Activa **Modo de desarrollador** (arriba a la derecha).
-4. Pulsa **Cargar extensión sin empaquetar** y elige la carpeta que contiene `manifest.json`.
-5. Fija el ícono: menú de extensiones (pieza de rompecabezas) → chincheta junto a «AntiResumen IA».
-6. Busca algo en Google, por ejemplo «qué es la fotosíntesis». El resumen de IA y los anuncios desaparecen, y abajo a la izquierda aparece «Se ocultaron N elementos · Mostrar».
-7. Si cambias código, pulsa el botón ↻ de la extensión en `chrome://extensions` y recarga la pestaña de Google.
-
-Para ver errores: en `chrome://extensions` → «Service worker» (consola del fondo), o DevTools en la pestaña de Google (consola del content script).
-
-## Pruebas automáticas
+### Comandos
 
 Requieren Node 18 o superior y Playwright con Chromium.
 
 ```bash
-npm test
+npm test                         # pruebas: dominios, reglas DNR y extensión real en Chromium
+node tools/locales-src.mjs       # regenera _locales a partir de una sola fuente
+node tools/sync-manifest.mjs     # actualiza los dominios de Google en manifest.json
+node tools/render-icons.cjs      # exporta los íconos PNG desde los SVG
+bash tools/build-zip.sh          # crea dist/buscar-sin-ia-<versión>.zip para la tienda
 ```
 
-- `tests/common.test.cjs`: normalización de dominios, fechas y configuración.
-- `tests/dnr.test.cjs`: simula declarativeNetRequest y verifica que no haya bucles y que no se toquen las verticales.
-- `tests/e2e.test.cjs`: carga la extensión real en Chromium, sirve páginas simuladas en URLs de Google (`tests/fixtures`) y comprueba cada opción, los cambios en vivo, los sitios bloqueados, la pausa, el contador y la redirección real a `udm=14`.
+### Guías
 
-Las páginas simuladas imitan la estructura de Google, pero **no sustituyen las pruebas manuales en Google real** ([`docs/PRUEBAS.md`](docs/PRUEBAS.md)).
-
-## Ícono
-
-`icons/icon.svg` es original: una lupa con tres renglones, que representan resultados con links, sobre un fondo terracota. Para regenerar los PNG:
-
-```bash
-node tools/render-icons.cjs
-```
-
-Para exportarlo a mano con Inkscape:
-
-```bash
-for s in 16 32 48 128; do inkscape icons/icon.svg -w $s -h $s -o icons/icon$s.png; done
-```
-
-En Figma o Illustrator, exporta el SVG como PNG a 16, 32, 48 y 128 px con fondo transparente.
-
-## Documentación
-
+- [docs/SELECTORES.md](docs/SELECTORES.md): cómo actualizar la detección cuando Google cambie su página.
+- [docs/diagnostico.js](docs/diagnostico.js): script de consola para ver cómo arma Google una página.
 - [docs/PRUEBAS.md](docs/PRUEBAS.md): lista de pruebas manuales por opción.
-- [docs/SELECTORES.md](docs/SELECTORES.md): cómo actualizar la detección cuando Google cambie.
-- [docs/PUBLICAR.md](docs/PUBLICAR.md): empaquetar en .zip y subir a la Chrome Web Store.
-- [docs/FICHA-CWS.md](docs/FICHA-CWS.md): textos de la ficha (es/en), justificación de permisos y prácticas de privacidad.
 - [docs/PERMISOS.md](docs/PERMISOS.md): por qué se pide cada permiso.
-- [PRIVACY.md](PRIVACY.md): política de privacidad (es/en).
-
-## Donaciones
-
-La extensión es y seguirá siendo gratis. Si te sirve, puedes [invitarme un café ☕](https://donate.stripe.com/bJeeVfgHU7Npa1A59ocAo00). Es totalmente opcional.
+- [docs/PUBLICAR.md](docs/PUBLICAR.md): empaquetar y publicar en la Chrome Web Store.
+- [docs/FICHA-CWS.md](docs/FICHA-CWS.md): textos de la ficha de la tienda (es/en).

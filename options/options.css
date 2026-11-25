@@ -57,3 +57,4 @@ legend + * { clear: both; }
   .hero { grid-template-columns: 1fr; }
   .warning, .date-row, .pad-date { margin-left: 12px; }
 }
+.page-footer .report { font-size: 13px; margin-top: 6px; }

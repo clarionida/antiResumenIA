@@ -1,5 +1,5 @@
 /*
- * AntiResumen IA · Content script (document_start)
+ * Buscar sin IA · Content script (document_start)
  *
  * Flujo:
  *   1. Arranca un MutationObserver de inmediato (Google carga contenido por partes
@@ -24,6 +24,10 @@
   // Solo en resultados (/search) y en la portada (por el botón de Modo IA).
   const path = location.pathname;
   const IS_SEARCH = path === '/search';
+  // Pestañas como Shopping (udm=28), Imágenes (udm=2) o Noticias (tbm=nws).
+  const PARAMS = new URLSearchParams(location.search);
+  const UDM = PARAMS.get('udm');
+  const IS_VERTICAL = IS_SEARCH && (PARAMS.has('tbm') || (UDM !== null && UDM !== '' && UDM !== '14'));
   if (!(IS_SEARCH || path === '/' || path === '/webhp')) return;
 
   const CFG = globalThis.ARI_CONFIG;
@@ -41,7 +45,8 @@
     ignoreInside: D.ignoreLabelsInside.join(','),
     organicExclude: D.organicTitleExclude.concat(HIDDEN_SEL).join(','),
     control: D.controlElements.join(','),
-    tabWrappers: D.tabWrappers.join(',')
+    tabWrappers: D.tabWrappers.join(','),
+    boundaries: D.blockBoundaries.join(',')
   };
 
   // ------------------------------------------------- índice de etiquetas por texto
@@ -141,6 +146,7 @@
   }
 
   function inArea(el, areas) {
+    if (areas === 'page') return true; // la navegación ya se excluyó antes
     if (el.closest(SEL.main)) return true;
     return areas === 'all' && !!el.closest(SEL.side);
   }
@@ -181,8 +187,17 @@
       if (parent.matches(SEL.roots)) return node;
       if (parent.querySelector(SEL.roots)) return node;
       if (countOrganic(parent) > limit) return node;
+      if (addsBoundary(parent, node)) return node;
       node = parent;
     }
+  }
+
+  /** true si el padre trae paginación o navegación que no está dentro del nodo actual. */
+  function addsBoundary(parent, node) {
+    for (const el of parent.querySelectorAll(SEL.boundaries)) {
+      if (!node.contains(el)) return true;
+    }
+    return false;
   }
 
   /** Contenedor de un resultado normal (para sitios bloqueados). */
@@ -244,20 +259,123 @@
     if (SEL.ignoreInside && el.closest(SEL.ignoreInside)) return;
     if (!inArea(el, def.areas)) return;
     const block = findBlockRoot(el, def.maxInnerResults);
-    if (block) hide(block, type);
+    if (block) hideBlock(block, type);
+  }
+
+  /** Tipo de la primera etiqueta conocida dentro de un bloque (en orden del documento). */
+  function firstLabelType(block) {
+    const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
+    for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+      const text = n.nodeValue;
+      if (!text || text.length > maxLabelLength) continue;
+      const type = LABELS.get(U.normalizeLabel(text));
+      if (type && D.types[type].strategy === 'block') return type;
+    }
+    return null;
+  }
+
+  /**
+   * Oculta un bloque según el tipo de su PRIMER encabezado. Ej.: una sección
+   * «Imágenes» dentro del resumen de IA no oculta el resumen como «imágenes».
+   * Si el tipo define "yieldsTo", solo cede ante esos tipos.
+   */
+  function hideBlock(block, type) {
+    const first = firstLabelType(block);
+    if (first && first !== type) {
+      const yieldsTo = D.types[type].yieldsTo;
+      if (yieldsTo && !yieldsTo.includes(first)) {
+        hide(block, type);
+        return;
+      }
+      if (state.types.has(first)) hide(block, first);
+      return;
+    }
+    hide(block, type);
+  }
+
+  // --------------------------------------------- cuadrículas de productos sin título
+  const PRICE_DEF = D.types.shopping && D.types.shopping.priceGrid;
+  const PRICE_RE = PRICE_DEF ? new RegExp(PRICE_DEF.pattern) : null;
+
+  function isPriceText(text) {
+    return !!PRICE_RE && text.length <= 32 && PRICE_RE.test(text.replace(/\s+/g, ' ').trim());
+  }
+
+  function looksLikeProductGrid(block) {
+    if (block.querySelectorAll('img').length < PRICE_DEF.minImages) return false;
+    if (countOrganic(block) > 0) return false;
+    let prices = 0;
+    const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
+    for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+      if (isPriceText(n.nodeValue || '') && ++prices >= PRICE_DEF.minPrices) return true;
+    }
+    return false;
+  }
+
+  function handlePrices(nodes) {
+    const seen = new Set();
+    for (const node of nodes) {
+      const el = node.parentElement;
+      if (!el || !el.isConnected || el.closest(HIDDEN_SEL) || el.closest(SEL.nav)) continue;
+      if (el.closest('a[href] h3') || !inArea(el, 'all')) continue;
+      if (SEL.ignoreInside && el.closest(SEL.ignoreInside)) continue;
+      const block = findBlockRoot(el, 0);
+      if (!block || seen.has(block)) continue;
+      seen.add(block);
+      if (looksLikeProductGrid(block)) hideBlock(block, 'shopping');
+    }
+  }
+
+  // ------------------------------------------------ fila de filtros de compras/lugares
+  const CHIPS = D.filterChips;
+  const CHIP_LABELS = new Set();
+  if (CHIPS) for (const list of Object.values(CHIPS.labels)) for (const t of list) CHIP_LABELS.add(U.normalizeLabel(t));
+  const VERTICAL_LINKS = 'a[href*="udm="], a[href*="tbm="]';
+
+  function chipsWanted() {
+    return !!CHIPS && CHIPS.requires.every((t) => state.types.has(t));
+  }
+
+  function handleChip(textNode) {
+    const el = textNode.parentElement;
+    if (!el || el.closest(HIDDEN_SEL)) return;
+    if (el.closest('h3, cite') || el.closest(SEL.ignoreInside || 'x-none')) return;
+    const control = el.closest(SEL.control + ', [role="checkbox"], [role="option"]');
+    if (!control || (control.textContent || '').trim().length > D.maxControlTextLength) return;
+    if (control.matches('a[href]') && isExternalLink(control)) return;
+    let node = control;
+    for (;;) {
+      const p = node.parentElement;
+      if (!p || p === document.body || p === html) break;
+      if (p.matches(SEL.roots) || p.querySelector(SEL.roots)) break;
+      if (p.querySelector('input, textarea, form, h3')) break;
+      let tabs = false;
+      for (const a of p.querySelectorAll(VERTICAL_LINKS)) if (!node.contains(a)) { tabs = true; break; }
+      if (tabs) break;
+      if ((p.textContent || '').trim().length > CHIPS.maxRowText) break;
+      if (p.getBoundingClientRect().height > CHIPS.maxRowHeight) break;
+      node = p;
+    }
+    hide(node, CHIPS.type);
   }
 
   const SKIP_TAGS = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'TEMPLATE', 'svg', 'SVG']);
 
   function scanLabels(rootNode) {
+    const wantPrices = !!PRICE_RE && state.types.has('shopping');
+    const wantChips = chipsWanted();
+    const prices = [];
     const check = (node) => {
       const text = node.nodeValue;
       if (!text || text.length > maxLabelLength) return;
       const type = LABELS.get(U.normalizeLabel(text));
       if (type && state.types.has(type)) handleLabel(node, type);
+      else if (wantChips && CHIP_LABELS.has(U.normalizeLabel(text))) handleChip(node);
+      else if (wantPrices && isPriceText(text)) prices.push(node);
     };
     if (rootNode.nodeType === 3) {
       check(rootNode);
+      if (prices.length) handlePrices(prices);
       return;
     }
     const walker = document.createTreeWalker(rootNode, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, {
@@ -272,6 +390,7 @@
     const found = [];
     for (let n = walker.nextNode(); n; n = walker.nextNode()) found.push(n);
     found.forEach(check);
+    if (prices.length) handlePrices(prices);
   }
 
   function scanSelectors(rootNode) {
@@ -299,7 +418,7 @@
             if (control) hide(control, type);
           } else if (inArea(el, def.areas) && !el.closest(SEL.nav)) {
             const block = findBlockRoot(el, def.maxInnerResults);
-            if (block) hide(block, type);
+            if (block) hideBlock(block, type);
           }
         }
       }
@@ -372,6 +491,9 @@
   // ------------------------------------------------------- aplicar configuración
   function apply() {
     state.types = U.enabledTypes(state.settings, state.blockedSites);
+    if (IS_VERTICAL) {
+      for (const t of Array.from(state.types)) if (!D.typesOnVerticals.includes(t)) state.types.delete(t);
+    }
     html.setAttribute('data-ari-hide', Array.from(state.types).join(' '));
     html.setAttribute('data-ari-ready', '');
     unhideAll();

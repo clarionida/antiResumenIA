@@ -1,10 +1,10 @@
 {
   "extName": {
-    "message": "AntiResumen IA: resultados limpos",
+    "message": "Busca sem IA: oculte resumos de IA e anúncios para Google™",
     "description": "Nombre en la Chrome Web Store y en chrome://extensions (máx. 75)"
   },
   "extShortName": {
-    "message": "AntiResumen IA",
+    "message": "Busca sem IA",
     "description": "Nombre corto"
   },
   "extDescription": {
@@ -16,7 +16,7 @@
     "description": "Código de idioma para <html lang>"
   },
   "actionTitle": {
-    "message": "AntiResumen IA",
+    "message": "Busca sem IA",
     "description": "Tooltip del ícono"
   },
   "masterName": {
@@ -45,7 +45,10 @@
     "message": "Publicidade e compras"
   },
   "groupBlocks": {
-    "message": "Blocos que empurram os resultados"
+    "message": "Outras seções do Google"
+  },
+  "groupBlocksDesc": {
+    "message": "Quadros que o Google adiciona entre os resultados: perguntas, vídeos, imagens, mapas, fóruns e pesquisas relacionadas."
   },
   "groupSites": {
     "message": "Meus sites bloqueados"
@@ -57,7 +60,7 @@
     "message": "Contador"
   },
   "groupData": {
-    "message": "Sua configuração"
+    "message": "Backup e restauração"
   },
   "optAiOverviewName": {
     "message": "Ocultar resumos de IA"
@@ -81,7 +84,7 @@
     "message": "Ocultar blocos de compras"
   },
   "optShoppingDesc": {
-    "message": "Remove os carrosséis de produtos, preços e lojas."
+    "message": "Remove os carrosséis de produtos, preços e lojas. Se você também ocultar mapas e lugares, somem filtros como “Em estoque” ou “Aberto agora”."
   },
   "optPaaName": {
     "message": "Ocultar “As pessoas também perguntam”"
@@ -95,11 +98,29 @@
   "optVideosDesc": {
     "message": "Remove os carrosséis de vídeos e de vídeos curtos."
   },
+  "optImagesName": {
+    "message": "Ocultar blocos de imagens"
+  },
+  "optImagesDesc": {
+    "message": "Remove os quadros de imagens entre os resultados. A guia “Imagens” continua funcionando."
+  },
+  "optPlacesName": {
+    "message": "Ocultar mapas e lugares"
+  },
+  "optPlacesDesc": {
+    "message": "Remove o bloco “Lugares” com o mapa e os estabelecimentos próximos. O Google Maps continua funcionando."
+  },
   "optForumsName": {
     "message": "Ocultar “Discussões e fóruns”"
   },
   "optForumsDesc": {
-    "message": "Remove o bloco de conversas de fóruns e redes sociais."
+    "message": "Remove o bloco de conversas do Reddit, Quora e outros fóruns. Os resultados normais desses sites continuam."
+  },
+  "optRelatedName": {
+    "message": "Ocultar “Pesquisas relacionadas”"
+  },
+  "optRelatedDesc": {
+    "message": "Remove as sugestões de pesquisas relacionadas, no fim da página e dentro dos resultados."
   },
   "optNoticeName": {
     "message": "Mostrar aviso na página"
@@ -210,6 +231,10 @@
   "statsTitle": {
     "message": "Itens ocultados"
   },
+  "popupCounterLabel": {
+    "message": "Itens ocultados no total",
+    "description": "Contador total acumulado (popup y opciones)"
+  },
   "statsTotal": {
     "message": "Total"
   },
@@ -240,8 +265,17 @@
   "typeVideos": {
     "message": "Vídeos"
   },
+  "typeImages": {
+    "message": "Imagens"
+  },
+  "typePlaces": {
+    "message": "Mapas e lugares"
+  },
   "typeForums": {
     "message": "Discussões e fóruns"
+  },
+  "typeRelatedSearches": {
+    "message": "Pesquisas relacionadas"
   },
   "typeBlockedSites": {
     "message": "Sites bloqueados"
@@ -256,7 +290,7 @@
     "message": "Restaurar padrões"
   },
   "dataDesc": {
-    "message": "Salve suas opções e sua lista de sites em um arquivo JSON, ou carregue em outro navegador."
+    "message": "Salve suas opções e sua lista de sites bloqueados em um arquivo JSON, ou carregue em outro navegador."
   },
   "resetConfirm": {
     "message": "Todas as opções serão restauradas e sua lista de sites bloqueados será esvaziada. O contador não muda. Continuar?"
@@ -313,11 +347,25 @@
     "message": "(abre em uma nova aba)",
     "description": "Texto para lectores de pantalla"
   },
+  "reportLink": {
+    "message": "Relatar um problema"
+  },
+  "reportHint": {
+    "message": "Abre o GitHub em uma nova aba. Você precisa de uma conta gratuita. Só é enviado o que você escrever."
+  },
+  "trademarkNote": {
+    "message": "Extensão independente, sem relação com a Google LLC. Google é uma marca comercial da Google LLC.",
+    "description": "Atribución de marca exigida por la Chrome Web Store"
+  },
+  "madeBy": {
+    "message": "Feito com carinho por Clariónida",
+    "description": "Crédito al pie del popup y de opciones"
+  },
   "privacyNote": {
     "message": "Sem rastreio: nenhum dado é coletado ou enviado. Suas opções ficam salvas com a sincronização do Chrome."
   },
   "noticeRegion": {
-    "message": "AntiResumen IA",
+    "message": "Busca sem IA",
     "description": "Etiqueta accesible del aviso en Google"
   },
   "noticeHiddenOne": {
