@@ -215,9 +215,9 @@
         // Piezas internas de "Otras preguntas" (nombres sin ofuscar).
         markers: ['.related-question-pair', '[data-initq]'],
         labels: {
-          es: ['Otras preguntas de los usuarios', 'Preguntas relacionadas', 'Otras preguntas'],
-          en: ['People also ask', 'Related questions'],
-          pt: ['As pessoas também perguntam', 'Perguntas relacionadas']
+          es: ['Otras preguntas de los usuarios', 'Más preguntas', 'Preguntas relacionadas', 'Otras preguntas'],
+          en: ['People also ask', 'More questions', 'Related questions'],
+          pt: ['As pessoas também perguntam', 'Mais perguntas', 'Perguntas relacionadas']
         },
         maxInnerResults: 0
       },
