@@ -60,6 +60,7 @@
     hideForums: false,          // 7. "Debates y foros".
     hideRelatedSearches: false, // 7b. "También se buscó" / búsquedas relacionadas.
     hideImages: false,          // 7c. Bloques de imágenes entre los resultados.
+    hidePlaces: false,          // 7d. Mapa y negocios cercanos («Sitios»).
     showPageNotice: true,       // Aviso pequeño "Se ocultaron N elementos · Mostrar".
     webOnly: false,             // 9. Modo "Solo Web" (udm=14) con declarativeNetRequest.
     beforeDateEnabled: false,   // 10. Filtro "Solo contenido anterior a la IA".
@@ -69,7 +70,7 @@
   /** Tipos de bloque que se cuentan y se pueden ocultar. */
   const BLOCK_TYPES = Object.freeze([
     'aiOverview', 'aiMode', 'ads', 'shopping',
-    'peopleAlsoAsk', 'videos', 'images', 'forums', 'relatedSearches', 'blockedSites'
+    'peopleAlsoAsk', 'videos', 'images', 'places', 'forums', 'relatedSearches', 'blockedSites'
   ]);
 
   /** Qué opción activa cada tipo. "blockedSites" se activa si la lista no está vacía. */
@@ -83,6 +84,7 @@
     forums: 'hideForums',
     relatedSearches: 'hideRelatedSearches',
     images: 'hideImages',
+    places: 'hidePlaces',
     blockedSites: null
   });
 
@@ -149,6 +151,25 @@
      */
     typesOnVerticals: ['aiOverview', 'aiMode', 'ads', 'blockedSites'],
 
+    /**
+     * Fila de filtros de Google bajo las pestañas («En stock», «Abierto ahora»,
+     * «Mejor valorados»). Solo filtran productos y negocios, así que se oculta
+     * cuando están activos TODOS los tipos de "requires". Se oculta la fila
+     * completa: se sube desde el botón mientras el contenedor sea bajo (maxRowHeight),
+     * con poco texto (maxRowText) y sin pestañas, columnas ni campos de búsqueda.
+     */
+    filterChips: {
+      type: 'shopping',
+      requires: ['shopping', 'places'],
+      maxRowHeight: 72,
+      maxRowText: 200,
+      labels: {
+        es: ['En stock', 'Abierto ahora', 'Mejor valorados', 'Mejor valorado', 'Envío gratis', 'Cerca de ti', 'Con descuento', 'En oferta'],
+        en: ['In stock', 'Open now', 'Top rated', 'Free shipping', 'Nearby', 'On sale'],
+        pt: ['Em estoque', 'Aberto agora', 'Mais bem avaliados', 'Frete grátis', 'Perto de você', 'Em promoção']
+      }
+    },
+
     /** Título de un resultado normal con link. */
     organicTitle: 'a[href] h3',
 
@@ -171,7 +192,7 @@
       aiOverview: {
         strategy: 'block',
         areas: 'page',
-        yieldsTo: ['peopleAlsoAsk', 'forums', 'videos', 'images', 'shopping', 'relatedSearches'],
+        yieldsTo: ['peopleAlsoAsk', 'forums', 'videos', 'images', 'places', 'shopping', 'relatedSearches'],
         containers: [],
         markers: [],
         labels: {
@@ -294,6 +315,20 @@
           es: ['Debates y foros', 'Foros y debates'],
           en: ['Discussions and forums', 'Forums'],
           pt: ['Discussões e fóruns', 'Fóruns e discussões']
+        },
+        maxInnerResults: 0
+      },
+
+      places: {
+        strategy: 'block',
+        areas: 'main',
+        containers: [],
+        // #lu_map: ID histórico del mapa de negocios locales.
+        markers: ['#lu_map'],
+        labels: {
+          es: ['Sitios', 'Lugares', 'Negocios', 'Más lugares', 'Más negocios'],
+          en: ['Places', 'Businesses', 'More places', 'More businesses'],
+          pt: ['Lugares', 'Locais', 'Empresas', 'Mais lugares', 'Mais empresas']
         },
         maxInnerResults: 0
       },

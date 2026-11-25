@@ -81,7 +81,7 @@
     "message": "Ocultar bloques de compras"
   },
   "optShoppingDesc": {
-    "message": "Quita los carruseles de productos, precios y tiendas."
+    "message": "Quita los carruseles de productos, precios y tiendas. Si también ocultas mapas y lugares, se quitan los filtros como «En stock» o «Abierto ahora»."
   },
   "optPaaName": {
     "message": "Ocultar «Otras preguntas de los usuarios»"
@@ -100,6 +100,12 @@
   },
   "optImagesDesc": {
     "message": "Quita los recuadros de imágenes entre los resultados. La pestaña «Imágenes» sigue funcionando."
+  },
+  "optPlacesName": {
+    "message": "Ocultar mapas y lugares"
+  },
+  "optPlacesDesc": {
+    "message": "Quita el bloque «Sitios» con el mapa y los negocios cercanos. Google Maps sigue funcionando."
   },
   "optForumsName": {
     "message": "Ocultar «Debates y foros»"
@@ -258,6 +264,9 @@
   },
   "typeImages": {
     "message": "Imágenes"
+  },
+  "typePlaces": {
+    "message": "Mapas y lugares"
   },
   "typeForums": {
     "message": "Debates y foros"

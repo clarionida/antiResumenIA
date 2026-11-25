@@ -66,6 +66,12 @@ Hazlas en Google real después de cargar la extensión sin empaquetar. Para cada
 - [ ] Las fotos del panel de información de la derecha siguen visibles.
 - [ ] Al desactivarla, el recuadro reaparece sin recargar.
 
+## 7a2. Mapas y lugares (desactivado)
+- [ ] Busca «comida para perros» o «farmacia cerca»: con la opción activa desaparece el bloque «Sitios» con el mapa, los negocios y «Más lugares».
+- [ ] Busca un lugar concreto (por ejemplo «Museo Frida Kahlo»): el panel de información de la derecha, con su mapa, sigue visible.
+- [ ] Con «compras» y «mapas y lugares» activos, la fila de filtros «En stock · Abierto ahora · Mejor valorados» desaparece completa y las pestañas de arriba siguen visibles.
+- [ ] Con solo una de las dos activa, la fila de filtros sigue visible.
+
 ## 7b. «También se buscó» (desactivado)
 - [ ] Al activarla, desaparece el recuadro «También se buscó» («Búsquedas relacionadas») del final de la página.
 - [ ] La paginación («Siguiente», números de página) sigue visible.

@@ -81,7 +81,7 @@
     "message": "Hide shopping blocks"
   },
   "optShoppingDesc": {
-    "message": "Removes product, price and store carousels."
+    "message": "Removes product, price and store carousels. If you also hide maps and places, filters like “In stock” or “Open now” go too."
   },
   "optPaaName": {
     "message": "Hide “People also ask”"
@@ -100,6 +100,12 @@
   },
   "optImagesDesc": {
     "message": "Removes image boxes between results. The “Images” tab still works."
+  },
+  "optPlacesName": {
+    "message": "Hide maps and places"
+  },
+  "optPlacesDesc": {
+    "message": "Removes the “Places” block with the map and nearby businesses. Google Maps still works."
   },
   "optForumsName": {
     "message": "Hide “Discussions and forums”"
@@ -258,6 +264,9 @@
   },
   "typeImages": {
     "message": "Images"
+  },
+  "typePlaces": {
+    "message": "Maps and places"
   },
   "typeForums": {
     "message": "Discussions and forums"

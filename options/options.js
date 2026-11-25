@@ -118,7 +118,7 @@
   // ------------------------------------------------------------------ contador
   const TYPE_LABELS = {
     aiOverview: 'typeAiOverview', aiMode: 'typeAiMode', ads: 'typeAds', shopping: 'typeShopping',
-    peopleAlsoAsk: 'typePeopleAlsoAsk', videos: 'typeVideos', images: 'typeImages', forums: 'typeForums', relatedSearches: 'typeRelatedSearches', blockedSites: 'typeBlockedSites'
+    peopleAlsoAsk: 'typePeopleAlsoAsk', videos: 'typeVideos', images: 'typeImages', places: 'typePlaces', forums: 'typeForums', relatedSearches: 'typeRelatedSearches', blockedSites: 'typeBlockedSites'
   };
 
   function renderStats() {

@@ -166,6 +166,25 @@ const SHOTS = process.env.SHOTS_DIR;
   await ar.waitForTimeout(300);
   assert.strictEqual(await vis(ar, 'n-shop'), true, 'productos vuelven a verse');
 
+  // 7b3) Mapas y lugares + fila de filtros
+  assert.strictEqual(await vis(ar, 'n-places'), true, 'lugares visibles con la opción apagada');
+  assert.strictEqual(await vis(ar, 'n-chip1'), true, 'filtros visibles con las opciones apagadas');
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hidePlaces = true; await chrome.storage.sync.set({ settings }); });
+  await ar.waitForTimeout(300);
+  assert.strictEqual(await vis(ar, 'n-places'), false, 'bloque «Sitios» oculto');
+  assert.strictEqual(await ar.evaluate(() => document.getElementById('n-places').getAttribute('data-ari-hidden')), 'places');
+  assert.strictEqual(await vis(ar, 'n-chip1'), true, 'filtros visibles si compras sigue visible');
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideShopping = true; await chrome.storage.sync.set({ settings }); });
+  await ar.waitForTimeout(300);
+  assert.strictEqual(await vis(ar, 'n-chips'), false, 'fila de filtros oculta completa con compras + lugares');
+  assert.strictEqual(await ar.evaluate(() => [...document.querySelectorAll('#hdtb a')].some((a) => a.textContent === 'Todo' && a.getClientRects().length > 0)), true, 'las pestañas siguen visibles');
+  assert.strictEqual(await vis(ar, 'n-org1'), true, 'resultado normal visible');
+  assert.strictEqual(await vis(ar, 'n-org2'), true, 'resultado normal 2 visible');
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideShopping = false; settings.hidePlaces = false; await chrome.storage.sync.set({ settings }); });
+  await ar.waitForTimeout(300);
+  assert.strictEqual(await vis(ar, 'n-places'), true, 'lugares vuelven a verse');
+  assert.strictEqual(await vis(ar, 'n-chip1'), true, 'filtros vuelven a verse');
+
   // 7c) «También se buscó»
   await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideRelatedSearches = true; await chrome.storage.sync.set({ settings }); });
   await ar.waitForTimeout(300);

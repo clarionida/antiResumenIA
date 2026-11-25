@@ -31,6 +31,7 @@ BLOQUES QUE EMPUJAN LOS RESULTADOS
 • «Otras preguntas de los usuarios»
 • Carruseles de videos y videos cortos
 • Bloques de imágenes entre los resultados
+• Mapas y negocios cercanos («Sitios»)
 • «Debates y foros»
 • «También se buscó» (búsquedas relacionadas)
 
@@ -88,6 +89,7 @@ BLOCKS THAT PUSH RESULTS DOWN
 • “People also ask”
 • Video and short-video carousels
 • Image blocks between results
+• Maps and nearby businesses (“Places”)
 • “Discussions and forums”
 • “People also search for” (related searches)
 

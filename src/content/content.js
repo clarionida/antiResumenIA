@@ -326,16 +326,51 @@
     }
   }
 
+  // ------------------------------------------------ fila de filtros de compras/lugares
+  const CHIPS = D.filterChips;
+  const CHIP_LABELS = new Set();
+  if (CHIPS) for (const list of Object.values(CHIPS.labels)) for (const t of list) CHIP_LABELS.add(U.normalizeLabel(t));
+  const VERTICAL_LINKS = 'a[href*="udm="], a[href*="tbm="]';
+
+  function chipsWanted() {
+    return !!CHIPS && CHIPS.requires.every((t) => state.types.has(t));
+  }
+
+  function handleChip(textNode) {
+    const el = textNode.parentElement;
+    if (!el || el.closest(HIDDEN_SEL)) return;
+    if (el.closest('h3, cite') || el.closest(SEL.ignoreInside || 'x-none')) return;
+    const control = el.closest(SEL.control + ', [role="checkbox"], [role="option"]');
+    if (!control || (control.textContent || '').trim().length > D.maxControlTextLength) return;
+    if (control.matches('a[href]') && isExternalLink(control)) return;
+    let node = control;
+    for (;;) {
+      const p = node.parentElement;
+      if (!p || p === document.body || p === html) break;
+      if (p.matches(SEL.roots) || p.querySelector(SEL.roots)) break;
+      if (p.querySelector('input, textarea, form, h3')) break;
+      let tabs = false;
+      for (const a of p.querySelectorAll(VERTICAL_LINKS)) if (!node.contains(a)) { tabs = true; break; }
+      if (tabs) break;
+      if ((p.textContent || '').trim().length > CHIPS.maxRowText) break;
+      if (p.getBoundingClientRect().height > CHIPS.maxRowHeight) break;
+      node = p;
+    }
+    hide(node, CHIPS.type);
+  }
+
   const SKIP_TAGS = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'TEMPLATE', 'svg', 'SVG']);
 
   function scanLabels(rootNode) {
     const wantPrices = !!PRICE_RE && state.types.has('shopping');
+    const wantChips = chipsWanted();
     const prices = [];
     const check = (node) => {
       const text = node.nodeValue;
       if (!text || text.length > maxLabelLength) return;
       const type = LABELS.get(U.normalizeLabel(text));
       if (type && state.types.has(type)) handleLabel(node, type);
+      else if (wantChips && CHIP_LABELS.has(U.normalizeLabel(text))) handleChip(node);
       else if (wantPrices && isPriceText(text)) prices.push(node);
     };
     if (rootNode.nodeType === 3) {
