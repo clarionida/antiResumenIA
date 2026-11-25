@@ -57,6 +57,12 @@ Hazlas en Google real después de cargar la extensión sin empaquetar. Para cada
 - [ ] Al activarla, desaparece el bloque.
 - [ ] La pestaña «Foros» de la barra superior sigue visible.
 
+## 7a. Bloques de imágenes (desactivado)
+- [ ] Busca «atún en lata para gatos»: con la opción activa desaparece el recuadro «Imágenes» con «Mostrar más imágenes».
+- [ ] La pestaña «Imágenes» de arriba sigue visible y funciona.
+- [ ] Las fotos del panel de información de la derecha siguen visibles.
+- [ ] Al desactivarla, el recuadro reaparece sin recargar.
+
 ## 7b. «También se buscó» (desactivado)
 - [ ] Al activarla, desaparece el recuadro «También se buscó» («Búsquedas relacionadas») del final de la página.
 - [ ] La paginación («Siguiente», números de página) sigue visible.

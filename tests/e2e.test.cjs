@@ -77,6 +77,19 @@ const SHOTS = process.env.SHOTS_DIR;
   assert.strictEqual(await hiddenType('b-pin2'), 'blockedSites');
   if (SHOTS) await page.screenshot({ path: path.join(SHOTS, '2-all.png'), fullPage: true });
 
+  // 3b) Bloques de imágenes
+  assert.strictEqual(await visible('b-img'), true, 'imágenes visibles con la opción apagada');
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideImages = true; await chrome.storage.sync.set({ settings }); });
+  await page.waitForTimeout(300);
+  assert.strictEqual(await visible('b-img'), false, 'bloque de imágenes oculto');
+  assert.strictEqual(await hiddenType('b-img'), 'images');
+  assert.strictEqual(await visible('kp'), true, 'la ficha de la derecha no se oculta por su sección «Imágenes»');
+  assert.strictEqual(await page.evaluate(() => [...document.querySelectorAll('#hdtb a')].find((a) => a.textContent === 'Imágenes').getClientRects().length > 0), true, 'la pestaña «Imágenes» sigue visible');
+  assert.strictEqual(await visible('b-org1'), true, 'resultado normal visible');
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideImages = false; await chrome.storage.sync.set({ settings }); });
+  await page.waitForTimeout(300);
+  assert.strictEqual(await visible('b-img'), true, 'imágenes vuelven a verse');
+
   // 4) "Mostrar" temporalmente
   await page.evaluate(() => document.documentElement.setAttribute('data-ari-reveal', ''));
   await expect({ 'b-ai': true, 'b-paa': true, ad1: true }, 'mostrar');
@@ -127,6 +140,13 @@ const SHOTS = process.env.SHOTS_DIR;
   await ar.waitForTimeout(300);
   assert.strictEqual(await vis(ar, 'n-paa'), true, '2026: «Más preguntas» vuelve a verse');
   assert.strictEqual(await vis(ar, 'n-related'), true, '2026: «También se buscó» visible con la opción apagada');
+  // Resumen de IA visible + imágenes ocultas: la sección «Imágenes» dentro del resumen no se lo lleva.
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideAiOverview = false; settings.hideImages = true; await chrome.storage.sync.set({ settings }); });
+  await ar.waitForTimeout(300);
+  assert.strictEqual(await vis(ar, 'n-ai'), true, 'resumen de IA visible aunque tenga una sección «Imágenes»');
+  await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideAiOverview = true; settings.hideImages = false; await chrome.storage.sync.set({ settings }); });
+  await ar.waitForTimeout(300);
+  assert.strictEqual(await vis(ar, 'n-ai'), false, 'resumen de IA oculto otra vez');
 
   // 7c) «También se buscó»
   await sw.evaluate(async () => { const { settings } = await chrome.storage.sync.get('settings'); settings.hideRelatedSearches = true; await chrome.storage.sync.set({ settings }); });

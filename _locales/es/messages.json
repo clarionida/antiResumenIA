@@ -95,6 +95,12 @@
   "optVideosDesc": {
     "message": "Quita los carruseles de videos y de videos cortos."
   },
+  "optImagesName": {
+    "message": "Ocultar bloques de imágenes"
+  },
+  "optImagesDesc": {
+    "message": "Quita los recuadros de imágenes entre los resultados. La pestaña «Imágenes» sigue funcionando."
+  },
   "optForumsName": {
     "message": "Ocultar «Debates y foros»"
   },
@@ -249,6 +255,9 @@
   },
   "typeVideos": {
     "message": "Videos"
+  },
+  "typeImages": {
+    "message": "Imágenes"
   },
   "typeForums": {
     "message": "Debates y foros"

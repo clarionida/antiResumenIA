@@ -59,6 +59,7 @@
     hideVideos: false,          // 6. Carruseles de videos y videos cortos.
     hideForums: false,          // 7. "Debates y foros".
     hideRelatedSearches: false, // 7b. "También se buscó" / búsquedas relacionadas.
+    hideImages: false,          // 7c. Bloques de imágenes entre los resultados.
     showPageNotice: true,       // Aviso pequeño "Se ocultaron N elementos · Mostrar".
     webOnly: false,             // 9. Modo "Solo Web" (udm=14) con declarativeNetRequest.
     beforeDateEnabled: false,   // 10. Filtro "Solo contenido anterior a la IA".
@@ -68,7 +69,7 @@
   /** Tipos de bloque que se cuentan y se pueden ocultar. */
   const BLOCK_TYPES = Object.freeze([
     'aiOverview', 'aiMode', 'ads', 'shopping',
-    'peopleAlsoAsk', 'videos', 'forums', 'relatedSearches', 'blockedSites'
+    'peopleAlsoAsk', 'videos', 'images', 'forums', 'relatedSearches', 'blockedSites'
   ]);
 
   /** Qué opción activa cada tipo. "blockedSites" se activa si la lista no está vacía. */
@@ -81,6 +82,7 @@
     videos: 'hideVideos',
     forums: 'hideForums',
     relatedSearches: 'hideRelatedSearches',
+    images: 'hideImages',
     blockedSites: null
   });
 
@@ -163,7 +165,7 @@
       aiOverview: {
         strategy: 'block',
         areas: 'page',
-        yieldsTo: ['peopleAlsoAsk', 'forums', 'videos', 'shopping', 'relatedSearches'],
+        yieldsTo: ['peopleAlsoAsk', 'forums', 'videos', 'images', 'shopping', 'relatedSearches'],
         containers: [],
         markers: [],
         labels: {
@@ -246,6 +248,22 @@
           es: ['Videos', 'Vídeos', 'Videos cortos', 'Vídeos cortos', 'Shorts'],
           en: ['Videos', 'Short videos', 'Shorts'],
           pt: ['Vídeos', 'Vídeos curtos', 'Shorts']
+        },
+        maxInnerResults: 0
+      },
+
+      images: {
+        strategy: 'block',
+        // Solo columna central: la pestaña «Imágenes» está en la navegación y las
+        // fotos de las fichas de información se ignoran (ignoreLabelsInside).
+        areas: 'main',
+        containers: [],
+        // IDs históricos del bloque de imágenes entre resultados.
+        markers: ['#iur', '#imagebox_bigimages'],
+        labels: {
+          es: ['Imágenes'],
+          en: ['Images'],
+          pt: ['Imagens']
         },
         maxInnerResults: 0
       },

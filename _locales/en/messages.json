@@ -95,6 +95,12 @@
   "optVideosDesc": {
     "message": "Removes video and short-video carousels."
   },
+  "optImagesName": {
+    "message": "Hide image blocks"
+  },
+  "optImagesDesc": {
+    "message": "Removes image boxes between results. The “Images” tab still works."
+  },
   "optForumsName": {
     "message": "Hide “Discussions and forums”"
   },
@@ -249,6 +255,9 @@
   },
   "typeVideos": {
     "message": "Videos"
+  },
+  "typeImages": {
+    "message": "Images"
   },
   "typeForums": {
     "message": "Discussions and forums"

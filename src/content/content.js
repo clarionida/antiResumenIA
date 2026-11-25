@@ -270,15 +270,21 @@
     return null;
   }
 
-  /** Oculta un bloque respetando "yieldsTo": el bloque es del tipo de su primer encabezado. */
+  /**
+   * Oculta un bloque según el tipo de su PRIMER encabezado. Ej.: una sección
+   * «Imágenes» dentro del resumen de IA no oculta el resumen como «imágenes».
+   * Si el tipo define "yieldsTo", solo cede ante esos tipos.
+   */
   function hideBlock(block, type) {
-    const yieldsTo = D.types[type].yieldsTo;
-    if (yieldsTo && yieldsTo.length) {
-      const first = firstLabelType(block);
-      if (first && first !== type && yieldsTo.includes(first)) {
-        if (state.types.has(first)) hide(block, first);
+    const first = firstLabelType(block);
+    if (first && first !== type) {
+      const yieldsTo = D.types[type].yieldsTo;
+      if (yieldsTo && !yieldsTo.includes(first)) {
+        hide(block, type);
         return;
       }
+      if (state.types.has(first)) hide(block, first);
+      return;
     }
     hide(block, type);
   }

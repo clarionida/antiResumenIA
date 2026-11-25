@@ -30,6 +30,7 @@ PUBLICIDAD Y COMPRAS
 BLOQUES QUE EMPUJAN LOS RESULTADOS
 • «Otras preguntas de los usuarios»
 • Carruseles de videos y videos cortos
+• Bloques de imágenes entre los resultados
 • «Debates y foros»
 • «También se buscó» (búsquedas relacionadas)
 
@@ -86,6 +87,7 @@ ADS AND SHOPPING
 BLOCKS THAT PUSH RESULTS DOWN
 • “People also ask”
 • Video and short-video carousels
+• Image blocks between results
 • “Discussions and forums”
 • “People also search for” (related searches)
 
