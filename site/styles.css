@@ -119,3 +119,6 @@ footer .tm { font-size: 13px; }
 .split .steps { grid-template-columns: 1fr; gap: 16px; }
 .split .steps li { position: relative; padding-left: 50px; min-height: 36px; }
 .split .steps li::before { position: absolute; left: 0; top: -4px; margin: 0; }
+.faq h3 { font-size: 19px; margin: 28px 0 10px; color: var(--accent-strong); }
+@media (prefers-color-scheme: dark) { .faq h3 { color: var(--accent); } }
+.faq h3:first-of-type { margin-top: 8px; }

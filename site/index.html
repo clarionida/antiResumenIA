@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Buscar sin IA: quita el resumen de IA y los anuncios de Google (extensión gratis para Chrome)</title>
-  <meta name="description" content="Extensión gratuita para Chrome que oculta el resumen de IA («Vista creada con IA»), el Modo IA, los anuncios y otros recuadros de Google. Solo resultados con links, como antes. Sin rastreo.">
+  <meta name="description" content="Extensión gratuita para Chrome que oculta el resumen de IA («Vista creada con IA»), el Modo IA, los anuncios, los productos y otras secciones de Google, y bloquea los sitios que no quieres ver. Solo resultados con links. Sin rastreo.">
   <link rel="canonical" href="https://clarionida.github.io/antiResumenIA/">
   <link rel="alternate" hreflang="es" href="https://clarionida.github.io/antiResumenIA/">
   <link rel="alternate" hreflang="en" href="https://clarionida.github.io/antiResumenIA/en/">
@@ -45,31 +45,187 @@
     "sameAs": ["https://github.com/clarionida/antiResumenIA"]
   }
   </script>
-  <script type="application/ld+json">
+  <script type="application/ld+json" id="faq-jsonld">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "¿Cómo quito el resumen de IA de Google?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Instala la extensión gratuita Buscar sin IA en Chrome. Desde ese momento, el bloque «Resumen de IA», «Vista creada con IA» o «Visión general creada por IA» deja de aparecer en tus búsquedas de Google, y el resto de los resultados se queda igual." } },
-      { "@type": "Question", "name": "¿Se puede desactivar la IA de Google sin instalar nada?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Google no tiene un botón para apagarla. Puedes elegir la pestaña «Web» en cada búsqueda o crear un buscador personalizado con el parámetro udm=14. Buscar sin IA lo hace automático y te deja elegir qué ocultar." } },
-      { "@type": "Question", "name": "¿Buscar sin IA es gratis?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Sí, es 100 % gratis: sin versión premium, sin funciones bloqueadas y sin anuncios. Las donaciones son opcionales." } },
-      { "@type": "Question", "name": "¿Recopila mis datos o mis búsquedas?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No. No recopila, no envía y no vende ningún dato, no hace peticiones a internet y no tiene analítica. Solo lee la página de resultados de Google en tu navegador para ocultar lo que elegiste." } },
-      { "@type": "Question", "name": "¿Funciona con Google de mi país?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Funciona en más de 40 dominios de Google, como google.com, google.com.mx, google.es, google.com.ar, google.com.co, google.cl, google.com.pe y google.com.br, con Google en español, inglés o portugués." } },
-      { "@type": "Question", "name": "¿Puedo ver lo que se ocultó?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Sí. En la página de Google aparece un aviso pequeño, «Se ocultaron N elementos · Mostrar». Al pulsar «Mostrar» se ve todo lo oculto, marcado con un borde punteado." } },
-      { "@type": "Question", "name": "¿Funciona en Edge, Brave u Opera?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Esos navegadores están basados en Chrome y aceptan sus extensiones, así que debería funcionar, aunque está probada en Chrome. Solo actúa cuando buscas en Google." } },
-      { "@type": "Question", "name": "¿Funciona en el celular?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No. Chrome para Android y para iPhone no admite extensiones. Funciona en Chrome de computadora." } },
-      { "@type": "Question", "name": "¿Qué pasa si Google cambia su página?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Google cambia su página seguido. La extensión se revisa cada mes y se actualiza cuando hace falta. Si algo deja de ocultarse, puedes reportarlo desde el link «Reportar un problema» de las opciones." } },
-      { "@type": "Question", "name": "¿En qué se diferencia de otras extensiones?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Está pensada primero en español, te deja elegir qué ocultar una por una, incluye una lista de sitios bloqueados, no rastrea nada y su código es público en GitHub." } }
+      {
+        "@type": "Question",
+        "name": "¿Cómo quito el resumen de IA de Google?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Instala la extensión gratuita Buscar sin IA en Chrome. Desde ese momento, el bloque «Resumen de IA», «Vista creada con IA» o «Visión general creada por IA» deja de aparecer en tus búsquedas de Google, y el resto de los resultados se queda igual."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo quito el «Modo IA» de Google?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Buscar sin IA oculta la pestaña «Modo IA» de la barra de pestañas y su botón junto a la caja de búsqueda. Viene activado desde el inicio."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Se puede desactivar la IA de Google sin instalar nada?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Google no tiene un botón para apagarla. Puedes elegir la pestaña «Web» en cada búsqueda o crear un buscador personalizado con el parámetro udm=14. Buscar sin IA lo hace automático y te deja elegir qué ocultar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo quito los anuncios de Google?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Buscar sin IA oculta los anuncios y los resultados patrocinados («Patrocinado», «Resultado patrocinado») de arriba y de abajo de la página de resultados. Viene activado desde el inicio, así que solo ves los resultados normales."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Es un bloqueador de anuncios como AdBlock o uBlock?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No exactamente. Buscar sin IA solo limpia la página de resultados de Google: no bloquea anuncios en otros sitios web ni en YouTube. Tampoco bloquea conexiones: solo oculta lo que no quieres ver. Si ya usas un bloqueador de anuncios, puedes usar las dos a la vez."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo ocultar los productos, precios y tiendas de los resultados?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Activa «Ocultar bloques de compras» y desaparecen las cuadrículas y carruseles de productos con precios, aunque no tengan título. La pestaña «Shopping» de Google sigue funcionando normal por si quieres comprar algo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo quito «Otras preguntas de los usuarios» o «Más preguntas»?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Activa «Ocultar «Otras preguntas de los usuarios»» en las opciones. La lista de preguntas desplegables desaparece y los resultados suben."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo ocultar los videos, las imágenes y los mapas de Google?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, cada uno por separado: carruseles de videos y videos cortos, recuadros de imágenes entre los resultados, y el bloque «Sitios» con el mapa y los negocios cercanos. Las pestañas «Videos» e «Imágenes» y Google Maps siguen funcionando."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo quito «También se buscó» o las búsquedas relacionadas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Activa «Ocultar «También se buscó»». Desaparecen las sugerencias del final de la página y el recuadro «La gente también busca» que aparece debajo de un resultado al volver atrás. La paginación se queda."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo quito «Debates y foros» o los resultados de Reddit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La opción «Ocultar «Debates y foros»» quita el bloque de conversaciones de Reddit, Quora y otros foros. Si además no quieres ver los resultados normales de Reddit, agrega reddit.com a tus sitios bloqueados."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo bloquear sitios como Pinterest en los resultados de Google?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. En «Mis sitios bloqueados» escribe el dominio, por ejemplo pinterest.com, y sus resultados desaparecen de tus búsquedas, incluidos los de sus subdominios (es.pinterest.com, ar.pinterest.com…). Puedes agregar hasta 300 sitios y quitarlos cuando quieras."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué es el modo «Solo Web» (udm=14)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Abre tus búsquedas directamente en la vista «Web» de Google, que muestra solo resultados con links. Para eso agrega udm=14 a la dirección de la búsqueda. Este modo también quita otros paneles, como la ficha de información o el clima. Imágenes, Noticias, Videos, Maps y Shopping siguen igual. Viene apagado."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo ver solo páginas anteriores a la IA, por ejemplo de antes de 2023?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. La opción «Solo contenido anterior a la IA» agrega a tus búsquedas el filtro de fecha de Google para mostrar páginas publicadas antes del día que elijas (de inicio, el 1 de enero de 2023). Google estima la fecha de cada página, así que puede no ser exacto. Viene apagada."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Buscar sin IA es gratis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, es 100 % gratis: sin versión premium, sin funciones bloqueadas y sin anuncios. Las donaciones son opcionales."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Recopila mis datos o mis búsquedas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. No recopila, no envía y no vende ningún dato, no hace peticiones a internet y no tiene analítica. Solo lee la página de resultados de Google en tu navegador para ocultar lo que elegiste."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo ver lo que se ocultó o pausar la extensión?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. En la página de Google aparece un aviso pequeño, «Se ocultaron N elementos · Mostrar», que te deja ver lo oculto, marcado con un borde punteado. Y con el interruptor del ícono de la barra pausas todo al instante sin perder tu configuración."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Mi configuración se guarda en todas mis computadoras?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Si usas la sincronización de Chrome, tus opciones y tus sitios bloqueados se guardan en tu cuenta y aparecen en tus otras computadoras. También puedes exportarlos a un archivo e importarlos en otro navegador."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Funciona con Google de mi país?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Funciona en más de 40 dominios de Google, como google.com, google.com.mx, google.es, google.com.ar, google.com.co, google.cl, google.com.pe y google.com.br, con Google en español, inglés o portugués."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Funciona en Edge, Brave u Opera?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Esos navegadores están basados en Chrome y aceptan sus extensiones, así que debería funcionar, aunque está probada en Chrome. Solo actúa cuando buscas en Google."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Funciona en el celular?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Chrome para Android y para iPhone no admite extensiones. Funciona en Chrome de computadora."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué pasa si Google cambia su página?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Google cambia su página seguido. La extensión se revisa cada mes y se actualiza cuando hace falta. Si algo deja de ocultarse, puedes reportarlo desde el link «Reportar un problema» de las opciones."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿En qué se diferencia de otras extensiones?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Está pensada primero en español, no solo quita la IA (también anuncios, compras y otras secciones), te deja elegir qué ocultar una por una, incluye una lista de sitios bloqueados, no rastrea nada y su código es público en GitHub."
+        }
+      }
     ]
   }
   </script>
@@ -188,14 +344,65 @@
     <section id="preguntas" class="faq">
       <div class="wrap">
         <h2>Preguntas frecuentes</h2>
+        <!-- FAQ:INICIO -->
+        <h3>Inteligencia artificial</h3>
         <details>
           <summary>¿Cómo quito el resumen de IA de Google?</summary>
           <p>Instala la extensión gratuita Buscar sin IA en Chrome. Desde ese momento, el bloque «Resumen de IA», «Vista creada con IA» o «Visión general creada por IA» deja de aparecer en tus búsquedas de Google, y el resto de los resultados se queda igual.</p>
         </details>
         <details>
+          <summary>¿Cómo quito el «Modo IA» de Google?</summary>
+          <p>Buscar sin IA oculta la pestaña «Modo IA» de la barra de pestañas y su botón junto a la caja de búsqueda. Viene activado desde el inicio.</p>
+        </details>
+        <details>
           <summary>¿Se puede desactivar la IA de Google sin instalar nada?</summary>
           <p>Google no tiene un botón para apagarla. Puedes elegir la pestaña «Web» en cada búsqueda o crear un buscador personalizado con el parámetro <code>udm=14</code>. Buscar sin IA lo hace automático y te deja elegir qué ocultar.</p>
         </details>
+        <h3>Anuncios y compras</h3>
+        <details>
+          <summary>¿Cómo quito los anuncios de Google?</summary>
+          <p>Buscar sin IA oculta los anuncios y los resultados patrocinados («Patrocinado», «Resultado patrocinado») de arriba y de abajo de la página de resultados. Viene activado desde el inicio, así que solo ves los resultados normales.</p>
+        </details>
+        <details>
+          <summary>¿Es un bloqueador de anuncios como AdBlock o uBlock?</summary>
+          <p>No exactamente. Buscar sin IA solo limpia la página de resultados de Google: no bloquea anuncios en otros sitios web ni en YouTube. Tampoco bloquea conexiones: solo oculta lo que no quieres ver. Si ya usas un bloqueador de anuncios, puedes usar las dos a la vez.</p>
+        </details>
+        <details>
+          <summary>¿Puedo ocultar los productos, precios y tiendas de los resultados?</summary>
+          <p>Sí. Activa «Ocultar bloques de compras» y desaparecen las cuadrículas y carruseles de productos con precios, aunque no tengan título. La pestaña «Shopping» de Google sigue funcionando normal por si quieres comprar algo.</p>
+        </details>
+        <h3>Otras secciones de Google</h3>
+        <details>
+          <summary>¿Cómo quito «Otras preguntas de los usuarios» o «Más preguntas»?</summary>
+          <p>Activa «Ocultar «Otras preguntas de los usuarios»» en las opciones. La lista de preguntas desplegables desaparece y los resultados suben.</p>
+        </details>
+        <details>
+          <summary>¿Puedo ocultar los videos, las imágenes y los mapas de Google?</summary>
+          <p>Sí, cada uno por separado: carruseles de videos y videos cortos, recuadros de imágenes entre los resultados, y el bloque «Sitios» con el mapa y los negocios cercanos. Las pestañas «Videos» e «Imágenes» y Google Maps siguen funcionando.</p>
+        </details>
+        <details>
+          <summary>¿Cómo quito «También se buscó» o las búsquedas relacionadas?</summary>
+          <p>Activa «Ocultar «También se buscó»». Desaparecen las sugerencias del final de la página y el recuadro «La gente también busca» que aparece debajo de un resultado al volver atrás. La paginación se queda.</p>
+        </details>
+        <details>
+          <summary>¿Cómo quito «Debates y foros» o los resultados de Reddit?</summary>
+          <p>La opción «Ocultar «Debates y foros»» quita el bloque de conversaciones de Reddit, Quora y otros foros. Si además no quieres ver los resultados normales de Reddit, agrega <code>reddit.com</code> a tus sitios bloqueados.</p>
+        </details>
+        <h3>Sitios bloqueados</h3>
+        <details>
+          <summary>¿Puedo bloquear sitios como Pinterest en los resultados de Google?</summary>
+          <p>Sí. En «Mis sitios bloqueados» escribe el dominio, por ejemplo <code>pinterest.com</code>, y sus resultados desaparecen de tus búsquedas, incluidos los de sus subdominios (es.pinterest.com, ar.pinterest.com…). Puedes agregar hasta 300 sitios y quitarlos cuando quieras.</p>
+        </details>
+        <h3>Opciones avanzadas</h3>
+        <details>
+          <summary>¿Qué es el modo «Solo Web» (udm=14)?</summary>
+          <p>Abre tus búsquedas directamente en la vista «Web» de Google, que muestra solo resultados con links. Para eso agrega <code>udm=14</code> a la dirección de la búsqueda. Este modo también quita otros paneles, como la ficha de información o el clima. Imágenes, Noticias, Videos, Maps y Shopping siguen igual. Viene apagado.</p>
+        </details>
+        <details>
+          <summary>¿Puedo ver solo páginas anteriores a la IA, por ejemplo de antes de 2023?</summary>
+          <p>Sí. La opción «Solo contenido anterior a la IA» agrega a tus búsquedas el filtro de fecha de Google para mostrar páginas publicadas antes del día que elijas (de inicio, el 1 de enero de 2023). Google estima la fecha de cada página, así que puede no ser exacto. Viene apagada.</p>
+        </details>
+        <h3>Uso, privacidad y compatibilidad</h3>
         <details>
           <summary>¿Buscar sin IA es gratis?</summary>
           <p>Sí, es 100 % gratis: sin versión premium, sin funciones bloqueadas y sin anuncios. Las donaciones son opcionales.</p>
@@ -205,12 +412,16 @@
           <p>No. No recopila, no envía y no vende ningún dato, no hace peticiones a internet y no tiene analítica. Solo lee la página de resultados de Google en tu navegador para ocultar lo que elegiste.</p>
         </details>
         <details>
-          <summary>¿Funciona con Google de mi país?</summary>
-          <p>Sí. Funciona en más de 40 dominios de Google, como google.com, google.com.mx, google.es, google.com.ar, google.com.co, google.cl, google.com.pe y google.com.br, con Google en español, inglés o portugués.</p>
+          <summary>¿Puedo ver lo que se ocultó o pausar la extensión?</summary>
+          <p>Sí. En la página de Google aparece un aviso pequeño, «Se ocultaron N elementos · Mostrar», que te deja ver lo oculto, marcado con un borde punteado. Y con el interruptor del ícono de la barra pausas todo al instante sin perder tu configuración.</p>
         </details>
         <details>
-          <summary>¿Puedo ver lo que se ocultó?</summary>
-          <p>Sí. En la página de Google aparece un aviso pequeño, «Se ocultaron N elementos · Mostrar». Al pulsar «Mostrar» se ve todo lo oculto, marcado con un borde punteado.</p>
+          <summary>¿Mi configuración se guarda en todas mis computadoras?</summary>
+          <p>Si usas la sincronización de Chrome, tus opciones y tus sitios bloqueados se guardan en tu cuenta y aparecen en tus otras computadoras. También puedes exportarlos a un archivo e importarlos en otro navegador.</p>
+        </details>
+        <details>
+          <summary>¿Funciona con Google de mi país?</summary>
+          <p>Sí. Funciona en más de 40 dominios de Google, como google.com, google.com.mx, google.es, google.com.ar, google.com.co, google.cl, google.com.pe y google.com.br, con Google en español, inglés o portugués.</p>
         </details>
         <details>
           <summary>¿Funciona en Edge, Brave u Opera?</summary>
@@ -226,8 +437,9 @@
         </details>
         <details>
           <summary>¿En qué se diferencia de otras extensiones?</summary>
-          <p>Está pensada primero en español, te deja elegir qué ocultar una por una, incluye una lista de sitios bloqueados, no rastrea nada y su código es público en GitHub.</p>
+          <p>Está pensada primero en español, no solo quita la IA (también anuncios, compras y otras secciones), te deja elegir qué ocultar una por una, incluye una lista de sitios bloqueados, no rastrea nada y su código es público en GitHub.</p>
         </details>
+        <!-- FAQ:FIN -->
       </div>
     </section>
 
