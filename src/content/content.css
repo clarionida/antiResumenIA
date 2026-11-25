@@ -1,0 +1,41 @@
+/*
+ * AntiResumen IA · CSS inyectado en document_start
+ *
+ * Objetivo: que nada "parpadee". Hay dos capas:
+ *
+ * 1) Ocultamiento previo con selectores estables (IDs y atributos con significado).
+ *    Antes de que se lea la configuración (html sin data-ari-ready) se aplican los
+ *    valores predeterminados (anuncios y Modo IA activados). Después, se aplican
+ *    según data-ari-hide, que el content script llena con los tipos activos.
+ *    Si cambias containers/markers de "ads" o "aiMode" en src/config.js,
+ *    actualiza también estas listas.
+ *
+ * 2) Todo lo detectado por el content script (por texto o estructura) recibe el
+ *    atributo data-ari-hidden y se oculta con display:none, que no deja huecos.
+ *
+ * html[data-ari-reveal] = el usuario pulsó "Mostrar" en el aviso: se ve todo y
+ * lo que estaba oculto queda marcado con un borde punteado.
+ */
+
+/* --- 1. Anuncios ------------------------------------------------------------ */
+html:not([data-ari-ready]) :is(#tads, #tadsb, #bottomads, [data-text-ad]),
+html[data-ari-hide~="ads"]:not([data-ari-reveal]) :is(#tads, #tadsb, #bottomads, [data-text-ad]) {
+  display: none !important;
+}
+
+/* --- 1. Modo IA (pestaña con udm=50) --------------------------------------- */
+html:not([data-ari-ready]) :is(a[href*="udm=50"], [role="listitem"]:has(> a[href*="udm=50"])),
+html[data-ari-hide~="aiMode"]:not([data-ari-reveal]) :is(a[href*="udm=50"], [role="listitem"]:has(> a[href*="udm=50"])) {
+  display: none !important;
+}
+
+/* --- 2. Elementos marcados por el content script --------------------------- */
+html:not([data-ari-reveal]) [data-ari-hidden] {
+  display: none !important;
+}
+
+html[data-ari-reveal] [data-ari-hidden] {
+  outline: 2px dashed rgba(196, 98, 45, 0.85) !important;
+  outline-offset: 3px !important;
+  border-radius: 8px;
+}

@@ -1,0 +1,18 @@
+body { width: 340px; }
+.popup { padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+.top { display: flex; align-items: center; gap: 10px; padding: 2px 4px; }
+.top img { border-radius: 7px; }
+.title { flex: 1; min-width: 0; }
+h1 { font-size: 16px; margin: 0; }
+.title .note { margin: 0; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 10px 12px 2px; }
+#mainOptions { padding-bottom: 4px; }
+.paused #mainOptions { opacity: .55; }
+.counter { display: flex; align-items: baseline; gap: 8px; padding: 10px 14px; }
+.counter .count { font-size: 22px; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+.donate-card { padding: 12px 14px; background: var(--accent-soft); border-color: transparent; }
+.donate-title { font-size: 14px; margin: 0 0 4px; }
+.donate-card p { margin: 0 0 10px; font-size: 13px; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.footer { display: flex; flex-direction: column; align-items: center; gap: 8px; padding-top: 2px; }

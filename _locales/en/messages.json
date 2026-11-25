@@ -1,0 +1,354 @@
+{
+  "extName": {
+    "message": "AntiResumen IA: Clean Search Results",
+    "description": "Nombre en la Chrome Web Store y en chrome://extensions (máx. 75)"
+  },
+  "extShortName": {
+    "message": "AntiResumen IA",
+    "description": "Nombre corto"
+  },
+  "extDescription": {
+    "message": "Hide AI Overviews, ads and filler blocks on Google. See just the results with links. Free, no tracking.",
+    "description": "Descripción corta (máx. 132)"
+  },
+  "langCode": {
+    "message": "en",
+    "description": "Código de idioma para <html lang>"
+  },
+  "actionTitle": {
+    "message": "AntiResumen IA",
+    "description": "Tooltip del ícono"
+  },
+  "masterName": {
+    "message": "Extension on",
+    "description": "Interruptor general"
+  },
+  "masterOnDesc": {
+    "message": "Cleaning up your searches.",
+    "description": "Estado activo"
+  },
+  "masterOffDesc": {
+    "message": "Paused: Google looks as usual.",
+    "description": "Estado en pausa"
+  },
+  "masterOptionsDesc": {
+    "message": "Turn it off to pause everything without losing your settings.",
+    "description": "Descripción en opciones"
+  },
+  "groupGeneral": {
+    "message": "General"
+  },
+  "groupAi": {
+    "message": "Artificial intelligence"
+  },
+  "groupAdsShopping": {
+    "message": "Ads and shopping"
+  },
+  "groupBlocks": {
+    "message": "Blocks that push results down"
+  },
+  "groupSites": {
+    "message": "My blocked sites"
+  },
+  "groupAdvanced": {
+    "message": "Advanced"
+  },
+  "groupStats": {
+    "message": "Counter"
+  },
+  "groupData": {
+    "message": "Your settings"
+  },
+  "optAiOverviewName": {
+    "message": "Hide AI Overviews"
+  },
+  "optAiOverviewDesc": {
+    "message": "Removes the “AI Overview” box shown above the results."
+  },
+  "optAiModeName": {
+    "message": "Hide AI Mode"
+  },
+  "optAiModeDesc": {
+    "message": "Removes the “AI Mode” tab and button."
+  },
+  "optAdsName": {
+    "message": "Hide ads"
+  },
+  "optAdsDesc": {
+    "message": "Removes sponsored results and ads."
+  },
+  "optShoppingName": {
+    "message": "Hide shopping blocks"
+  },
+  "optShoppingDesc": {
+    "message": "Removes product, price and store carousels."
+  },
+  "optPaaName": {
+    "message": "Hide “People also ask”"
+  },
+  "optPaaDesc": {
+    "message": "Removes the list of expandable questions."
+  },
+  "optVideosName": {
+    "message": "Hide video carousels"
+  },
+  "optVideosDesc": {
+    "message": "Removes video and short-video carousels."
+  },
+  "optForumsName": {
+    "message": "Hide “Discussions and forums”"
+  },
+  "optForumsDesc": {
+    "message": "Removes the block of forum and social media threads."
+  },
+  "optNoticeName": {
+    "message": "Show on-page notice"
+  },
+  "optNoticeDesc": {
+    "message": "A small notice tells you how many items were hidden and lets you see them."
+  },
+  "sitesIntro": {
+    "message": "Results from these sites, and their subdomains, won’t appear."
+  },
+  "sitesInputLabel": {
+    "message": "Site to block"
+  },
+  "sitesPlaceholder": {
+    "message": "for example, pinterest.com"
+  },
+  "sitesAdd": {
+    "message": "Add"
+  },
+  "sitesRemove": {
+    "message": "Remove"
+  },
+  "sitesRemoveAria": {
+    "message": "Remove $SITE$",
+    "description": "Etiqueta accesible del botón quitar",
+    "placeholders": {
+      "site": {
+        "content": "$1"
+      }
+    }
+  },
+  "sitesEmpty": {
+    "message": "No blocked sites yet."
+  },
+  "sitesInvalid": {
+    "message": "That doesn’t look like a domain. Try something like pinterest.com."
+  },
+  "sitesGoogle": {
+    "message": "Google domains can’t be blocked."
+  },
+  "sitesDuplicate": {
+    "message": "$SITE$ is already on your list.",
+    "placeholders": {
+      "site": {
+        "content": "$1"
+      }
+    }
+  },
+  "sitesAdded": {
+    "message": "Added $SITE$.",
+    "placeholders": {
+      "site": {
+        "content": "$1"
+      }
+    }
+  },
+  "sitesRemoved": {
+    "message": "Removed $SITE$.",
+    "placeholders": {
+      "site": {
+        "content": "$1"
+      }
+    }
+  },
+  "sitesLimit": {
+    "message": "The list already has the maximum of $MAX$ sites.",
+    "placeholders": {
+      "max": {
+        "content": "$1"
+      }
+    }
+  },
+  "sitesCount": {
+    "message": "Blocked sites: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "advancedIntro": {
+    "message": "These options change the address of your searches. They start off; turn them on only if you know what they do."
+  },
+  "optWebOnlyName": {
+    "message": "“Web only” mode"
+  },
+  "optWebOnlyDesc": {
+    "message": "Opens your searches straight in Google’s “Web” view: just results with links."
+  },
+  "webOnlyWarning": {
+    "message": "This mode also removes other panels, like info cards, maps, top stories or weather. Images, News, Videos, Maps and Shopping stay the same. While it’s on, the “All” tab takes you back to “Web”."
+  },
+  "optBeforeDateName": {
+    "message": "Only pre-AI content"
+  },
+  "optBeforeDateDesc": {
+    "message": "Adds a date filter to show pages published before the day you choose."
+  },
+  "beforeDateLabel": {
+    "message": "Show results from before"
+  },
+  "beforeDateWarning": {
+    "message": "Google estimates each page’s date its own way: some pages without a clear date may disappear and some newer ones may slip in. If you pick another range under “Tools”, yours is kept."
+  },
+  "beforeDateInvalid": {
+    "message": "Pick a date between September 4, 1998 and today."
+  },
+  "statsTitle": {
+    "message": "Items hidden"
+  },
+  "statsTotal": {
+    "message": "Total"
+  },
+  "statsLocalNote": {
+    "message": "This counter is stored only in your browser and is never sent anywhere."
+  },
+  "statsReset": {
+    "message": "Reset counter"
+  },
+  "statsResetConfirm": {
+    "message": "Reset the counter to zero?"
+  },
+  "typeAiOverview": {
+    "message": "AI Overviews"
+  },
+  "typeAiMode": {
+    "message": "AI Mode"
+  },
+  "typeAds": {
+    "message": "Ads"
+  },
+  "typeShopping": {
+    "message": "Shopping"
+  },
+  "typePeopleAlsoAsk": {
+    "message": "People also ask"
+  },
+  "typeVideos": {
+    "message": "Videos"
+  },
+  "typeForums": {
+    "message": "Discussions and forums"
+  },
+  "typeBlockedSites": {
+    "message": "Blocked sites"
+  },
+  "exportBtn": {
+    "message": "Export settings"
+  },
+  "importBtn": {
+    "message": "Import settings"
+  },
+  "resetBtn": {
+    "message": "Restore defaults"
+  },
+  "dataDesc": {
+    "message": "Save your options and site list to a JSON file, or load them in another browser."
+  },
+  "resetConfirm": {
+    "message": "All options will be restored and your blocked-site list will be emptied. The counter stays as is. Continue?"
+  },
+  "resetDone": {
+    "message": "Done: defaults restored."
+  },
+  "importDone": {
+    "message": "Settings imported."
+  },
+  "importError": {
+    "message": "Couldn’t read the file. Use a JSON file exported from this extension."
+  },
+  "saved": {
+    "message": "Saved"
+  },
+  "optionsTitle": {
+    "message": "Options"
+  },
+  "optionsSubtitle": {
+    "message": "Choose what to hide from your Google searches. Changes apply instantly, even in open tabs."
+  },
+  "popupMoreOptions": {
+    "message": "More options"
+  },
+  "popupMainOptions": {
+    "message": "What to hide",
+    "description": "Título de la sección del popup"
+  },
+  "freeNote": {
+    "message": "Everything is free. Donating is optional."
+  },
+  "donateLink": {
+    "message": "Find it useful? You can buy me a coffee ☕"
+  },
+  "donatePromptTitle": {
+    "message": "Over $COUNT$ items hidden already!",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "donatePromptBody": {
+    "message": "This extension is free and will stay free. If it’s helped you, you can support it with a coffee. Totally optional."
+  },
+  "donateSupport": {
+    "message": "Support"
+  },
+  "donateDismiss": {
+    "message": "Don’t show again"
+  },
+  "newTabHint": {
+    "message": "(opens in a new tab)",
+    "description": "Texto para lectores de pantalla"
+  },
+  "privacyNote": {
+    "message": "No tracking: no data is collected or sent. Your options are saved with Chrome sync."
+  },
+  "noticeRegion": {
+    "message": "AntiResumen IA",
+    "description": "Etiqueta accesible del aviso en Google"
+  },
+  "noticeHiddenOne": {
+    "message": "1 item hidden"
+  },
+  "noticeHiddenMany": {
+    "message": "$COUNT$ items hidden",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "noticeShowingOne": {
+    "message": "Showing 1 hidden item"
+  },
+  "noticeShowingMany": {
+    "message": "Showing $COUNT$ hidden items",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "noticeShow": {
+    "message": "Show"
+  },
+  "noticeHide": {
+    "message": "Hide"
+  },
+  "noticeClose": {
+    "message": "Close notice"
+  }
+}

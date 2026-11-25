@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>gatos - Buscar con Google</title>
+<style>body{font-family:arial;margin:0;background:#fff} #rhs{float:right;width:300px} .r{margin:12px 0}</style></head>
+<body>
+<div id="searchform"><form role="search"><input name="q" value="gatos"><button aria-label="Modo IA" type="button">✦</button></form></div>
+<div id="hdtb"><div role="navigation"><div role="list">
+  <div role="listitem"><a href="/search?q=gatos">Todo</a></div>
+  <div role="listitem"><a href="/search?q=gatos&udm=50" id="tab-ai"><span>Modo IA</span></a></div>
+  <div role="listitem"><a href="/search?q=gatos&udm=2">Imágenes</a></div>
+  <div role="listitem"><a href="/search?q=gatos&udm=7">Videos</a></div>
+  <div role="listitem"><a href="/search?q=gatos&udm=18">Foros</a></div>
+</div></div></div>
+<div id="rcnt">
+ <div id="center_col">
+  <div id="taw"><div id="tvcap"><div id="tads" aria-label="Anuncios">
+    <div data-text-ad="1" id="ad1"><span>Patrocinado</span><a href="https://ads.example.com"><div role="heading">Comida para gatos barata</div></a></div>
+    <div data-text-ad="1" id="ad2"><span>Patrocinado</span><a href="https://ads2.example.com"><div role="heading">Arena para gatos</div></a></div>
+  </div></div></div>
+  <div id="res"><div id="search"><div><div id="rso">
+    <div id="b-ai"><div><div><div><svg width="10" height="10"></svg><span>Resumen de IA</span></div>
+      <div>Los gatos son mamíferos carnívoros domésticos.</div>
+      <a href="https://es.wikipedia.org/wiki/Gato"><span>Wikipedia</span></a></div></div></div>
+    <div id="b-pin" class="r"><div><a href="https://es.pinterest.com/gatos/"><br><h3>Gatos en Pinterest</h3><cite>es.pinterest.com</cite></a><span>Ideas de gatos</span></div></div>
+    <div id="b-paa"><div><div role="heading" aria-level="2"><span>Otras preguntas de los usuarios</span></div>
+      <div class="related-question-pair" data-q="¿Cuánto vive un gato?"><div role="button">¿Cuánto vive un gato?</div></div>
+      <div class="related-question-pair" data-q="¿Qué comen los gatos?"><div role="button">¿Qué comen los gatos?</div></div></div></div>
+    <div id="b-org1" class="r"><div><a href="https://www.example.com/gatos"><br><h3>Todo sobre gatos</h3><cite>example.com</cite></a><span>Guía completa.</span></div></div>
+    <div id="b-vid"><div><div role="heading" aria-level="2"><span>Videos</span></div>
+      <div><a href="https://www.youtube.com/watch?v=1"><div role="heading" aria-level="3">Gatos graciosos</div></a></div></div></div>
+    <div id="b-org-videos-title" class="r"><div><a href="https://www.videos.example.org/"><br><h3>Videos</h3><cite>videos.example.org</cite></a></div></div>
+    <div id="b-forum"><div><div role="heading" aria-level="2"><span>Debates y foros</span></div>
+      <div><a href="https://www.reddit.com/r/cats"><span>r/cats · ¿Mi gato me odia?</span></a></div></div></div>
+    <div id="b-shop"><div><span role="heading" aria-level="2">Productos populares</span><div>Rascador $499</div></div></div>
+    <div id="b-wrap"><div id="b-org2" class="r"><a href="https://gatos.net/"><br><h3>Gatos.net</h3><cite>gatos.net</cite></a></div>
+      <div id="b-pin2" class="r"><a href="https://www.pinterest.com/x"><br><h3>Pinterest gatos 2</h3><cite>pinterest.com</cite></a></div></div>
+  </div></div></div></div>
+  <div id="botstuff"><div id="bres"><div>Búsquedas relacionadas</div></div></div>
+  <div id="bottomads"><div data-text-ad="1" id="ad3"><span>Patrocinado</span><a href="https://ads3.example.com">Veterinaria 24h</a></div></div>
+ </div>
+ <div id="rhs"><div class="kp-wholepage" id="kp"><h2>Gato</h2><div><div role="heading" aria-level="3"><span>Videos</span></div></div><div>Felis catus</div></div></div>
+</div>
+<script>
+  // Contenido dinámico: un resultado más (scroll infinito) y un segundo bloque de IA tardío.
+  setTimeout(() => {
+    const more = document.createElement('div');
+    more.innerHTML = '<div id="b-late-pin" class="r"><a href="https://ar.pinterest.com/z"><br><h3>Más gatos Pinterest</h3><cite>ar.pinterest.com</cite></a></div>' +
+      '<div id="b-late-org" class="r"><a href="https://www.gatitos.org/"><br><h3>Gatitos</h3><cite>gatitos.org</cite></a></div>';
+    document.getElementById('botstuff').prepend(...more.children);
+  }, 400);
+</script>
+</body></html>

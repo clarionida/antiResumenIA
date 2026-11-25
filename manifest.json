@@ -1,0 +1,143 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extName__",
+  "short_name": "__MSG_extShortName__",
+  "description": "__MSG_extDescription__",
+  "version": "1.0.0",
+  "default_locale": "es",
+  "minimum_chrome_version": "111",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "__MSG_actionTitle__",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "permissions": [
+    "storage",
+    "declarativeNetRequestWithHostAccess"
+  ],
+  "host_permissions": [
+    "https://www.google.com/*",
+    "https://www.google.com.mx/*",
+    "https://www.google.es/*",
+    "https://www.google.com.ar/*",
+    "https://www.google.com.co/*",
+    "https://www.google.co/*",
+    "https://www.google.cl/*",
+    "https://www.google.com.pe/*",
+    "https://www.google.co.ve/*",
+    "https://www.google.com.ec/*",
+    "https://www.google.com.bo/*",
+    "https://www.google.com.py/*",
+    "https://www.google.com.uy/*",
+    "https://www.google.co.cr/*",
+    "https://www.google.com.pa/*",
+    "https://www.google.com.gt/*",
+    "https://www.google.hn/*",
+    "https://www.google.com.sv/*",
+    "https://www.google.com.ni/*",
+    "https://www.google.com.do/*",
+    "https://www.google.com.pr/*",
+    "https://www.google.com.cu/*",
+    "https://www.google.gq/*",
+    "https://www.google.ad/*",
+    "https://www.google.com.br/*",
+    "https://www.google.pt/*",
+    "https://www.google.co.ao/*",
+    "https://www.google.co.mz/*",
+    "https://www.google.cv/*",
+    "https://www.google.co.uk/*",
+    "https://www.google.ca/*",
+    "https://www.google.com.au/*",
+    "https://www.google.co.nz/*",
+    "https://www.google.ie/*",
+    "https://www.google.co.in/*",
+    "https://www.google.co.za/*",
+    "https://www.google.de/*",
+    "https://www.google.fr/*",
+    "https://www.google.it/*",
+    "https://www.google.nl/*",
+    "https://www.google.be/*",
+    "https://www.google.ch/*",
+    "https://www.google.at/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.google.com/*",
+        "https://www.google.com.mx/*",
+        "https://www.google.es/*",
+        "https://www.google.com.ar/*",
+        "https://www.google.com.co/*",
+        "https://www.google.co/*",
+        "https://www.google.cl/*",
+        "https://www.google.com.pe/*",
+        "https://www.google.co.ve/*",
+        "https://www.google.com.ec/*",
+        "https://www.google.com.bo/*",
+        "https://www.google.com.py/*",
+        "https://www.google.com.uy/*",
+        "https://www.google.co.cr/*",
+        "https://www.google.com.pa/*",
+        "https://www.google.com.gt/*",
+        "https://www.google.hn/*",
+        "https://www.google.com.sv/*",
+        "https://www.google.com.ni/*",
+        "https://www.google.com.do/*",
+        "https://www.google.com.pr/*",
+        "https://www.google.com.cu/*",
+        "https://www.google.gq/*",
+        "https://www.google.ad/*",
+        "https://www.google.com.br/*",
+        "https://www.google.pt/*",
+        "https://www.google.co.ao/*",
+        "https://www.google.co.mz/*",
+        "https://www.google.cv/*",
+        "https://www.google.co.uk/*",
+        "https://www.google.ca/*",
+        "https://www.google.com.au/*",
+        "https://www.google.co.nz/*",
+        "https://www.google.ie/*",
+        "https://www.google.co.in/*",
+        "https://www.google.co.za/*",
+        "https://www.google.de/*",
+        "https://www.google.fr/*",
+        "https://www.google.it/*",
+        "https://www.google.nl/*",
+        "https://www.google.be/*",
+        "https://www.google.ch/*",
+        "https://www.google.at/*"
+      ],
+      "include_globs": [
+        "*://www.google.*/search*",
+        "*://www.google.*/",
+        "*://www.google.*/webhp*"
+      ],
+      "js": [
+        "src/config.js",
+        "src/common.js",
+        "src/content/content.js"
+      ],
+      "css": [
+        "src/content/content.css"
+      ],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ]
+}

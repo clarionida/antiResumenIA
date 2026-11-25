@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AntiResumen IA</title>
+  <link rel="stylesheet" href="../ui/theme.css">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <img src="../icons/icon128.png" width="56" height="56" alt="">
+      <div>
+        <h1><span data-i18n="extShortName">AntiResumen IA</span> · <span data-i18n="optionsTitle">Opciones</span></h1>
+        <p class="lead" data-i18n="optionsSubtitle"></p>
+      </div>
+      <p id="saved" class="status ok saved" role="status" aria-live="polite"></p>
+    </header>
+
+    <main>
+      <!-- General -->
+      <section class="group" aria-labelledby="g-general">
+        <h2 id="g-general" data-i18n="groupGeneral">General</h2>
+        <div class="master">
+          <div>
+            <label for="enabled" class="name" data-i18n="masterName">Extensión activa</label>
+            <p class="desc" id="d-enabled" data-i18n="masterOptionsDesc"></p>
+          </div>
+          <span class="switch">
+            <input type="checkbox" role="switch" id="enabled" data-setting="enabled" aria-describedby="d-enabled">
+          </span>
+        </div>
+        <label class="option">
+          <input type="checkbox" data-setting="showPageNotice" aria-describedby="d-notice">
+          <span class="name" data-i18n="optNoticeName"></span>
+          <span class="desc" id="d-notice" data-i18n="optNoticeDesc"></span>
+        </label>
+      </section>
+
+      <!-- Inteligencia artificial -->
+      <fieldset class="group">
+        <legend><h2 data-i18n="groupAi">Inteligencia artificial</h2></legend>
+        <label class="option">
+          <input type="checkbox" data-setting="hideAiOverview" aria-describedby="d-ai">
+          <span class="name" data-i18n="optAiOverviewName"></span>
+          <span class="desc" id="d-ai" data-i18n="optAiOverviewDesc"></span>
+        </label>
+        <label class="option">
+          <input type="checkbox" data-setting="hideAiMode" aria-describedby="d-aimode">
+          <span class="name" data-i18n="optAiModeName"></span>
+          <span class="desc" id="d-aimode" data-i18n="optAiModeDesc"></span>
+        </label>
+      </fieldset>
+
+      <!-- Publicidad y compras -->
+      <fieldset class="group">
+        <legend><h2 data-i18n="groupAdsShopping">Publicidad y compras</h2></legend>
+        <label class="option">
+          <input type="checkbox" data-setting="hideAds" aria-describedby="d-ads">
+          <span class="name" data-i18n="optAdsName"></span>
+          <span class="desc" id="d-ads" data-i18n="optAdsDesc"></span>
+        </label>
+        <label class="option">
+          <input type="checkbox" data-setting="hideShopping" aria-describedby="d-shop">
+          <span class="name" data-i18n="optShoppingName"></span>
+          <span class="desc" id="d-shop" data-i18n="optShoppingDesc"></span>
+        </label>
+      </fieldset>
+
+      <!-- Bloques que empujan los resultados -->
+      <fieldset class="group">
+        <legend><h2 data-i18n="groupBlocks">Bloques que empujan los resultados</h2></legend>
+        <label class="option">
+          <input type="checkbox" data-setting="hidePeopleAlsoAsk" aria-describedby="d-paa">
+          <span class="name" data-i18n="optPaaName"></span>
+          <span class="desc" id="d-paa" data-i18n="optPaaDesc"></span>
+        </label>
+        <label class="option">
+          <input type="checkbox" data-setting="hideVideos" aria-describedby="d-videos">
+          <span class="name" data-i18n="optVideosName"></span>
+          <span class="desc" id="d-videos" data-i18n="optVideosDesc"></span>
+        </label>
+        <label class="option">
+          <input type="checkbox" data-setting="hideForums" aria-describedby="d-forums">
+          <span class="name" data-i18n="optForumsName"></span>
+          <span class="desc" id="d-forums" data-i18n="optForumsDesc"></span>
+        </label>
+      </fieldset>
+
+      <!-- Mis sitios bloqueados -->
+      <section class="group" aria-labelledby="g-sites">
+        <h2 id="g-sites" data-i18n="groupSites">Mis sitios bloqueados</h2>
+        <p class="desc pad" data-i18n="sitesIntro"></p>
+        <form id="siteForm" class="site-form" novalidate>
+          <label for="siteInput" class="visually-hidden" data-i18n="sitesInputLabel">Sitio para bloquear</label>
+          <input id="siteInput" type="text" inputmode="url" autocomplete="off" autocapitalize="off" spellcheck="false"
+                 data-i18n-placeholder="sitesPlaceholder" aria-describedby="siteStatus">
+          <button type="submit" class="btn primary" data-i18n="sitesAdd">Agregar</button>
+        </form>
+        <p id="siteStatus" class="status pad" role="status" aria-live="polite"></p>
+        <p id="siteCount" class="note pad"></p>
+        <ul id="siteList" class="site-list"></ul>
+        <p id="siteEmpty" class="note pad" data-i18n="sitesEmpty"></p>
+      </section>
+
+      <!-- Avanzado -->
+      <fieldset class="group advanced">
+        <legend><h2 data-i18n="groupAdvanced">Avanzado</h2></legend>
+        <p class="desc pad" data-i18n="advancedIntro"></p>
+        <label class="option">
+          <input type="checkbox" data-setting="webOnly" aria-describedby="d-web w-web">
+          <span class="name" data-i18n="optWebOnlyName"></span>
+          <span class="desc" id="d-web" data-i18n="optWebOnlyDesc"></span>
+        </label>
+        <p class="warning" id="w-web" data-i18n="webOnlyWarning"></p>
+
+        <label class="option">
+          <input type="checkbox" data-setting="beforeDateEnabled" aria-describedby="d-date w-date">
+          <span class="name" data-i18n="optBeforeDateName"></span>
+          <span class="desc" id="d-date" data-i18n="optBeforeDateDesc"></span>
+        </label>
+        <div class="date-row">
+          <label for="beforeDate" data-i18n="beforeDateLabel">Mostrar resultados anteriores al</label>
+          <input type="date" id="beforeDate" aria-describedby="dateStatus">
+        </div>
+        <p id="dateStatus" class="status error pad-date" role="status" aria-live="polite"></p>
+        <p class="warning" id="w-date" data-i18n="beforeDateWarning"></p>
+      </fieldset>
+
+      <!-- Contador -->
+      <section class="group" aria-labelledby="g-stats">
+        <h2 id="g-stats" data-i18n="groupStats">Contador</h2>
+        <div class="stats">
+          <p class="stats-total"><span id="statTotal" class="big">0</span> <span data-i18n="statsTitle"></span></p>
+          <dl id="statTypes" class="stat-types"></dl>
+          <p class="note" data-i18n="statsLocalNote"></p>
+          <button type="button" class="btn" id="resetStats" data-i18n="statsReset">Reiniciar contador</button>
+        </div>
+      </section>
+
+      <!-- Datos -->
+      <section class="group" aria-labelledby="g-data">
+        <h2 id="g-data" data-i18n="groupData">Tu configuración</h2>
+        <p class="desc pad" data-i18n="dataDesc"></p>
+        <div class="row pad">
+          <button type="button" class="btn" id="exportBtn" data-i18n="exportBtn">Exportar configuración</button>
+          <button type="button" class="btn" id="importBtn" data-i18n="importBtn">Importar configuración</button>
+          <input type="file" id="importFile" accept="application/json,.json" hidden>
+          <button type="button" class="btn" id="resetBtn" data-i18n="resetBtn">Restablecer valores predeterminados</button>
+        </div>
+        <p id="dataStatus" class="status pad" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <footer class="page-footer footer-links">
+      <a class="donate" data-donate>
+        <span data-i18n="donateLink"></span>
+        <span class="visually-hidden" data-i18n="newTabHint"></span>
+      </a>
+      <span class="note" data-i18n="freeNote"></span>
+      <span class="note" data-i18n="privacyNote"></span>
+    </footer>
+  </div>
+  <script src="../src/config.js"></script>
+  <script src="../src/common.js"></script>
+  <script src="../ui/i18n-dom.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
