@@ -231,9 +231,9 @@
         containers: ['#tads', '#tadsb', '#bottomads', '[data-text-ad]'],
         markers: [],
         labels: {
-          es: ['Patrocinado', 'Patrocinados', 'Patrocinada', 'Patrocinadas', 'Resultados patrocinados', 'Anuncio', 'Anuncios'],
-          en: ['Sponsored', 'Sponsored results', 'Ad', 'Ads'],
-          pt: ['Patrocinado', 'Patrocinados', 'Resultados patrocinados', 'Anúncio', 'Anúncios']
+          es: ['Patrocinado', 'Patrocinados', 'Patrocinada', 'Patrocinadas', 'Resultado patrocinado', 'Resultados patrocinados', 'Anuncio', 'Anuncios'],
+          en: ['Sponsored', 'Sponsored result', 'Sponsored results', 'Ad', 'Ads'],
+          pt: ['Patrocinado', 'Patrocinados', 'Resultado patrocinado', 'Resultados patrocinados', 'Anúncio', 'Anúncios']
         },
         maxInnerResults: 1
       },

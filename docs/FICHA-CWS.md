@@ -120,6 +120,65 @@ Find it useful? You can buy me a coffee ☕ https://donate.stripe.com/bJeeVfgHU7
 
 ---
 
+## Português (pt_BR; serve também para pt_PT)
+
+**Nome** (58/75)
+Busca sem IA: oculte resumos de IA e anúncios para Google™
+*(pt_PT: «Pesquisa sem IA: oculte resumos de IA e anúncios para Google™»)*
+
+**Descrição curta** (113/132)
+Oculte resumos de IA, anúncios e blocos extras no Google. Veja só os resultados com links. Grátis e sem rastreio.
+
+**Descrição longa**
+
+```
+Sente falta de quando pesquisar no Google era ver uma lista de links? Busca sem IA limpa a página de resultados para você decidir o que ver.
+
+Marque o que quer ocultar:
+
+INTELIGÊNCIA ARTIFICIAL
+• Resumos de IA (“Visão geral criada por IA” / “AI Overview”)
+• A guia e o botão do “Modo IA”
+
+PUBLICIDADE E COMPRAS
+• Resultados patrocinados e anúncios
+• Grades e carrosséis de produtos com preços
+
+OUTRAS SEÇÕES DO GOOGLE
+• “As pessoas também perguntam”
+• Carrosséis de vídeos e vídeos curtos
+• Blocos de imagens entre os resultados
+• Mapas e estabelecimentos próximos
+• “Discussões e fóruns”
+• Pesquisas relacionadas
+
+MEUS SITES BLOQUEADOS
+• Digite um domínio (por exemplo, pinterest.com) e os resultados dele somem, inclusive dos subdomínios.
+
+AVANÇADO (desativado no início)
+• Modo “Somente Web”: abre suas buscas direto na visualização “Web” do Google.
+• “Só conteúdo anterior à IA”: adiciona um filtro de data que você escolhe.
+
+DETALHES QUE IMPORTAM
+• As mudanças valem na hora, sem recarregar.
+• Um aviso pequeno mostra quantos itens foram ocultados e deixa você vê-los com um clique. Dá para desativar.
+• Um botão para pausar tudo.
+• Funciona com o Google em português, espanhol e inglês, e nos domínios de cada país (google.com.br, google.pt e outros).
+• Modo claro e escuro, navegável pelo teclado.
+• Exporte e importe sua configuração em JSON.
+
+PRIVACIDADE
+Não coleta, não envia e não vende nenhum dado. Não faz requisições de rede nem tem análise de uso. Suas opções ficam salvas com a sincronização do Chrome e o contador fica só no seu navegador.
+
+Algo não foi ocultado? Relate pelo link “Relatar um problema” nas opções.
+
+100% grátis: sem versão premium e sem funções bloqueadas. Extensão independente, sem relação com a Google LLC. Google é uma marca comercial da Google LLC.
+
+Foi útil? Se quiser, você pode me pagar um café ☕ https://donate.stripe.com/bJeeVfgHU7Npa1A59ocAo00 (totalmente opcional).
+```
+
+---
+
 ## Justificación de permisos (formulario de revisión)
 
 **Propósito único** (Single purpose)
