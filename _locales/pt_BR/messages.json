@@ -45,7 +45,10 @@
     "message": "Publicidade e compras"
   },
   "groupBlocks": {
-    "message": "Blocos que empurram os resultados"
+    "message": "Outras seções do Google"
+  },
+  "groupBlocksDesc": {
+    "message": "Quadros que o Google adiciona entre os resultados: perguntas, vídeos, imagens, mapas, fóruns e pesquisas relacionadas."
   },
   "groupSites": {
     "message": "Meus sites bloqueados"
@@ -57,7 +60,7 @@
     "message": "Contador"
   },
   "groupData": {
-    "message": "Sua configuração"
+    "message": "Backup e restauração"
   },
   "optAiOverviewName": {
     "message": "Ocultar resumos de IA"

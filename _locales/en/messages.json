@@ -45,7 +45,10 @@
     "message": "Ads and shopping"
   },
   "groupBlocks": {
-    "message": "Blocks that push results down"
+    "message": "Other Google sections"
+  },
+  "groupBlocksDesc": {
+    "message": "Boxes Google adds between results: questions, videos, images, maps, forums and related searches."
   },
   "groupSites": {
     "message": "My blocked sites"
@@ -57,7 +60,7 @@
     "message": "Counter"
   },
   "groupData": {
-    "message": "Your settings"
+    "message": "Backup and reset"
   },
   "optAiOverviewName": {
     "message": "Hide AI Overviews"

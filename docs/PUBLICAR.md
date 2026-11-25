@@ -29,7 +29,12 @@ Comprueba el zip: descomprímelo en una carpeta nueva y cárgalo con «Cargar ex
    - Idioma predeterminado: Español. Agrega el inglés y el portugués en «Idiomas».
    - Categoría: «Productividad» (Productivity → Tools/Workflow).
    - Ícono de la tienda: `icons/icon128.png`.
-   - Capturas: al menos 1 de 1280×800 o 640×400. Sugeridas: resultados con el aviso, el popup y la página de opciones.
+   - Capturas: al menos 1 de 1280×800 o 640×400. Deben ser **reales**. La primera, «antes / después»:
+     1. Busca algo con resumen de IA y anuncios. Con la ventana a unos 1280 px de ancho, **pausa** la extensión, recarga y captura solo la zona de resultados (desde el logo de Google hacia abajo, unos 860 px de ancho). En Mac: Cmd+Mayús+4 y arrastra.
+     2. **Activa** la extensión, recarga y captura la misma zona, del mismo tamaño.
+     3. `node tools/store-screenshot.cjs --antes antes.png --despues despues.png --lang es` → `store/captura-1-es.png`. Repite con `--lang en` para la ficha en inglés.
+     4. Evita que se vea información personal (tu ubicación, tu foto de perfil, otras pestañas).
+     Otras capturas sugeridas: el popup y la página de opciones.
    - Mosaico promocional pequeño (440×280): opcional, pero ayuda.
 3. **Prácticas de privacidad**: llénala con `docs/FICHA-CWS.md`, sección «Prácticas de privacidad».
    - URL de la política de privacidad: publica `PRIVACY.md`, por ejemplo con GitHub Pages o el link directo al archivo en GitHub, y pega esa URL.

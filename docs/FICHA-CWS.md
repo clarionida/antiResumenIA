@@ -27,7 +27,7 @@ PUBLICIDAD Y COMPRAS
 • Resultados patrocinados y anuncios
 • Carruseles de productos y precios
 
-BLOQUES QUE EMPUJAN LOS RESULTADOS
+OTRAS SECCIONES DE GOOGLE
 • «Otras preguntas de los usuarios»
 • Carruseles de videos y videos cortos
 • Bloques de imágenes entre los resultados
@@ -85,7 +85,7 @@ ADS AND SHOPPING
 • Sponsored results and ads
 • Product and price carousels
 
-BLOCKS THAT PUSH RESULTS DOWN
+OTHER GOOGLE SECTIONS
 • “People also ask”
 • Video and short-video carousels
 • Image blocks between results

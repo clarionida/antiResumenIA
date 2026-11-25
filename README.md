@@ -74,7 +74,7 @@ Las páginas simuladas imitan la estructura de Google, pero **no sustituyen las 
 
 ## Ícono
 
-`icons/icon.svg` es original: una lupa con tres renglones, que representan resultados con links, sobre un fondo terracota. Para regenerar los PNG:
+`icons/icon.svg` es original: una lupa con una chispa tachada («sin IA») sobre un fondo terracota. La chispa es plana y de un solo color, para no parecerse a ningún logo de marca. `icons/icon-small.svg` es la versión simplificada para 16 px. Para regenerar los PNG:
 
 ```bash
 node tools/render-icons.cjs
