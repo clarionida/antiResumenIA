@@ -97,7 +97,13 @@
    *                              resultados normales vecinos.
    *                  "control" → oculta el botón/link/pestaña más cercano
    *                              (se usa para "Modo IA").
-   *  - "areas":      "main" = solo columna central; "all" = central + lateral.
+   *  - "areas":      "main" = solo columna central; "all" = central + lateral;
+   *                  "page" = cualquier parte fuera de la navegación (el resumen
+   *                  de IA nuevo ocupa todo el ancho, fuera de #center_col).
+   *  - "yieldsTo":   si el bloque encontrado EMPIEZA con la etiqueta de otro tipo,
+   *                  pertenece a ese otro tipo. Ej.: «Más preguntas» trae respuestas
+   *                  escondidas que dicen «Visión general creada por IA», pero el
+   *                  bloque es de preguntas, no el resumen de IA.
    *  - "maxInnerResults": cuántos títulos de resultado normal (a h3) puede
    *                  contener el bloque. Los anuncios de texto traen uno.
    */
@@ -109,7 +115,7 @@
      */
     columnRoots: [
       '#rcnt', '#center_col', '#res', '#search', '#rso', '#botstuff',
-      '#taw', '#tvcap', '#atvcap', '#bres', '#rhs', '#appbar', '#extabar', '#cnt'
+      '#taw', '#tvcap', '#atvcap', '#bres', '#rhs', '#appbar', '#extabar', '#cnt', '#main'
     ],
 
     /** Zona de la columna central donde pueden estar los bloques. */
@@ -148,7 +154,8 @@
     types: {
       aiOverview: {
         strategy: 'block',
-        areas: 'main',
+        areas: 'page',
+        yieldsTo: ['peopleAlsoAsk', 'forums', 'videos', 'shopping'],
         containers: [],
         markers: [],
         labels: {

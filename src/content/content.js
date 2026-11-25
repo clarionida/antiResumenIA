@@ -141,6 +141,7 @@
   }
 
   function inArea(el, areas) {
+    if (areas === 'page') return true; // la navegación ya se excluyó antes
     if (el.closest(SEL.main)) return true;
     return areas === 'all' && !!el.closest(SEL.side);
   }
@@ -244,7 +245,32 @@
     if (SEL.ignoreInside && el.closest(SEL.ignoreInside)) return;
     if (!inArea(el, def.areas)) return;
     const block = findBlockRoot(el, def.maxInnerResults);
-    if (block) hide(block, type);
+    if (block) hideBlock(block, type);
+  }
+
+  /** Tipo de la primera etiqueta conocida dentro de un bloque (en orden del documento). */
+  function firstLabelType(block) {
+    const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
+    for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+      const text = n.nodeValue;
+      if (!text || text.length > maxLabelLength) continue;
+      const type = LABELS.get(U.normalizeLabel(text));
+      if (type && D.types[type].strategy === 'block') return type;
+    }
+    return null;
+  }
+
+  /** Oculta un bloque respetando "yieldsTo": el bloque es del tipo de su primer encabezado. */
+  function hideBlock(block, type) {
+    const yieldsTo = D.types[type].yieldsTo;
+    if (yieldsTo && yieldsTo.length) {
+      const first = firstLabelType(block);
+      if (first && first !== type && yieldsTo.includes(first)) {
+        if (state.types.has(first)) hide(block, first);
+        return;
+      }
+    }
+    hide(block, type);
   }
 
   const SKIP_TAGS = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'TEMPLATE', 'svg', 'SVG']);
@@ -299,7 +325,7 @@
             if (control) hide(control, type);
           } else if (inArea(el, def.areas) && !el.closest(SEL.nav)) {
             const block = findBlockRoot(el, def.maxInnerResults);
-            if (block) hide(block, type);
+            if (block) hideBlock(block, type);
           }
         }
       }
