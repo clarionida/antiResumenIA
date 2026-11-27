@@ -10,7 +10,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const REPORT = 'https://github.com/clarionida/antiResumenIA/issues/new?template=problema.yml';
+const REPORT = 'https://github.com/clarionida/buscar-sin-ia/issues/new?template=problema.yml';
 
 // El nombre siempre va como «la extensión Buscar sin IA» y en negritas: así se
 // entiende que es un nombre, y cada respuesta tiene sentido por sí sola (las IAs

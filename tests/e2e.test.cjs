@@ -228,7 +228,7 @@ const SHOTS = process.env.SHOTS_DIR;
     await ui.waitForTimeout(300);
     if (p.startsWith('options')) {
       const href = await ui.getAttribute('#reportLink', 'href');
-      assert.ok(href.startsWith('https://github.com/clarionida/antiResumenIA/issues/new?template=problema.yml') && href.includes('version=' + require('../manifest.json').version), 'link de reportes: ' + href);
+      assert.ok(href.startsWith('https://github.com/clarionida/buscar-sin-ia/issues/new?template=problema.yml') && href.includes('version=' + require('../manifest.json').version), 'link de reportes: ' + href);
     }
     if (SHOTS) {
       await ui.setViewportSize(p.startsWith('popup') ? { width: 340, height: 520 } : { width: 900, height: 1400 });

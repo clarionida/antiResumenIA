@@ -10,7 +10,7 @@
 
 ## Enlaces
 
-- [Página en español](https://clarionida.github.io/antiResumenIA/)
-- [English page](https://clarionida.github.io/antiResumenIA/en/)
-- [Código y documentación (GitHub)](https://github.com/clarionida/antiResumenIA)
-- [Política de privacidad](https://github.com/clarionida/antiResumenIA/blob/main/PRIVACY.md)
+- [Página en español](https://clarionida.com/buscar-sin-ia/)
+- [English page](https://clarionida.com/buscar-sin-ia/en/)
+- [Código y documentación (GitHub)](https://github.com/clarionida/buscar-sin-ia)
+- [Política de privacidad](https://github.com/clarionida/buscar-sin-ia/blob/main/PRIVACY.md)
