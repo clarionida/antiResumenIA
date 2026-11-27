@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://clarionida.github.io/antiResumenIA/sitemap.xml
+Sitemap: https://clarionida.com/buscar-sin-ia/sitemap.xml

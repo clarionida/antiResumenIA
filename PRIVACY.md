@@ -12,7 +12,7 @@
 - **Reportar un problema:** el link «Reportar un problema» abre un formulario de GitHub solo si haces clic. Trae rellenadas la versión de la extensión, la de Chrome y el idioma. No se envía nada hasta que tú lo publiques, y lo que publiques ahí es público y se rige por la política de GitHub.
 - **Borrar tus datos:** desinstala la extensión, o usa «Restablecer valores predeterminados» y «Reiniciar contador» en sus opciones.
 
-Contacto: https://github.com/clarionida/antiResumenIA/issues
+Contacto: https://github.com/clarionida/buscar-sin-ia/issues
 
 ---
 
@@ -30,4 +30,4 @@ Contacto: https://github.com/clarionida/antiResumenIA/issues
 - **Report a problem:** the “Report a problem” link opens a GitHub form only when you click it, prefilled with the extension version, Chrome version and language. Nothing is sent until you post it; what you post there is public and GitHub’s policy applies.
 - **Delete your data:** uninstall the extension, or use “Restore defaults” and “Reset counter” in its options.
 
-Contact: https://github.com/clarionida/antiResumenIA/issues
+Contact: https://github.com/clarionida/buscar-sin-ia/issues

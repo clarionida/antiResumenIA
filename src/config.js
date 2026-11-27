@@ -31,7 +31,7 @@
    * Formulario para reportar problemas (GitHub Issues). Se abre solo cuando el usuario
    * hace clic. Usa la plantilla .github/ISSUE_TEMPLATE/problema.yml.
    */
-  const ISSUES_URL = 'https://github.com/clarionida/antiResumenIA/issues/new?template=problema.yml';
+  const ISSUES_URL = 'https://github.com/clarionida/buscar-sin-ia/issues/new?template=problema.yml';
 
   /** El mensaje amable de donación aparece UNA sola vez al llegar a este total. */
   const DONATION_PROMPT_THRESHOLD = 200;

@@ -11,7 +11,7 @@
 
 <p align="center"><em>Search Without AI · Busca sem IA</em></p>
 
-<p align="center"><a href="https://clarionida.github.io/antiResumenIA/"><strong>Página web</strong></a> · <a href="https://clarionida.github.io/antiResumenIA/en/">Website (English)</a></p>
+<p align="center"><a href="https://clarionida.com/buscar-sin-ia/"><strong>Página web</strong></a> · <a href="https://clarionida.com/buscar-sin-ia/en/">Website (English)</a></p>
 
 ---
 
@@ -64,7 +64,7 @@ Política completa: [PRIVACY.md](PRIVACY.md).
 
 **Mientras tanto, de forma manual:**
 
-1. Descarga el proyecto: [**Descargar .zip**](https://github.com/clarionida/antiResumenIA/archive/refs/heads/main.zip).
+1. Descarga el proyecto: [**Descargar .zip**](https://github.com/clarionida/buscar-sin-ia/archive/refs/heads/main.zip).
 2. Descomprímelo y guarda la carpeta en un lugar fijo, por ejemplo en Documentos. Chrome la usa desde ahí: no la borres ni la muevas después.
 3. En Chrome, abre `chrome://extensions`.
 4. Activa **Modo de desarrollador** (arriba a la derecha).
@@ -88,7 +88,7 @@ Política completa: [PRIVACY.md](PRIVACY.md).
 
 Google cambia su página seguido, y a veces un bloque deja de ocultarse.
 
-- Repórtalo en [**Reportar un problema**](https://github.com/clarionida/antiResumenIA/issues/new?template=problema.yml). También está el link al pie de la página de opciones.
+- Repórtalo en [**Reportar un problema**](https://github.com/clarionida/buscar-sin-ia/issues/new?template=problema.yml). También está el link al pie de la página de opciones.
 - Ayuda mucho que incluyas la búsqueda que usaste y el **texto exacto** del título del bloque que no se ocultó.
 
 ## Apoyar
